@@ -41,6 +41,7 @@ namespace magma5g {
  * This class is single place holder for all client related services.
  * For instance : subscriberdb, sessiond, mobilityd
  */
+typedef magma::map_s<std::string, std::string> map_string_string_t;
 
 class AMFClientServicerBase {
  public:
