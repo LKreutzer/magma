@@ -6,6 +6,13 @@ info:
   description: We use this for unit testing
   version: 1.0.0
 
+paths: 
+  /dummy:
+    get:
+      responses:
+        '200':
+          description: OK
+
 definitions:
   simple_event:
     type: object

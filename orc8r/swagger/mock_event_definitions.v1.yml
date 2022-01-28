@@ -6,6 +6,13 @@ info:
   description: These are the definitions for events allowed to be forwarded to orchestrator
   version: 1.0.0
 
+paths: 
+  /dummy:
+    get:
+      responses:
+        '200':
+          description: OK 
+
 definitions:
   mock_subscriber_event:
     type: object

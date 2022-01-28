@@ -6,6 +6,13 @@ info:
   description: These denote events that happen within Magmad on the AGW
   version: 1.0.0
 
+paths: 
+  /dummy:
+    get:
+      responses:
+        '200':
+          description: OK
+
 definitions:
   deleted_stored_mconfig:
     type: object
