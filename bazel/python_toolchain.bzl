@@ -16,7 +16,8 @@ load("@rules_python//python:defs.bzl", "py_runtime", "py_runtime_pair")
 def configure_python_toolchain(name = None):
     py_runtime(
         name = "python3",
-        interpreter_path = "/usr/bin/python3.8",
+        files = ["@python_interpreter//:files"],
+        interpreter = "@python_interpreter//:python_bin",
         python_version = "PY3",
         visibility = ["//visibility:public"],
     )

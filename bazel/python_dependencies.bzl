@@ -19,7 +19,8 @@ def configure_python_dependencies(name = None):
     pip_parse(
         name = "python_deps",
         extra_pip_args = ["--require-hashes"],
-        python_interpreter = "python3",
+        # python_interpreter = "python3",
+        python_interpreter_target = "@python_interpreter//:python_bin",
         requirements_lock = "//bazel/external:requirements.txt",
         visibility = ["//visibility:public"],
     )

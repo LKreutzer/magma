@@ -133,6 +133,10 @@ new_local_repository(
     path = "/",
 )
 
+load("//bazel:python_repositories.bzl", "python_repositories")
+
+python_repositories()
+
 load("//bazel:python_dependencies.bzl", "configure_python_dependencies")
 
 configure_python_dependencies()
