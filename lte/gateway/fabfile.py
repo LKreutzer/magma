@@ -250,7 +250,7 @@ def federated_integ_test(
 
 def integ_test(
     gateway_host=None, test_host=None, trf_host=None,
-    destroy_vm='True', provision_vm='True', bazel_build='False',
+    destroy_vm='True', provision_vm='True', bazel_build='False', bazel_build_fill='False',
 ):
     """
     Run the integration tests. This defaults to running on local vagrant
@@ -272,6 +272,8 @@ def integ_test(
 
     destroy_vm = bool(strtobool(destroy_vm))
     provision_vm = bool(strtobool(provision_vm))
+    bazel_build = bool(strtobool(bazel_build))
+    bazel_build_fill = bool(strtobool(bazel_build_fill))
 
     # Setup the gateway: use the provided gateway if given, else default to the
     # vagrant machine
@@ -287,49 +289,50 @@ def integ_test(
 
     execute(_dist_upgrade)
 
-    if bazel_build:
+    if bazel_build or bazel_build_fill:
         # Insert the bazel built executable in the service definition
         # Replace build command with "bazel build"
         execute(_modify_for_bazel)
 
     execute(_build_magma)
 
-    if not bazel_build:
+    if not bazel_build and not bazel_build_fill:
         execute(_run_sudo_python_unit_tests)
+    if not bazel_build_fill:
+        execute(_start_gateway)
 
-    execute(_start_gateway)
+        # Run suite of integ tests that are required to be run on the access gateway
+        # instead of the test VM
+        # TODO: fix the integration test T38069907
+        # execute(_run_local_integ_tests)
 
-    # Run suite of integ tests that are required to be run on the access gateway
-    # instead of the test VM
-    # TODO: fix the integration test T38069907
-    # execute(_run_local_integ_tests)
+        # Setup the trfserver: use the provided trfserver if given, else default to the
+        # vagrant machine
+        if not trf_host:
+            trf_host = vagrant_setup(
+                'magma_trfserver', destroy_vm, force_provision=provision_vm,
+            )
+        else:
+            ansible_setup(trf_host, "trfserver", "magma_trfserver.yml")
+        execute(_start_trfserver)
 
-    # Setup the trfserver: use the provided trfserver if given, else default to the
-    # vagrant machine
-    if not trf_host:
-        trf_host = vagrant_setup(
-            'magma_trfserver', destroy_vm, force_provision=provision_vm,
-        )
-    else:
-        ansible_setup(trf_host, "trfserver", "magma_trfserver.yml")
-    execute(_start_trfserver)
+        # Run the tests: use the provided test machine if given, else default to
+        # the vagrant machine
+        if not test_host:
+            test_host = vagrant_setup(
+                'magma_test', destroy_vm, force_provision=provision_vm,
+            )
+        else:
+            ansible_setup(test_host, "test", "magma_test.yml")
 
-    # Run the tests: use the provided test machine if given, else default to
-    # the vagrant machine
-    if not test_host:
-        test_host = vagrant_setup(
-            'magma_test', destroy_vm, force_provision=provision_vm,
-        )
-    else:
-        ansible_setup(test_host, "test", "magma_test.yml")
+        
+        execute(_make_integ_tests)
+        execute(_run_integ_tests, gateway_ip)
 
-    execute(_make_integ_tests)
-    execute(_run_integ_tests, gateway_ip)
-
-    if not gateway_host:
-        setup_env_vagrant()
-    else:
-        env.hosts = [gateway_host]
+        if not gateway_host:
+            setup_env_vagrant()
+        else:
+            env.hosts = [gateway_host]
 
 
 def run_integ_tests(tests=None):
