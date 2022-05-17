@@ -40,12 +40,15 @@ jobs:
           sudo mkdir -p /etc/vbox/
           sudo touch /etc/vbox/networks.conf
           sudo sh -c "echo '* 192.168.0.0/16' > /etc/vbox/networks.conf"
+      - name: Configure bazel remote cache
+        run: |
+          bazel/scripts/remote_cache_bazelrc_setup.sh "magma-vm" "${{ secrets.BAZEL_REMOTE_PASSWORD }}"
       - name: Run the integ test
         run: |
           cd lte/gateway
           export MAGMA_DEV_CPUS=3
           export MAGMA_DEV_MEMORY_MB=9216
-          fab integ_test
+          fab integ_test:bazel_build="True"
       - name: Get test results
         if: always()
         run: |
