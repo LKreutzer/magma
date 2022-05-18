@@ -15,7 +15,7 @@ Description=Magma ctraced service
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/bin/env python3 -m magma.ctraced.main
+ExecStart=/home/vagrant/magma/bazel-bin/orc8r/gateway/python/magma/ctraced/ctraced
 ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py ctraced
 StandardOutput=syslog
 StandardError=syslog

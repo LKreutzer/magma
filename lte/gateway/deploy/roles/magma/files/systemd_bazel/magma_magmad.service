@@ -10,16 +10,16 @@
 # limitations under the License.
 #
 [Unit]
-Description=Magma %i service
+Description=Magma magmad service
 
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/bin/env python3 -m magma.%i.main
-ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py %i
+ExecStart=/home/vagrant/magma/bazel-bin/orc8r/gateway/python/magma/magmad/magmad
+ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py magmad
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=%i
+SyslogIdentifier=magmad
 User=root
 Restart=always
 RestartSec=5s

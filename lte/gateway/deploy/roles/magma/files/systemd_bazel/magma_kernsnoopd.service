@@ -10,16 +10,16 @@
 # limitations under the License.
 #
 [Unit]
-Description=Magma %i service
+Description=Magma kernsnoopd service
 
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/bin/env python3 -m magma.%i.main
-ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py %i
+ExecStart=/home/vagrant/magma/bazel-bin/lte/gateway/python/magma/kernsnoopd/kernsnoopd
+ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py kernsnoopd
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=%i
+SyslogIdentifier=kernsnoopd
 User=root
 Restart=always
 RestartSec=5s

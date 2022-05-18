@@ -17,7 +17,7 @@ Before=magma@mme.service
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/local/bin/sessiond
+ExecStart=/home/vagrant/magma/bazel-bin/lte/gateway/c/session_manager/sessiond
 ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py sessiond
 MemoryAccounting=yes
 StandardOutput=syslog
