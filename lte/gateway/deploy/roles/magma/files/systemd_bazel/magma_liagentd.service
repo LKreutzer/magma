@@ -17,7 +17,7 @@ After=magma@pipelined.service
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/local/bin/liagentd
+ExecStart=/home/vagrant/magma/bazel-bin/lte/gateway/c/li_agent/src/liagentd
 ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py liagentd
 MemoryAccounting=yes
 StandardOutput=syslog

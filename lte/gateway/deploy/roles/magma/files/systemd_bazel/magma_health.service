@@ -10,16 +10,16 @@
 # limitations under the License.
 #
 [Unit]
-Description=Magma %i service
+Description=Magma health service
 
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/bin/env python3 -m magma.%i.main
-ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py %i
+ExecStart=/home/vagrant/magma/bazel-bin/lte/gateway/python/magma/health/health
+ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py health
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=%i
+SyslogIdentifier=health
 User=root
 Restart=always
 RestartSec=5s

@@ -21,7 +21,7 @@ Wants=openvswitch-switch.service
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/bin/env python3 -m magma.mobilityd.main
+ExecStart=/home/vagrant/magma/bazel-bin/lte/gateway/python/magma/mobilityd/mobilityd
 ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py mobilityd
 StandardOutput=syslog
 StandardError=syslog

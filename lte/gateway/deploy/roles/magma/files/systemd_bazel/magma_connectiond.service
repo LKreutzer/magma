@@ -19,7 +19,7 @@ After=openvswitch-switch.service
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/local/bin/connectiond
+ExecStart=/home/vagrant/magma/bazel-bin/lte/gateway/c/connection_tracker/src/connectiond
 ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py connectiond
 MemoryAccounting=yes
 StandardOutput=syslog

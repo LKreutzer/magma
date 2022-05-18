@@ -17,7 +17,7 @@ Before=magma@mme.service
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/bin/env python3 -m magma.monitord.main
+ExecStart=/home/vagrant/magma/bazel-bin/lte/gateway/python/magma/monitord/monitord
 ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py monitord
 StandardOutput=syslog
 StandardError=syslog

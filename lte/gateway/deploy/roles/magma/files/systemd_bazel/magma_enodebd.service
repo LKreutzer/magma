@@ -10,16 +10,16 @@
 # limitations under the License.
 #
 [Unit]
-Description=Magma %i service
+Description=Magma enodebd service
 
 [Service]
 Type=simple
 EnvironmentFile=/etc/environment
-ExecStart=/usr/bin/env python3 -m magma.%i.main
-ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py %i
+ExecStart=/home/vagrant/magma/bazel-bin/lte/gateway/python/magma/enodebd/enodebd
+ExecStopPost=/usr/bin/env python3 /usr/local/bin/service_util.py enodebd
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=%i
+SyslogIdentifier=enodebd
 User=root
 Restart=always
 RestartSec=5s
