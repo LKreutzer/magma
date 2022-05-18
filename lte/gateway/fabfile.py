@@ -591,6 +591,43 @@ def _build_magma_bazel():
 def _modify_for_bazel():
     """ Modify the service definitions to use the bazel-built executables """
     run("sudo sed --in-place -e s@/usr/local/bin/mme@/home/vagrant/magma/bazel-bin/lte/gateway/c/core/oai_mme@ /etc/systemd/system/magma@mme.service")
+
+
+# missing (likely internal):
+#     dnsd
+#     dp_envoy
+#     dpid
+#     envoy_controller
+#     lighttpd
+#     redis
+
+
+
+        /home/vagrant/magma/bazel-bin/lte/gateway/c/connection_tracker/src/connectiond  /etc/systemd/system/magma@connectiond.service
+        /home/vagrant/magma/bazel-bin/lte/gateway/c/core/oai_mme  /etc/systemd/system/magma@mme.service
+        /home/vagrant/magma/bazel-bin/lte/gateway/c/li_agent/src/liagentd /etc/systemd/system/magma@liagentd.service
+        /home/vagrant/magma/bazel-bin/lte/gateway/c/sctpd/src/sctpd /etc/systemd/system/magma@liagentd.service
+        /home/vagrant/magma/bazel-bin/lte/gateway/c/session_manager/sessiond /etc/systemd/system/sctpd.service
+
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/enodebd/enodebd
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/health/health
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/kernsnoopd/kernsnoopd
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/mobilityd/mobilityd /etc/systemd/system/magma@mobilityd.service
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/monitord/monitord /etc/systemd/system/magma@monitord.service
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/pipelined/pipelined /etc/systemd/system/magma@pipelined.service
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/policydb/policydb
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/redirectd/redirectd /etc/systemd/system/magma@redirectd.service
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/smsd/smsd
+        /home/vagrant/magma/bazel-bin/lte/gateway/python/magma/subscriberdb/subscriberdb
+
+
+        /home/vagrant/magma/bazel-bin/orc8r/gateway/python/magma/ctraced/ctraced /etc/systemd/system/magma@ctraced.service
+        /home/vagrant/magma/bazel-bin/orc8r/gateway/python/magma/directoryd/directoryd
+        /home/vagrant/magma/bazel-bin/orc8r/gateway/python/magma/eventd/eventd /etc/systemd/system/magma@eventd.service
+        /home/vagrant/magma/bazel-bin/orc8r/gateway/python/magma/magmad/magmad /etc/systemd/system/magma@magmad.service
+        /home/vagrant/magma/bazel-bin/orc8r/gateway/python/magma/state/state
+
+
     run("sudo systemctl daemon-reload")
 
 def _oai_coverage():
