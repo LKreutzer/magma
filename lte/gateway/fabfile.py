@@ -585,7 +585,9 @@ def _build_magma():
 def _build_magma_bazel():
     """ Build magma on AGW with bazel """
     with cd(r"$MAGMA_ROOT"):
-        run('bazel build \\...') 
+        run('sudo apt-get update -y') 
+        run('sudo apt-get install -y moreutils') 
+        run('time bazel build //...  2>&1 | ts -i') 
 
 def _modify_for_bazel():
     """ Modify the service definitions to use the bazel-built executables """
