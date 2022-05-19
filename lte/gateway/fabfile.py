@@ -286,6 +286,7 @@ def integ_test(
         ansible_setup(gateway_host, "dev", "magma_dev.yml")
         gateway_ip = gateway_host.split('@')[1].split(':')[0]
 
+    execute(_get_date)
     execute(_dist_upgrade)
 
     if bazel_build:
@@ -581,6 +582,9 @@ def _build_magma():
     """
     with cd(AGW_ROOT):
         run('make')
+
+def _get_date():
+    run('bash -c "while true; do echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa; date; sleep 5; done"')
 
 def _build_magma_bazel():
     """ Build magma on AGW with bazel """
