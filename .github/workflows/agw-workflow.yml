@@ -23,39 +23,7 @@ env:
   CACHE_KEY: bazel-base-image
 
 jobs:
-  path_filter:
-    runs-on: ubuntu-latest
-    outputs:
-      should_not_skip: ${{ steps.changes.outputs.filesChanged }}
-    steps:
-      # Need to get git on push event
-      - uses: actions/checkout@v2
-        if: github.event_name == 'push'
-      - uses: dorny/paths-filter@v2
-        id: changes
-        with:
-          filters: |
-            filesChanged:
-              - '.github/workflows/agw-workflow.yml'
-              - 'orc8r/**'
-              - 'lte/**'
-              - '.bazelrc'
-              - 'WORKSPACE.bazel'
-              - 'bazel/**'
-      - name: Save should_not_skip output
-        if: always()
-        run: |
-          mkdir -p ./pr
-          echo -n ${{ steps.changes.outputs.filesChanged == 'false' }} > ./pr/skipped
-      - uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: pr
-          path: pr/
-
   lte-test:
-    needs: path_filter
-    if: ${{ needs.path_filter.outputs.should_not_skip == 'true' }}
     name: lte test job
     runs-on: ubuntu-latest
     env:
@@ -139,8 +107,6 @@ jobs:
           SLACK_FOOTER: ' '
 
   c_cpp_unit_tests:
-    needs: path_filter
-    if: ${{ needs.path_filter.outputs.should_not_skip == 'true' }}
     name: C/C++ unit tests with Bazel
     runs-on: ubuntu-latest
     steps:
@@ -206,8 +172,6 @@ jobs:
           df -h
 
   li_agent_test:
-    needs: path_filter
-    if: ${{ needs.path_filter.outputs.should_not_skip == 'true' }}
     name: li agent test job
     runs-on: ubuntu-latest
     env:
@@ -244,8 +208,6 @@ jobs:
           SLACK_FOOTER: ' '
 
   mme_test:
-    needs: path_filter
-    if: ${{ needs.path_filter.outputs.should_not_skip == 'true' }}
     name: mme test job
     runs-on: ubuntu-latest
     env:
@@ -308,8 +270,6 @@ jobs:
           SLACK_FOOTER: ' '
 
   c-cpp-codecov:
-    needs: path_filter
-    if: ${{ needs.path_filter.outputs.should_not_skip == 'true' }}
     name: C / C++ code coverage
     runs-on: ubuntu-latest
     env:
@@ -405,8 +365,6 @@ jobs:
           df -h
 
   lint-clang-format:
-    needs: path_filter
-    if: ${{ needs.path_filter.outputs.should_not_skip == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -428,8 +386,6 @@ jobs:
           style: file
 
   session_manager_test:
-    needs: path_filter
-    if: ${{ needs.path_filter.outputs.should_not_skip == 'true' }}
     name: session manager test job
     runs-on: ubuntu-latest
     env:
