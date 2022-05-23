@@ -49,6 +49,12 @@ jobs:
           export MAGMA_DEV_CPUS=3
           export MAGMA_DEV_MEMORY_MB=9216
           fab integ_test:bazel_build="True"
+      - name: Upload bazel profile
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: Bazel profile
+          path: bazel_profile
       - name: Get test results
         if: always()
         run: |

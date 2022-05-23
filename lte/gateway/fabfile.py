@@ -587,7 +587,7 @@ def _build_magma_bazel():
     with cd(r"$MAGMA_ROOT"):
         run('sudo apt-get update -y') 
         run('sudo apt-get install -y moreutils sysstat') 
-        run('bash -c "while true; do echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa; date; mpstat; free -m; iostat; sleep 5; done" & time bazel build //...  2>&1 | ts -i')
+        run('timeout 2400 bash -c "while true; do echo AAAAAAAAAAAa; date; mpstat; free -m; iostat; sleep 5; done & bazel build //... --profile=bazel_profile 2>&1 | ts"')
 
 
 def _modify_for_bazel():
