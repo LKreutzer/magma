@@ -286,7 +286,6 @@ def integ_test(
         ansible_setup(gateway_host, "dev", "magma_dev.yml")
         gateway_ip = gateway_host.split('@')[1].split(':')[0]
 
-    execute(_get_date)
     execute(_dist_upgrade)
 
     if bazel_build:
@@ -583,15 +582,13 @@ def _build_magma():
     with cd(AGW_ROOT):
         run('make')
 
-def _get_date():
-    run('bash -c "while true; do echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa; date; sleep 5; done"')
-
 def _build_magma_bazel():
     """ Build magma on AGW with bazel """
     with cd(r"$MAGMA_ROOT"):
         run('sudo apt-get update -y') 
-        run('sudo apt-get install -y moreutils') 
-        run('time bazel build //...  2>&1 | ts -i') 
+        run('sudo apt-get install -y moreutils sysstat') 
+        run('bash -c "while true; do echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa; date; mpstat; free -m; iostat; sleep 5; done" & time bazel build //...  2>&1 | ts -i')
+
 
 def _modify_for_bazel():
     """ Modify the service definitions to use the bazel-built executables """
