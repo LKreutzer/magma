@@ -585,9 +585,9 @@ def _build_magma():
 def _build_magma_bazel():
     """ Build magma on AGW with bazel """
     with cd(r"$MAGMA_ROOT"):
-        run('sudo apt-get update -y') 
-        run('sudo apt-get install -y moreutils sysstat') 
-        run('timeout 2400 bash -c "while true; do echo AAAAAAAAAAAa; date; mpstat; free -m; iostat; sleep 5; done & bazel build //... --profile=bazel_profile 2>&1 | ts"')
+        run('sudo sed -i "s@#precedence ::ffff:0:0/96  100@precedence ::ffff:0:0/96  100@" /etc/gai.conf')
+        run('bazel build //... --profile=bazel_profile')
+        run('sudo sed -i "s@precedence ::ffff:0:0/96  100@#precedence ::ffff:0:0/96  100@" /etc/gai.conf')
 
 
 def _modify_for_bazel():
