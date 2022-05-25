@@ -586,7 +586,7 @@ def _build_magma_bazel():
     """ Build magma on AGW with bazel """
     with cd(r"$MAGMA_ROOT"):
         run('sudo sed -i "s@#precedence ::ffff:0:0/96  100@precedence ::ffff:0:0/96  100@" /etc/gai.conf')
-        run('bazel build //... --profile=bazel_profile')
+        run('bazel build //lte/gateway/python/...  //orc8r/gateway/python/...  //lte/gateway/c/connection_tracker/src:connectiond  //lte/gateway/c/li_agent/src:liagentd  //lte/gateway/c/core:oai_mme  //lte/gateway/c/session_manager:sessiond  //lte/gateway/c/sctpd/src:sctpd  --profile=bazel_profile')
         run('sudo sed -i "s@precedence ::ffff:0:0/96  100@#precedence ::ffff:0:0/96  100@" /etc/gai.conf')
 
 
