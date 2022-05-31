@@ -4,6 +4,17 @@ name: LTE integ test
 
 on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
+    inputs:
+      CPU:
+        description: 'CPU allocated to the VM'
+        default: 2
+        required: true
+        type: number
+      RAM:
+        description: 'RAM allocated to the VM'
+        default: 8192
+        required: true
+        type: number
   workflow_run:
     workflows:
       - build-all
@@ -46,8 +57,9 @@ jobs:
       - name: Run the integ test
         run: |
           cd lte/gateway
-          export MAGMA_DEV_CPUS=3
-          export MAGMA_DEV_MEMORY_MB=9216
+          echo "VM Resources: CPU: ${{ github.event.inputs.CPU }} RAM: ${{ github.event.inputs.RAM }}"
+          export MAGMA_DEV_CPUS=${{ github.event.inputs.CPU }}
+          export MAGMA_DEV_MEMORY_MB=${{ github.event.inputs.RAM }}
           fab integ_test:bazel_build="True"
       - name: Upload bazel profile
         uses: actions/upload-artifact@v3
