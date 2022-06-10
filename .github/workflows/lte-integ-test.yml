@@ -42,7 +42,7 @@ jobs:
           sudo sh -c "echo '* 192.168.0.0/16' > /etc/vbox/networks.conf"
       - name: Configure bazel remote cache
         run: |
-          bazel/scripts/remote_cache_bazelrc_setup.sh "magma-vm" "${{ secrets.BAZEL_REMOTE_PASSWORD }}"
+          bazel/scripts/remote_cache_bazelrc_setup.sh "magma-vm-testing" "${{ secrets.BAZEL_REMOTE_PASSWORD }}"
       - name: Run the integ test
         run: |
           cd lte/gateway
