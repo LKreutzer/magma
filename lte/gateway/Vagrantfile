@@ -60,9 +60,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define :magma_trfserver, autostart: false do |magma_trfserver|
-    magma_trfserver.vm.box = "magmacore/magma_trfserver"
+    config.vm.box = ENV['BOX_NAME_MAGMA_TRFSERVER']
+    config.vm.box_url = ENV['BOX_URL_MAGMA_TRFSERVER']
     magma_trfserver.vm.hostname = "magma-trfserver"
-    magma_trfserver.vm.box_version = "1.1.20210326"
     magma_trfserver.vbguest.auto_update = false
 
     # Create a private network, which allows host-only access to the machine
