@@ -659,7 +659,7 @@ def _build_magma_bazel():
     """
     with cd(r"$MAGMA_ROOT"):
         run('sudo sed -i "s@#precedence ::ffff:0:0/96  100@precedence ::ffff:0:0/96  100@" /etc/gai.conf')
-        run('bazel build --profile=bazel_profile_lte_integ_tests --ui_event_filters=warning `bazel query "kind(.*_binary, //orc8r/... union //lte/...)"`')
+        run('bazel build --profile=bazel_profile_lte_integ_tests --color=no `bazel query "kind(.*_binary, //orc8r/... union //lte/...)"` 1>bazel_log_lte_integ_tests.txt 2>&1')
         run('sudo sed -i "s@precedence ::ffff:0:0/96  100@#precedence ::ffff:0:0/96  100@" /etc/gai.conf')
 
 
