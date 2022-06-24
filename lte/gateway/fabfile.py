@@ -657,11 +657,19 @@ def _build_magma_bazel():
     Build magma on AGW with bazel. The /etc/gai.conf file is temporarily modified
     to prefer IPv4 to accelerate the build.
     """
-    with cd(r"$MAGMA_ROOT"):
-        run('sudo sed -i "s@#precedence ::ffff:0:0/96  100@precedence ::ffff:0:0/96  100@" /etc/gai.conf')
-        run('bazel build --profile=bazel_profile_lte_integ_tests --color=no `bazel query "kind(.*_binary, //orc8r/... union //lte/...)"` 1>bazel_log_lte_integ_tests.txt 2>&1')
-        run('sudo sed -i "s@precedence ::ffff:0:0/96  100@#precedence ::ffff:0:0/96  100@" /etc/gai.conf')
-
+    host = env.hosts[0].split(':')[0]
+    port = env.hosts[0].split(':')[1]
+    key = env.key_filename
+    local(
+        'ssh -i %s -o UserKnownHostsFile=/dev/null'
+        ' -o StrictHostKeyChecking=no -tt %s -p %s'
+        ' cd $MAGMA_ROOT '
+        ' sudo sed -i "s@#precedence ::ffff:0:0/96  100@precedence ::ffff:0:0/96  100@" /etc/gai.conf '
+        ' bazel build --profile=bazel_profile_lte_integ_tests `bazel query "kind(.*_binary, //orc8r/... union //lte/...)"` '
+        ' sudo sed -i "s@precedence ::ffff:0:0/96  100@#precedence ::ffff:0:0/96  100@" /etc/gai.conf '
+        '";'
+        % (key, host, port),
+    )
 
 def _modify_for_bazel():
     """ Modify the service definitions to use the bazel-built executables """
