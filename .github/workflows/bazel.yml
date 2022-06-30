@@ -85,7 +85,7 @@ jobs:
         with:
           image: ${{ env.BAZEL_BASE_IMAGE }}
           # TODO: Remove work-around mount of Github workspace to /magma (https://github.com/addnab/docker-run-action/issues/11)
-          options: -v ${{ github.workspace }}:/workspaces/magma/ -v ${{ github.workspace }}/lte/gateway/configs:/etc/magma
+          options: -v ${{ github.workspace }}:/workspaces/magma/
           run: |
             cd /workspaces/magma
 
