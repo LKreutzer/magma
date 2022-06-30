@@ -663,11 +663,13 @@ def _build_magma_bazel():
     local(
         'ssh -i %s -o UserKnownHostsFile=/dev/null'
         ' -o StrictHostKeyChecking=no -tt %s -p %s'
-        ' cd $MAGMA_ROOT '
-        ' sudo sed -i "s@#precedence ::ffff:0:0/96  100@precedence ::ffff:0:0/96  100@" /etc/gai.conf '
-        ' bazel build --profile=bazel_profile_lte_integ_tests `bazel query "kind(.*_binary, //orc8r/... union //lte/...)"` '
-        ' sudo sed -i "s@precedence ::ffff:0:0/96  100@#precedence ::ffff:0:0/96  100@" /etc/gai.conf '
-        '";'
+        ' sh -c " '
+        ' echo $MAGMA_ROOT; '
+        ' cd $MAGMA_ROOT; '
+        ' sudo sed -i \'s@#precedence ::ffff:0:0/96  100@precedence ::ffff:0:0/96  100@\' /etc/gai.conf; '
+        ' bazel build --profile=bazel_profile_lte_integ_tests \`bazel query \'kind(.*_binary, //orc8r/... union //lte/...)\'\`; '
+        ' sudo sed -i \'s@precedence ::ffff:0:0/96  100@#precedence ::ffff:0:0/96  100@\' /etc/gai.conf; '
+        ' "; '
         % (key, host, port),
     )
 
