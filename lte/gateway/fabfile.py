@@ -750,7 +750,9 @@ def _run_integ_tests(gateway_ip='192.168.60.142', tests=None):
         ' sudo ethtool --offload eth1 rx off tx off; sudo ethtool --offload eth2 rx off tx off;'
         ' source ~/build/python/bin/activate;'
         ' export GATEWAY_IP=%s;'
-        ' make -i integ_test enable-flaky-retry=true %s\''
+        ' make -i integ_test enable-flaky-retry=true %s; '
+        ' echo This is the time at the end of the integ tests; '
+        ' date \''
         % (key, host, port, gateway_ip, tests),
     )
 
