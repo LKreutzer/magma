@@ -348,7 +348,7 @@ def integ_test(
 
     if bazel_build:
         execute(_modify_for_bazel)
-        execute(_build_magma_bazel)
+        # execute(_build_magma_bazel)
     else:
         execute(_build_magma)
 
