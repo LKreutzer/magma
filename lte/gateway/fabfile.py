@@ -305,6 +305,9 @@ def federated_integ_test(
     sleep(20)
     execute(run_integ_tests, "federated_tests/s1aptests/test_attach_detach.py")
 
+def print_time():
+    run('echo This is the time')
+    run('date')
 
 def integ_test(
     gateway_host=None, test_host=None, trf_host=None,
@@ -335,7 +338,6 @@ def integ_test(
     # Setup the gateway: use the provided gateway if given, else default to the
     # vagrant machine
     gateway_ip = '192.168.60.142'
-
     if not gateway_host:
         gateway_host = vagrant_setup(
             'magma', destroy_vm, force_provision=provision_vm,
@@ -345,15 +347,23 @@ def integ_test(
         gateway_ip = gateway_host.split('@')[1].split(':')[0]
 
     execute(_dist_upgrade)
+    print_time()
 
     if bazel_build:
+        print_time()
         execute(_modify_for_bazel)
         execute(_build_magma_bazel)
+        print_time()
     else:
+        print_time()
         execute(_build_magma)
+        print_time()
 
+    print_time()
     execute(_run_sudo_python_unit_tests)
+    print_time()
     execute(_start_gateway)
+    print_time()
 
     # Run suite of integ tests that are required to be run on the access gateway
     # instead of the test VM
@@ -362,13 +372,16 @@ def integ_test(
 
     # Setup the trfserver: use the provided trfserver if given, else default to the
     # vagrant machine
+    print_time()
     if not trf_host:
         trf_host = vagrant_setup(
             'magma_trfserver', destroy_vm, force_provision=provision_vm,
         )
     else:
         ansible_setup(trf_host, "trfserver", "magma_trfserver.yml")
+    print_time()
     execute(_start_trfserver)
+    print_time()
 
     # Run the tests: use the provided test machine if given, else default to
     # the vagrant machine
@@ -379,13 +392,17 @@ def integ_test(
     else:
         ansible_setup(test_host, "test", "magma_test.yml")
 
+    print_time()
     execute(_make_integ_tests)
+    print_time()
     execute(_run_integ_tests, gateway_ip)
+    print_time()
 
     if not gateway_host:
         setup_env_vagrant()
     else:
         env.hosts = [gateway_host]
+    print_time()
 
 
 def run_integ_tests(tests=None):
