@@ -72,6 +72,7 @@ jobs:
         run: |
           cd lte/gateway
           vagrant ssh -c 'cd ~/magma; bazel build --profile=bazel_profile_lte_integ_tests `bazel query "kind(.*_binary, //orc8r/... union //lte/...)"`;' magma
+          vagrant ssh -c 'echo "The build is finished, the time is:"; date;' magma
       - name: Run the integ test
         run: |
           cd lte/gateway
