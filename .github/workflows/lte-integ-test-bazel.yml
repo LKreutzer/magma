@@ -58,12 +58,22 @@ jobs:
       - name: Configure bazel remote cache
         run: |
           bazel/scripts/remote_cache_bazelrc_setup.sh "magma-vm-lte-integ" "${{ secrets.BAZEL_REMOTE_PASSWORD }}"
+      - name: Prepare the integ test
+        run: |
+          cd lte/gateway
+          export MAGMA_DEV_CPUS=3
+          export MAGMA_DEV_MEMORY_MB=9216
+          fab integ_test_pre
+      - name: Build all services with bazel
+        run: |
+          cd lte/gateway
+          vagrant ssh -c 'cd ~/magma; bazel build --profile=bazel_profile_lte_integ_tests `bazel query \"kind(.*_binary, //orc8r/... union //lte/...)\"`;' magma
       - name: Run the integ test
         run: |
           cd lte/gateway
           export MAGMA_DEV_CPUS=3
           export MAGMA_DEV_MEMORY_MB=9216
-          fab integ_test:bazel_build="True"
+          fab integ_test_post
       - name: Upload bazel profile
         uses: actions/upload-artifact@v3
         if: always()

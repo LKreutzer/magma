@@ -306,9 +306,9 @@ def federated_integ_test(
     execute(run_integ_tests, "federated_tests/s1aptests/test_attach_detach.py")
 
 
-def integ_test(
+def integ_test_pre(
     gateway_host=None, test_host=None, trf_host=None,
-    destroy_vm='True', provision_vm='True', bazel_build='False',
+    destroy_vm='True', provision_vm='True', bazel_build='True',
 ):
     """
     Run the integration tests. This defaults to running on local vagrant
@@ -345,12 +345,36 @@ def integ_test(
         gateway_ip = gateway_host.split('@')[1].split(':')[0]
 
     execute(_dist_upgrade)
+    execute(_modify_for_bazel)
 
-    if bazel_build:
-        execute(_modify_for_bazel)
-        execute(_build_magma_bazel)
-    else:
-        execute(_build_magma)
+def integ_test_post(
+    gateway_host=None, test_host=None, trf_host=None,
+    destroy_vm='True', provision_vm='True', bazel_build='True',
+):
+    """
+    Run the integration tests. This defaults to running on local vagrant
+    machines, but can also be pointed to an arbitrary host (e.g. amazon) by
+    passing "address:port" as arguments
+
+    gateway_host: The ssh address string of the machine to run the gateway
+        services on. Formatted as "host:port". If not specified, defaults to
+        the `magma` vagrant box.
+
+    test_host: The ssh address string of the machine to run the tests on
+        on. Formatted as "host:port". If not specified, defaults to the
+        `magma_test` vagrant box.
+
+    trf_host: The ssh address string of the machine to run the TrafficServer
+        on. Formatted as "host:port". If not specified, defaults to the
+        `magma_trfserver` vagrant box.
+    """
+
+
+    destroy_vm = bool(strtobool(destroy_vm))
+    provision_vm = bool(strtobool(provision_vm))
+    bazel_build = bool(strtobool(bazel_build))
+
+    gateway_ip = '192.168.60.142'
 
     execute(_run_sudo_python_unit_tests)
     execute(_start_gateway)
