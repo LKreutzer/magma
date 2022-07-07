@@ -376,6 +376,14 @@ def integ_test_post(
 
     gateway_ip = '192.168.60.142'
 
+    if not gateway_host:
+        gateway_host = vagrant_setup(
+            'magma', False, force_provision=False,
+        )
+    else:
+        ansible_setup(gateway_host, "dev", "magma_dev.yml")
+        gateway_ip = gateway_host.split('@')[1].split(':')[0]
+
     execute(_run_sudo_python_unit_tests)
     execute(_start_gateway)
 
