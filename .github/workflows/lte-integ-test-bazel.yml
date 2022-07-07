@@ -85,12 +85,6 @@ jobs:
         with:
           name: Bazel profile lte integ tests
           path: bazel_profile_lte_integ_tests
-      - name: Upload bazel log
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: Bazel log lte integ tests
-          path: bazel_log_lte_integ_tests.txt
       - name: Get test results
         if: always()
         run: |
