@@ -305,6 +305,9 @@ def federated_integ_test(
     sleep(20)
     execute(run_integ_tests, "federated_tests/s1aptests/test_attach_detach.py")
 
+def sys_service_def():
+    run('systemctl cat magma@magmad | grep ExecStart')
+    run('systemctl cat magma@mme | grep ExecStart')
 
 def integ_test_pre(
     gateway_host=None, test_host=None, trf_host=None,
@@ -346,6 +349,7 @@ def integ_test_pre(
 
     execute(_dist_upgrade)
     execute(_modify_for_bazel)
+    execute(sys_service_def)
 
 def ll_bazel_bin():
     print("This is logging the bazel bin folder:")
@@ -390,6 +394,7 @@ def integ_test_post(
         ansible_setup(gateway_host, "dev", "magma_dev.yml")
         gateway_ip = gateway_host.split('@')[1].split(':')[0]
 
+    execute(sys_service_def)
     execute(ll_bazel_bin)
     execute(_run_sudo_python_unit_tests)
     execute(ll_bazel_bin)
