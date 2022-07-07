@@ -347,6 +347,12 @@ def integ_test_pre(
     execute(_dist_upgrade)
     execute(_modify_for_bazel)
 
+def ll_bazel_bin():
+    print("This is logging the bazel bin folder:")
+    run('ls -la /home/vagrant/magma/bazel-bin/orc8r/gateway/python/magma/magmad/magmad')
+    run('ls -la /home/vagrant/magma/bazel-bin/lte/gateway/c/core/agw_of')
+    run('ls -la /home/vagrant/magma/bazel-bin/lte/gateway/c')
+
 def integ_test_post(
     gateway_host=None, test_host=None, trf_host=None,
     destroy_vm='True', provision_vm='True', bazel_build='True',
@@ -384,8 +390,11 @@ def integ_test_post(
         ansible_setup(gateway_host, "dev", "magma_dev.yml")
         gateway_ip = gateway_host.split('@')[1].split(':')[0]
 
+    execute(ll_bazel_bin)
     execute(_run_sudo_python_unit_tests)
+    execute(ll_bazel_bin)
     execute(_start_gateway)
+    execute(ll_bazel_bin)
 
     # Run suite of integ tests that are required to be run on the access gateway
     # instead of the test VM
@@ -412,7 +421,9 @@ def integ_test_post(
         ansible_setup(test_host, "test", "magma_test.yml")
 
     execute(_make_integ_tests)
+    execute(ll_bazel_bin)
     execute(_run_integ_tests, gateway_ip)
+    execute(ll_bazel_bin)
 
     if not gateway_host:
         setup_env_vagrant()
