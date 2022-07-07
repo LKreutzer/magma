@@ -71,7 +71,7 @@ jobs:
       - name: Build all services with bazel
         run: |
           cd lte/gateway
-          vagrant ssh -c 'cd ~/magma; bazel build --profile=bazel_profile_lte_integ_tests `bazel query "kind(.*_binary, //orc8r/... union //lte/...)"`;' magma
+          vagrant ssh -c 'cd ~/magma; bazel build --profile=bazel_profile_lte_integ_tests --remote_timeout=300 --remote_retries=10 `bazel query "kind(.*_binary, //orc8r/... union //lte/...)"`;' magma
       - name: Run the integ test
         run: |
           cd lte/gateway
