@@ -426,9 +426,7 @@ def integ_test_post(
         ansible_setup(test_host, "test", "magma_test.yml")
 
     execute(_make_integ_tests)
-    execute(ll_bazel_bin)
     execute(_run_integ_tests, gateway_ip)
-    execute(ll_bazel_bin)
 
     if not gateway_host:
         setup_env_vagrant()
