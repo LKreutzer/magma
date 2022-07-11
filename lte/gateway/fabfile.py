@@ -398,7 +398,7 @@ def integ_test_post(
     execute(ll_bazel_bin)
     execute(_run_sudo_python_unit_tests)
     execute(ll_bazel_bin)
-    execute(_start_gateway)
+    execute(_restart_gateway)
     execute(ll_bazel_bin)
 
     # Run suite of integ tests that are required to be run on the access gateway
@@ -742,6 +742,13 @@ def _start_gateway():
 
     with cd(AGW_ROOT):
         run('make run')
+
+
+def _restart_gateway():
+    """ Restarts the gateway """
+
+    with cd(AGW_ROOT):
+        run('make restart')
 
 
 def _set_service_config_var(service, var_name, value):
