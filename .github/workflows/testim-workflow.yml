@@ -20,10 +20,6 @@ jobs:
           node-version: '12'
       - name: Install Testim CLI
         run: npm install -g @testim/testim-cli
-      - name: Setup pyenv
-        uses: "gabrielfalcao/pyenv-action@5327db2939908b2ef8f62d284403d678c4b611d0" # pin@v8
-        with:
-          default: 3.8.10
       - uses: actions/setup-python@7f80679172b057fc5e90d70d197929d454754a5a # pin@v2
         with:
           python-version: '3.8.10'
