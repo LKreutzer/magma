@@ -22,10 +22,6 @@ jobs:
       - uses: actions/checkout@7884fcad6b5d53d10323aee724dc68d8b9096a2e # pin@v2
       - name: Run apt
         run: sudo apt-get update && sudo apt -y upgrade
-      - name: setup pyenv
-        uses: "gabrielfalcao/pyenv-action@5327db2939908b2ef8f62d284403d678c4b611d0" # pin@v8
-        with:
-          default: 3.8.10
       - uses: actions/setup-python@7f80679172b057fc5e90d70d197929d454754a5a # pin@v2
         with:
           python-version: '3.8.10'
@@ -165,10 +161,6 @@ jobs:
       - uses: actions/checkout@7884fcad6b5d53d10323aee724dc68d8b9096a2e # pin@v2
       - name: Run apt
         run: sudo apt-get update && sudo apt -y upgrade
-      - name: setup pyenv
-        uses: "gabrielfalcao/pyenv-action@5327db2939908b2ef8f62d284403d678c4b611d0" # pin@v8
-        with:
-          default: 3.8.10
       - uses: actions/setup-python@7f80679172b057fc5e90d70d197929d454754a5a # pin@v2
         with:
           python-version: '3.8.10'
