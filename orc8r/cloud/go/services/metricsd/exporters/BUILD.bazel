@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "exporters",
+    srcs = [
+        "exporter.go",
+        "proto_helpers.go",
+        "remote_exporter.go",
+        "sample.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/exporters",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_prometheus_client_model//go",
+    ],
+)
+
+go_test(
+    name = "exporters_test",
+    srcs = ["sample_test.go"],
+    embed = [":exporters"],
+    deps = [
+        "@com_github_prometheus_client_model//go",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "metricsd",
+    srcs = [
+        "client_api.go",
+        "const.go",
+        "doc.go",
+        "registry.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)

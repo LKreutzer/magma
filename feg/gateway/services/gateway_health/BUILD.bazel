@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "gateway_health",
+    srcs = ["gateway_client_api.go"],
+    importpath = "github.com/magma/magma/feg/gateway/services/gateway_health",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)

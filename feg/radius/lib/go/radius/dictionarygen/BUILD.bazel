@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "dictionarygen",
+    srcs = [
+        "attributes.go",
+        "generator.go",
+        "sort.go",
+        "util.go",
+        "vendor.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/dictionarygen",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "dictionarygen_test",
+    srcs = [
+        "generator_test.go",
+        "util_test.go",
+    ],
+    data = glob(["testdata/**"]),
+    embed = [":dictionarygen"],
+)

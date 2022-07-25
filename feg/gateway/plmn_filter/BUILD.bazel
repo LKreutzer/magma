@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "plmn_filter",
+    srcs = ["plmn_filter.go"],
+    importpath = "github.com/magma/magma/feg/gateway/plmn_filter",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_test(
+    name = "plmn_filter_test",
+    srcs = ["plmn_filter_test.go"],
+    embed = [":plmn_filter"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

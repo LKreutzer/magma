@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "sbi",
+    srcs = [
+        "gen.go",
+        "sbi.go",
+        "sbi_log_middleware.go",
+        "sbi_logger.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/sbi",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_labstack_echo_v4//:echo",
+        "@org_golang_x_oauth2//:oauth2",
+        "@org_golang_x_oauth2//clientcredentials",
+    ],
+)
+
+go_test(
+    name = "sbi_test",
+    srcs = ["sbi_test.go"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+    ],
+)

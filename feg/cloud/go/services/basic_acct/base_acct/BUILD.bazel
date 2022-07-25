@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "base_acct_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/feg/cloud/go/services/basic_acct/base_acct",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_binary(
+    name = "base_acct",
+    embed = [":base_acct_lib"],
+    visibility = ["//visibility:public"],
+)

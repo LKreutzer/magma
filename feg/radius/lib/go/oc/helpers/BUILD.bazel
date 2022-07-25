@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "helpers",
+    srcs = [
+        "common.go",
+        "custom_views.go",
+        "go_views.go",
+        "register.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/oc/helpers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@io_opencensus_go//stats:go_default_library",
+        "@io_opencensus_go//stats/view:go_default_library",
+        "@io_opencensus_go//tag:go_default_library",
+    ],
+)

@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "httpserver",
+    srcs = ["http_server.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/dispatcher/httpserver",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//codes",
+    ],
+)
+
+go_test(
+    name = "httpserver_test",
+    srcs = ["http_server_test.go"],
+)

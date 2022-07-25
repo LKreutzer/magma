@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "health",
+    srcs = [
+        "client_api.go",
+        "const.go",
+        "doc.go",
+    ],
+    importpath = "github.com/magma/magma/feg/cloud/go/services/health",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_test(
+    name = "health_test",
+    srcs = ["client_api_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

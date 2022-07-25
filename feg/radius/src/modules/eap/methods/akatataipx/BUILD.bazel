@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "akatataipx",
+    srcs = [
+        "aka_packet.go",
+        "akatataipx.go",
+        "mac.go",
+        "state.go",
+        "tata_client.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/eap/methods/akatataipx",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_mitchellh_mapstructure//:mapstructure",
+        "@org_uber_go_zap//:zap",
+    ],
+)

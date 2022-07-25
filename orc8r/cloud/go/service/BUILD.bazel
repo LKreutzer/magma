@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "service",
+    srcs = [
+        "hostname.go",
+        "service.go",
+        "test_utils.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/service",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_grpc_ecosystem_go_grpc_prometheus//:go_default_library",
+        "@com_github_labstack_echo_v4//:echo",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "service_test",
+    srcs = ["service_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

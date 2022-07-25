@@ -9,23 +9,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@rules_proto_grpc//cpp:defs.bzl", "cpp_grpc_library", "cpp_proto_library")
 load("@rules_proto_grpc//python:defs.bzl", "python_grpc_library", "python_proto_library")
 
 package(default_visibility = ["//visibility:public"])
-
-proto_library(
-    name = "mconfigs_proto",
-    srcs = ["mconfig/mconfigs.proto"],
-    deps = ["//orc8r/protos:common_proto"],
-)
-
-proto_library(
-    name = "envoy_controller_proto",
-    srcs = ["envoy_controller.proto"],
-    deps = ["//lte/protos:mobilityd_proto"],
-)
 
 python_grpc_library(
     name = "envoy_controller_python_grpc",
@@ -36,11 +23,6 @@ python_proto_library(
     name = "mconfigs_python_proto",
     protos = [":mconfigs_proto"],
     deps = ["//orc8r/protos:common_python_proto"],
-)
-
-proto_library(
-    name = "s6a_proxy_proto",
-    srcs = ["s6a_proxy.proto"],
 )
 
 cpp_proto_library(
@@ -54,12 +36,6 @@ cpp_grpc_library(
     deps = [":s6a_proxy_cpp_proto"],
 )
 
-proto_library(
-    name = "csfb_proto",
-    srcs = ["csfb.proto"],
-    deps = ["//orc8r/protos:common_proto"],
-)
-
 cpp_proto_library(
     name = "csfb_cpp_proto",
     protos = [":csfb_proto"],
@@ -70,15 +46,6 @@ cpp_grpc_library(
     name = "csfb_cpp_grpc",
     protos = [":csfb_proto"],
     deps = [":csfb_cpp_proto"],
-)
-
-proto_library(
-    name = "s8_proxy_proto",
-    srcs = ["s8_proxy.proto"],
-    deps = [
-        "//lte/protos/oai:spgw_state_proto",
-        "//orc8r/protos:common_proto",
-    ],
 )
 
 cpp_proto_library(

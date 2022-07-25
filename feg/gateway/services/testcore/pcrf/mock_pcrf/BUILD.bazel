@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "mock_pcrf",
+    srcs = [
+        "ccr_handler.go",
+        "conversions.go",
+        "mock.go",
+        "pcrf.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/testcore/pcrf/mock_pcrf",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_fiorix_go_diameter_v4//diam:go_default_library",
+        "@com_github_fiorix_go_diameter_v4//diam/avp:go_default_library",
+        "@com_github_fiorix_go_diameter_v4//diam/datatype:go_default_library",
+        "@com_github_fiorix_go_diameter_v4//diam/sm:go_default_library",
+        "@com_github_fiorix_go_diameter_v4//diam/sm/smpeer:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+    ],
+)
+
+go_test(
+    name = "mock_pcrf_test",
+    srcs = ["mock_driven_pcrf_test.go"],
+    deps = [
+        "@com_github_fiorix_go_diameter_v4//diam:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_stretchr_testify//assert",
+        "@org_golang_google_protobuf//proto",
+    ],
+)

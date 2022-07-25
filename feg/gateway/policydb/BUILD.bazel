@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "policydb",
+    srcs = [
+        "flow_parser.go",
+        "gen.go",
+        "policydb.go",
+        "serializers.go",
+        "streamer.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/policydb",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+    ],
+)
+
+go_test(
+    name = "policydb_test",
+    srcs = [
+        "flow_parser_test.go",
+        "policydb_test.go",
+        "serializers_test.go",
+    ],
+    deps = [
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)

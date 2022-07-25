@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "collection",
+    srcs = [
+        "collector.go",
+        "collector_cloud_service.go",
+        "collector_system.go",
+        "doc.go",
+        "gatherer.go",
+        "metric_families.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/collection",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_prometheus_client_model//go",
+        "@com_github_prometheus_procfs//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "collection_test",
+    srcs = ["gatherer_test.go"],
+    deps = [
+        "@com_github_prometheus_client_model//go",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

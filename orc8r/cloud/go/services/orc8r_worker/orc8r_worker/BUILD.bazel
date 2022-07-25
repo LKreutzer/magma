@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "orc8r_worker_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/orc8r_worker/orc8r_worker",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_binary(
+    name = "orc8r_worker",
+    embed = [":orc8r_worker_lib"],
+    visibility = ["//visibility:public"],
+)

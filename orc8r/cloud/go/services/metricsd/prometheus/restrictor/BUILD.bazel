@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "restrictor",
+    srcs = ["query_restrictor.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/prometheus/restrictor",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_prometheus_prometheus//pkg/labels:go_default_library",
+        "@com_github_prometheus_prometheus//promql:go_default_library",
+    ],
+)
+
+go_test(
+    name = "restrictor_test",
+    srcs = ["query_restrictor_test.go"],
+    embed = [":restrictor"],
+    deps = [
+        "@com_github_prometheus_prometheus//pkg/labels:go_default_library",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

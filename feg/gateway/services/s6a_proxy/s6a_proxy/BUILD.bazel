@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "s6a_proxy_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/feg/gateway/services/s6a_proxy/s6a_proxy",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "s6a_proxy",
+    embed = [":s6a_proxy_lib"],
+    visibility = ["//visibility:public"],
+)

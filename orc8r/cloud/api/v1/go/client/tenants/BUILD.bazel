@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tenants",
+    srcs = [
+        "delete_tenants_tenant_id_parameters.go",
+        "delete_tenants_tenant_id_responses.go",
+        "get_tenants_parameters.go",
+        "get_tenants_responses.go",
+        "get_tenants_tenant_id_parameters.go",
+        "get_tenants_tenant_id_responses.go",
+        "post_tenants_parameters.go",
+        "post_tenants_responses.go",
+        "put_tenants_tenant_id_parameters.go",
+        "put_tenants_tenant_id_responses.go",
+        "tenants_client.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/tenants",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_runtime//:go_default_library",
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+    ],
+)

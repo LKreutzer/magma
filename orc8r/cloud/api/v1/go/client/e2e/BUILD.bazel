@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "e2e",
+    srcs = [
+        "delete_tests_e2e_enodebd_test_pk_parameters.go",
+        "delete_tests_e2e_enodebd_test_pk_responses.go",
+        "e2e_client.go",
+        "get_tests_e2e_enodebd_parameters.go",
+        "get_tests_e2e_enodebd_responses.go",
+        "get_tests_e2e_enodebd_test_pk_parameters.go",
+        "get_tests_e2e_enodebd_test_pk_responses.go",
+        "get_tests_e2e_parameters.go",
+        "get_tests_e2e_responses.go",
+        "post_tests_e2e_enodebd_parameters.go",
+        "post_tests_e2e_enodebd_responses.go",
+        "put_tests_e2e_enodebd_test_pk_parameters.go",
+        "put_tests_e2e_enodebd_test_pk_responses.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/e2e",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_runtime//:go_default_library",
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+    ],
+)

@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "sim",
+    srcs = [
+        "definitions.go",
+        "mac.go",
+        "notification.go",
+        "start.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/eap/providers/sim",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "sim_test",
+    srcs = ["mac_test.go"],
+    embed = [":sim"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

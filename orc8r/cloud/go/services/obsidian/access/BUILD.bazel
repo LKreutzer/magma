@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "access",
+    srcs = [
+        "definitions.go",
+        "finder_registry.go",
+        "identity_finder.go",
+        "log_decorator.go",
+        "operator.go",
+        "rest_middleware.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/obsidian/access",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_labstack_echo_v4//:echo",
+    ],
+)

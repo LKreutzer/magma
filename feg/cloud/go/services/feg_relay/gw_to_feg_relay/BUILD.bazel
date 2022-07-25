@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "gw_to_feg_relay",
+    srcs = [
+        "feg_connection.go",
+        "feg_discovery.go",
+        "gw_to_feg_relay.go",
+        "nh_router.go",
+    ],
+    importpath = "github.com/magma/magma/feg/cloud/go/services/feg_relay/gw_to_feg_relay",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//backoff",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//connectivity",
+        "@org_golang_google_grpc//metadata",
+        "@org_golang_google_grpc//status",
+    ],
+)

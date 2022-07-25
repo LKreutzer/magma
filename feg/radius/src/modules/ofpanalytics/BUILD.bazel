@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "ofpanalytics",
+    srcs = ["ofpanalytics.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/ofpanalytics",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_mitchellh_mapstructure//:mapstructure",
+        "@org_uber_go_zap//:zap",
+    ],
+)
+
+go_test(
+    name = "ofpanalytics_test",
+    srcs = ["ofpanalytics_test.go"],
+    embed = [":ofpanalytics"],
+    deps = [
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+    ],
+)

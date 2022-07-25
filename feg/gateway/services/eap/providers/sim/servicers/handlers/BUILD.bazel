@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "handlers",
+    srcs = [
+        "auth_utils.go",
+        "s6a_auth_utils.go",
+        "sim_challenge.go",
+        "sim_peer_failure.go",
+        "sim_start.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/eap/providers/sim/servicers/handlers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "handlers_test",
+    srcs = [
+        "sim_challenge_test.go",
+        "sim_start_test.go",
+    ],
+    embed = [":handlers"],
+)

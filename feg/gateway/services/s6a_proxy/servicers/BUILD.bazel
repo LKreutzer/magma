@@ -1,0 +1,42 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "servicers",
+    srcs = [
+        "ai.go",
+        "cl.go",
+        "config.go",
+        "errors.go",
+        "pu.go",
+        "rs.go",
+        "s6a_definitions.go",
+        "s6a_proxy.go",
+        "ul.go",
+        "util.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/s6a_proxy/servicers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_fiorix_go_diameter_v4//diam:go_default_library",
+        "@com_github_fiorix_go_diameter_v4//diam/avp:go_default_library",
+        "@com_github_fiorix_go_diameter_v4//diam/datatype:go_default_library",
+        "@com_github_fiorix_go_diameter_v4//diam/dict:go_default_library",
+        "@com_github_fiorix_go_diameter_v4//diam/sm:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "servicers_test",
+    srcs = [
+        "config_test.go",
+        "s6a_proxy_test.go",
+    ],
+    embed = [":servicers"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)

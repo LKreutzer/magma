@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "commands",
+    srcs = [
+        "commands_client.go",
+        "post_networks_network_id_gateways_gateway_id_command_generic_parameters.go",
+        "post_networks_network_id_gateways_gateway_id_command_generic_responses.go",
+        "post_networks_network_id_gateways_gateway_id_command_ping_parameters.go",
+        "post_networks_network_id_gateways_gateway_id_command_ping_responses.go",
+        "post_networks_network_id_gateways_gateway_id_command_reboot_parameters.go",
+        "post_networks_network_id_gateways_gateway_id_command_reboot_responses.go",
+        "post_networks_network_id_gateways_gateway_id_command_restart_services_parameters.go",
+        "post_networks_network_id_gateways_gateway_id_command_restart_services_responses.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/commands",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_runtime//:go_default_library",
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+    ],
+)

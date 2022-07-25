@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "radius-dict-gen_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/cmd/radius-dict-gen",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "radius-dict-gen",
+    embed = [":radius-dict-gen_lib"],
+    visibility = ["//visibility:public"],
+)

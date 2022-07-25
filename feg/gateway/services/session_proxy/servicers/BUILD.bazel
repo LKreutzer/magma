@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "servicers",
+    srcs = [
+        "credits.go",
+        "multiple_session_controller.go",
+        "policy.go",
+        "session_controller.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/session_proxy/servicers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_hashicorp_go_multierror//:go_default_library",
+        "@com_github_thoas_go_funk//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "servicers_test",
+    srcs = ["session_controller_test.go"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+        "@com_github_thoas_go_funk//:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+    ],
+)

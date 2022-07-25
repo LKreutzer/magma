@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "southbound",
+    srcs = [
+        "config.go",
+        "connection.go",
+        "participants.go",
+        "service.go",
+    ],
+    importpath = "github.com/magma/magma/feg/cloud/go/services/basic_acct/servicers/southbound",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_magma_augmented_networks_accounting_protos//:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//backoff",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//connectivity",
+        "@org_golang_google_grpc//credentials",
+        "@org_golang_google_grpc//keepalive",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "southbound_test",
+    srcs = ["accounting_service_test.go"],
+    embed = [":southbound"],
+    deps = [
+        "@com_github_magma_augmented_networks_accounting_protos//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//metadata",
+    ],
+)

@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "xwfhttp2",
+    srcs = ["http2client.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/xwfv3/xwfhttp2",
+    visibility = ["//visibility:public"],
+    deps = ["@org_golang_x_net//http2"],
+)
+
+go_test(
+    name = "xwfhttp2_test",
+    srcs = ["http2client_test.go"],
+    embed = [":xwfhttp2"],
+    deps = [
+        "@com_github_stretchr_testify//require",
+        "@org_golang_x_net//http2",
+    ],
+)

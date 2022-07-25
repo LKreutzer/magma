@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "scale_test",
+    srcs = [
+        "basic_test.go",
+        "gateway_registration_test.go",
+    ],
+    deps = [
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_prometheus_client_golang//api:go_default_library",
+        "@com_github_prometheus_client_golang//api/prometheus/v1:go_default_library",
+        "@com_github_prometheus_common//model:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+        "@io_k8s_api//core/v1:go_default_library",
+        "@io_k8s_apimachinery//pkg/apis/meta/v1:go_default_library",
+        "@io_k8s_client_go//kubernetes:go_default_library",
+        "@io_k8s_client_go//kubernetes/scheme:go_default_library",
+        "@io_k8s_client_go//rest:go_default_library",
+        "@io_k8s_client_go//tools/clientcmd:go_default_library",
+        "@io_k8s_client_go//tools/remotecommand:go_default_library",
+        "@org_golang_x_crypto//pkcs12",
+    ],
+)

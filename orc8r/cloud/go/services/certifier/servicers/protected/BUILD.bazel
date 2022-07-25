@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "protected",
+    srcs = ["certifier.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/certifier/servicers/protected",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_bmatcuk_doublestar//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_hashicorp_go_multierror//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_x_crypto//bcrypt",
+    ],
+)
+
+go_test(
+    name = "protected_test",
+    srcs = ["certifier_test.go"],
+    deps = [
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_mattn_go_sqlite3//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "s6a_proxy",
+    srcs = [
+        "client.go",
+        "gw_s6a_client_api.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/s6a_proxy",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "s6a_proxy_test",
+    srcs = ["client_test.go"],
+)

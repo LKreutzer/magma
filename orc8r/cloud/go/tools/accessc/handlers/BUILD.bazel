@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "handlers",
+    srcs = [
+        "add.go",
+        "add_admin.go",
+        "add_admin_token.go",
+        "add_existing.go",
+        "common.go",
+        "common_add.go",
+        "delete.go",
+        "entities.go",
+        "list.go",
+        "list_certs.go",
+        "modify.go",
+        "purge_expired_certs.go",
+        "revoke.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/accessc/handlers",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_protobuf//ptypes:go_default_library_gen"],
+)

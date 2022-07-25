@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "scuba",
+    srcs = ["scuba.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/monitoring/scuba",
+    visibility = ["//visibility:public"],
+    deps = ["@org_uber_go_zap//:zap"],
+)
+
+go_test(
+    name = "scuba_test",
+    srcs = ["scuba_test.go"],
+    embed = [":scuba"],
+    deps = [
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+    ],
+)

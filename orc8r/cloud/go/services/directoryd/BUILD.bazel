@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "directoryd",
+    srcs = [
+        "client_api.go",
+        "doc.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/directoryd",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_test(
+    name = "directoryd_test",
+    srcs = ["client_api_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

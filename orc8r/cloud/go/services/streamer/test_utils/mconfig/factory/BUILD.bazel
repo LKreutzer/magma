@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "factory",
+    srcs = [
+        "builder.go",
+        "factory.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/streamer/test_utils/mconfig/factory",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+    ],
+)
+
+go_test(
+    name = "factory_test",
+    srcs = ["factory_test.go"],
+    embed = [":factory"],
+    deps = [
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_stretchr_testify//assert",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+    ],
+)

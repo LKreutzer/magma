@@ -1,0 +1,42 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "reindex",
+    srcs = [
+        "queue.go",
+        "queue_sql.go",
+        "reindexer.go",
+        "reindexer_queue.go",
+        "reindexer_singleton.go",
+        "store.go",
+        "versioner.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/indexer/reindex",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_hashicorp_go_multierror//:go_default_library",
+        "@com_github_masterminds_squirrel//:go_default_library",
+        "@com_github_thoas_go_funk//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "reindex_test",
+    srcs = [
+        "queue_sql_integ_test.go",
+        "queue_sql_test.go",
+        "reindexer_queue_test.go",
+        "reindexer_singleton_test.go",
+        "store_test.go",
+        "versioner_test.go",
+    ],
+    deps = [
+        "@com_github_data_dog_go_sqlmock//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+        "@com_github_stretchr_testify//require",
+    ],
+)

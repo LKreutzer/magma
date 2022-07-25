@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "radius",
+    srcs = [
+        "attribute.go",
+        "attributes.go",
+        "client.go",
+        "code.go",
+        "doc.go",
+        "errors.go",
+        "packet.go",
+        "server.go",
+        "server-packet.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/radius",
+    visibility = ["//visibility:public"],
+    deps = ["@org_uber_go_zap//:zap"],
+)
+
+go_test(
+    name = "radius_test",
+    srcs = [
+        "attribute_test.go",
+        "attributes_test.go",
+        "cmd_test.go",
+        "packet_test.go",
+        "rfcbuild_test.go",
+        "server_test.go",
+        "tlv_test.go",
+    ],
+    embed = [":radius"],
+)

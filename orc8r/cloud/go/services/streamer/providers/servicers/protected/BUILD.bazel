@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "protected",
+    srcs = [
+        "provider.go",
+        "providers.go",
+        "remote_provider.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/streamer/providers/servicers/protected",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
+    ],
+)
+
+go_test(
+    name = "protected_test",
+    srcs = ["providers_test.go"],
+    deps = [
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+    ],
+)

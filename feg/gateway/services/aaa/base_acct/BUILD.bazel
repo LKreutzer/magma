@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "base_acct",
+    srcs = [
+        "client_api.go",
+        "heartbeat.go",
+        "heartbeat_reset_go1_15.go",
+        "heartbeat_reset_prego1_15.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/aaa/base_acct",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)

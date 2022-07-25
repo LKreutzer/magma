@@ -1,0 +1,35 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "n7",
+    srcs = [
+        "config.go",
+        "gen.go",
+        "model_conversion.go",
+        "n7.go",
+        "notifier_handler.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/n7_n40_proxy/n7",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_labstack_echo_v4//:echo",
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+        "@org_golang_google_protobuf//types/known/timestamppb",
+    ],
+)
+
+go_test(
+    name = "n7_test",
+    srcs = [
+        "config_test.go",
+        "model_conversion_test.go",
+        "notifier_handler_test.go",
+    ],
+    embed = [":n7"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+        "@com_github_stretchr_testify//require",
+    ],
+)

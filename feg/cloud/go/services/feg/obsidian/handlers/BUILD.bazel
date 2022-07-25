@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "handlers",
+    srcs = ["handlers.go"],
+    importpath = "github.com/magma/magma/feg/cloud/go/services/feg/obsidian/handlers",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_labstack_echo_v4//:echo"],
+)
+
+go_test(
+    name = "handlers_test",
+    srcs = ["handlers_test.go"],
+    deps = [
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_labstack_echo_v4//:echo",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

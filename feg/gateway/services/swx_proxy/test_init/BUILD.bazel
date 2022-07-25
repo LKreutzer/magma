@@ -1,0 +1,8 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "test_init",
+    srcs = ["test_service_init.go"],
+    importpath = "github.com/magma/magma/feg/gateway/services/swx_proxy/test_init",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "requestlog",
+    srcs = ["requestlog.go"],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/http/requestlog",
+    visibility = ["//visibility:public"],
+    deps = ["@io_opencensus_go//trace:go_default_library"],
+)
+
+go_test(
+    name = "requestlog_test",
+    srcs = ["requestlog_test.go"],
+    embed = [":requestlog"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+        "@io_opencensus_go//trace:go_default_library",
+    ],
+)

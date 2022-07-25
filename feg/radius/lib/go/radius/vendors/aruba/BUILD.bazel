@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "aruba",
+    srcs = [
+        "generate.go",
+        "generated.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/vendors/aruba",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "aruba_test",
+    srcs = ["generated_test.go"],
+)

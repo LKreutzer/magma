@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "message",
+    srcs = [
+        "decoder.go",
+        "decoder_helper.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/csfb/servicers/decode/message",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+    ],
+)
+
+go_test(
+    name = "message_test",
+    srcs = ["decoder_test.go"],
+    deps = [
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_stretchr_testify//assert",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+    ],
+)

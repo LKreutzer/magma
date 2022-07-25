@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "test_utils",
+    srcs = [
+        "registry_test_utils.go",
+        "service.go",
+        "test_db.go",
+        "unit_test_proto_utils.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/test_utils",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_mattn_go_sqlite3//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_protobuf//proto",
+    ],
+)
+
+go_test(
+    name = "test_utils_test",
+    srcs = ["unit_test_proto_utils_test.go"],
+    embed = [":test_utils"],
+    deps = ["@com_github_golang_protobuf//proto:go_default_library"],
+)

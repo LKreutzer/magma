@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "dictionary",
+    srcs = [
+        "dictionary.go",
+        "doc.go",
+        "errors.go",
+        "helpers.go",
+        "parser.go",
+        "sort.go",
+        "util.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/dictionary",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "dictionary_test",
+    srcs = [
+        "files_test.go",
+        "helpers_test.go",
+        "parser_test.go",
+    ],
+)

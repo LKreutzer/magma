@@ -1,0 +1,8 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "serdes",
+    srcs = ["serdes.go"],
+    importpath = "github.com/magma/magma/feg/cloud/go/serdes",
+    visibility = ["//visibility:public"],
+)

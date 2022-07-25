@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "testloopback",
+    srcs = ["test_loopback.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/testloopback",
+    visibility = ["//visibility:public"],
+    deps = ["@org_uber_go_zap//:zap"],
+)

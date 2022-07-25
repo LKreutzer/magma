@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "service303_cli_lib",
+    srcs = [
+        "info.go",
+        "log_level.go",
+        "log_verbosity.go",
+        "main.go",
+        "metrics.go",
+        "stop.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/service303_cli",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_spf13_cobra//:cobra",
+    ],
+)
+
+go_binary(
+    name = "service303_cli",
+    embed = [":service303_cli_lib"],
+    visibility = ["//visibility:public"],
+)

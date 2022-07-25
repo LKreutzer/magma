@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "mocks",
+    srcs = [
+        "CloudRegistry.go",
+        "SessionProxyResponderServer.go",
+        "servicers.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/session_proxy/relay/mocks",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)

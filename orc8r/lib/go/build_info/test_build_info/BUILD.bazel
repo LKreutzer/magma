@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "test_build_info_lib",
+    srcs = ["test_build_info.go"],
+    importpath = "github.com/magma/magma/orc8r/lib/go/build_info/test_build_info",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "test_build_info",
+    embed = [":test_build_info_lib"],
+    visibility = ["//visibility:public"],
+)

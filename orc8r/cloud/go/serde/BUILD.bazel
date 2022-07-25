@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "serde",
+    srcs = [
+        "doc.go",
+        "registry.go",
+        "serde.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/serde",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "serde_test",
+    srcs = ["registry_test.go"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+    ],
+)

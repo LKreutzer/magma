@@ -1,0 +1,62 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "protos",
+    srcs = [
+        "bootstrapper.pb.go",
+        "certifier.pb.go",
+        "common.pb.go",
+        "ctraced.pb.go",
+        "digest.pb.go",
+        "digest_helper.go",
+        "directoryd.pb.go",
+        "errors.go",
+        "eventd.pb.go",
+        "fillin.go",
+        "identity.pb.go",
+        "identity_helper.go",
+        "magmad.pb.go",
+        "marshaler.go",
+        "mconfig.pb.go",
+        "mconfig_digest.go",
+        "metricsd.pb.go",
+        "metricsd_helper.go",
+        "redis.pb.go",
+        "service303.pb.go",
+        "service_registry.pb.go",
+        "service_status.pb.go",
+        "state.pb.go",
+        "streamer.pb.go",
+        "sync_rpc_service.pb.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//jsonpb:go_default_library_gen",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_prometheus_client_model//go",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+        "@io_bazel_rules_go//proto/wkt:duration_go_proto",
+        "@io_bazel_rules_go//proto/wkt:struct_go_proto",
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+go_test(
+    name = "protos_test",
+    srcs = [
+        "fill_in_test.go",
+        "marshaler_test.go",
+    ],
+    deps = [
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

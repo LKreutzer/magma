@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "eap_router_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/feg/gateway/services/eap/eap_router",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_binary(
+    name = "eap_router",
+    embed = [":eap_router_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "eap_router_test",
+    srcs = ["eap_router_test.go"],
+    deps = ["@org_golang_google_grpc//:go_default_library"],
+)

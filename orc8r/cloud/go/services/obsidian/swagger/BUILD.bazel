@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "swagger",
+    srcs = [
+        "doc.go",
+        "poll.go",
+        "registry.go",
+        "remote_spec.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/obsidian/swagger",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_test(
+    name = "swagger_test",
+    srcs = [
+        "poll_test.go",
+        "registry_test.go",
+    ],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

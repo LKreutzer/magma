@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "exporters",
+    srcs = ["ods.go"],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/oc/exporters",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_kelseyhightower_envconfig//:go_default_library",
+        "@io_opencensus_go//stats/view:go_default_library",
+    ],
+)
+
+go_test(
+    name = "exporters_test",
+    srcs = ["ods_test.go"],
+    embed = [":exporters"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+        "@com_github_stretchr_testify//require",
+        "@io_opencensus_go//stats/view:go_default_library",
+        "@io_opencensus_go//tag:go_default_library",
+    ],
+)

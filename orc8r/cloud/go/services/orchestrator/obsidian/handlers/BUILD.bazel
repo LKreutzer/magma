@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "handlers",
+    srcs = [
+        "about_handlers.go",
+        "common.go",
+        "entity_handler_factory.go",
+        "gateway_command_handlers.go",
+        "gateway_handler_factory.go",
+        "gateway_handlers.go",
+        "handlers.go",
+        "network_handler_factory.go",
+        "network_handlers.go",
+        "upgrade_handlers.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/orchestrator/obsidian/handlers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_labstack_echo_v4//:echo",
+    ],
+)
+
+go_test(
+    name = "handlers_test",
+    srcs = [
+        "gateway_handler_factory_test.go",
+        "gateway_handlers_test.go",
+        "network_handler_factory_test.go",
+        "network_handlers_test.go",
+        "upgrade_handlers_test.go",
+    ],
+    deps = [
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_labstack_echo_v4//:echo",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

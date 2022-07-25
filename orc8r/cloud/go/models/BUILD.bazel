@@ -1,0 +1,40 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "models",
+    srcs = [
+        "conversion.go",
+        "error_swaggergen.go",
+        "gateway_checked_in_recently_swaggergen.go",
+        "gateway_description_swaggergen.go",
+        "gateway_id_swaggergen.go",
+        "gateway_name_swaggergen.go",
+        "gen.go",
+        "network_description_swaggergen.go",
+        "network_id_swaggergen.go",
+        "network_name_swaggergen.go",
+        "network_type_swaggergen.go",
+        "page_token_swaggergen.go",
+        "registration_info_swaggergen.go",
+        "validate.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/models",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_go_openapi_validate//:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:struct_go_proto",
+    ],
+)
+
+go_test(
+    name = "models_test",
+    srcs = ["conversion_test.go"],
+    deps = [
+        "@com_github_golang_protobuf//jsonpb:go_default_library_gen",
+        "@com_github_stretchr_testify//assert",
+        "@io_bazel_rules_go//proto/wkt:struct_go_proto",
+    ],
+)

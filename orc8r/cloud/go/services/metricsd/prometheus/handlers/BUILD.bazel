@@ -1,0 +1,48 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "handlers",
+    srcs = [
+        "alert_config_handler.go",
+        "alert_receiver_handlers.go",
+        "alert_silencing_handlers.go",
+        "promo_handlers.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/prometheus/handlers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_facebookincubator_prometheus_configmanager//alertmanager/config:go_default_library",
+        "@com_github_facebookincubator_prometheus_configmanager//prometheus/alert:go_default_library",
+        "@com_github_labstack_echo_v4//:echo",
+        "@com_github_prometheus_alertmanager//api/v2/client/silence:go_default_library",
+        "@com_github_prometheus_alertmanager//api/v2/models:go_default_library",
+        "@com_github_prometheus_client_golang//api/prometheus/v1:go_default_library",
+        "@com_github_prometheus_common//model:go_default_library",
+        "@com_github_prometheus_prometheus//pkg/labels:go_default_library",
+        "@com_github_prometheus_prometheus//pkg/rulefmt:go_default_library",
+    ],
+)
+
+go_test(
+    name = "handlers_test",
+    srcs = [
+        "alert_config_handler_test.go",
+        "alert_receiver_handlers_test.go",
+        "alert_silencing_handlers_test.go",
+        "promo_handlers_test.go",
+    ],
+    embed = [":handlers"],
+    deps = [
+        "@com_github_facebookincubator_prometheus_configmanager//alertmanager/config:go_default_library",
+        "@com_github_facebookincubator_prometheus_configmanager//prometheus/alert:go_default_library",
+        "@com_github_imdario_mergo//:go_default_library",
+        "@com_github_labstack_echo_v4//:echo",
+        "@com_github_prometheus_alertmanager//api/v2/client/silence:go_default_library",
+        "@com_github_prometheus_alertmanager//api/v2/models:go_default_library",
+        "@com_github_prometheus_alertmanager//config:go_default_library",
+        "@com_github_prometheus_client_golang//api/prometheus/v1:go_default_library",
+        "@com_github_prometheus_common//model:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+    ],
+)

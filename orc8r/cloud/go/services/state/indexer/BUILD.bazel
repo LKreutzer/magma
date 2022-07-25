@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "indexer",
+    srcs = [
+        "doc.go",
+        "empty_indexer.go",
+        "indexer.go",
+        "proto_helpers.go",
+        "registry.go",
+        "remote_indexer.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/indexer",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_thoas_go_funk//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "indexer_test",
+    srcs = [
+        "indexer_test.go",
+        "integ_test.go",
+        "registry_test.go",
+    ],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+    ],
+)

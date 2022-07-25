@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "storage",
+    srcs = [
+        "storage.go",
+        "storage_blobstore.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/ctraced/storage",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "storage_test",
+    srcs = ["storage_blobstore_test.go"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+    ],
+)

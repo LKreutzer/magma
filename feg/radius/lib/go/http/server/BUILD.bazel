@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "server",
+    srcs = [
+        "config.go",
+        "server.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/http/server",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_justinas_alice//:go_default_library",
+        "@org_uber_go_multierr//:multierr",
+        "@org_uber_go_zap//:zap",
+    ],
+)
+
+go_test(
+    name = "server_test",
+    srcs = ["server_test.go"],
+    embed = [":server"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+        "@org_uber_go_zap//zaptest/observer",
+    ],
+)

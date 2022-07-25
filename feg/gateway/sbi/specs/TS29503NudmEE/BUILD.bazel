@@ -1,0 +1,8 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "TS29503NudmEE",
+    srcs = ["TS29503NudmEE.gen.go"],
+    importpath = "github.com/magma/magma/feg/gateway/sbi/specs/TS29503NudmEE",
+    visibility = ["//visibility:public"],
+)

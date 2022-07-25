@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "modules",
+    srcs = ["module.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules",
+    visibility = ["//visibility:public"],
+    deps = ["@org_uber_go_zap//:zap"],
+)

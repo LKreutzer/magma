@@ -1,3 +1,5 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
 # Copyright 2021 The Magma Authors.
 
 # This source code is licensed under the BSD-style license found in the
@@ -9,7 +11,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_proto//proto:defs.bzl", "proto_library")
 load("@rules_proto_grpc//cpp:defs.bzl", "cpp_grpc_library", "cpp_proto_library")
 
 package(default_visibility = ["//visibility:public"])
@@ -19,21 +20,26 @@ cpp_proto_library(
     protos = [":context_proto"],
 )
 
-proto_library(
-    name = "context_proto",
-    srcs = ["context.proto"],
-    # TODO: Clean up proto directory structures to be consistent across the project - #8625
-    strip_import_prefix = "/feg/gateway/services/aaa/protos",
-)
-
 cpp_grpc_library(
     name = "accounting_cpp_grpc",
     protos = [":accounting_proto"],
     deps = [":context_cpp_proto"],
 )
 
-proto_library(
-    name = "accounting_proto",
-    srcs = ["accounting.proto"],
-    deps = [":context_proto"],
+go_library(
+    name = "protos",
+    srcs = [
+        "accounting.pb.go",
+        "authorization.pb.go",
+        "context.pb.go",
+        "eap.pb.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/aaa/protos",
+    deps = [
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
 )

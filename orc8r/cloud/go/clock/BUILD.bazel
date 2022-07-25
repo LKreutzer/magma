@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "clock",
+    srcs = [
+        "clock.go",
+        "doc.go",
+        "internal.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/clock",
+    visibility = ["//visibility:public"],
+)

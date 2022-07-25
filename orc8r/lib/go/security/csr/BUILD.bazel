@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "csr",
+    srcs = [
+        "csr.go",
+        "csr_io.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/lib/go/security/csr",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_protobuf//ptypes:go_default_library_gen"],
+)
+
+go_test(
+    name = "csr_test",
+    srcs = ["csr_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

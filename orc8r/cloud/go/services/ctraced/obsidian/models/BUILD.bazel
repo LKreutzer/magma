@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "models",
+    srcs = [
+        "call_trace_config_swaggergen.go",
+        "call_trace_state_swaggergen.go",
+        "call_trace_swaggergen.go",
+        "conversion.go",
+        "gen.go",
+        "mutable_call_trace_swaggergen.go",
+        "serdes.go",
+        "validate.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/ctraced/obsidian/models",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_go_openapi_validate//:go_default_library",
+    ],
+)

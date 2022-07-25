@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "test",
+    srcs = [
+        "data.go",
+        "services.go",
+        "utils.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/eap/test",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)

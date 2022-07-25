@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "cmd",
+    srcs = [
+        "list.go",
+        "reindex.go",
+        "root.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/indexers/cmd",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_spf13_cobra//:cobra"],
+)

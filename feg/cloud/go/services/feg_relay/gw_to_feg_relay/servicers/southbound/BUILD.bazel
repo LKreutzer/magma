@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "southbound",
+    srcs = [
+        "hello_relay.go",
+        "relay_router.go",
+        "s6a_relay.go",
+        "s8_relay.go",
+        "session_proxy_relay.go",
+        "swx_proxy_relay.go",
+    ],
+    importpath = "github.com/magma/magma/feg/cloud/go/services/feg_relay/gw_to_feg_relay/servicers/southbound",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_protobuf//types/known/timestamppb",
+    ],
+)

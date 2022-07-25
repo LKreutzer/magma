@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "status",
+    srcs = [
+        "metrics.go",
+        "metrics_queue.go",
+        "poller.go",
+        "reporter.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/gateway/go/services/magmad/status",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_prometheus_client_model//go",
+    ],
+)

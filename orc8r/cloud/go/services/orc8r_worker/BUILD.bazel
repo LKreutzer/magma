@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "orc8r_worker",
+    srcs = [
+        "const.go",
+        "doc.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/orc8r_worker",
+    visibility = ["//visibility:public"],
+)

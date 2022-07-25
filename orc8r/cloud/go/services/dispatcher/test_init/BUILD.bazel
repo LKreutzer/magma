@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "test_init",
+    srcs = [
+        "test_http_server_init.go",
+        "test_service_init.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/dispatcher/test_init",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_mattn_go_sqlite3//:go_default_library"],
+)

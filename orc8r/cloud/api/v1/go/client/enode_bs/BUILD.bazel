@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "enode_bs",
+    srcs = [
+        "delete_lte_network_id_enodebs_enodeb_serial_parameters.go",
+        "delete_lte_network_id_enodebs_enodeb_serial_responses.go",
+        "enode_bs_client.go",
+        "get_lte_network_id_enodebs_enodeb_serial_parameters.go",
+        "get_lte_network_id_enodebs_enodeb_serial_responses.go",
+        "get_lte_network_id_enodebs_enodeb_serial_state_parameters.go",
+        "get_lte_network_id_enodebs_enodeb_serial_state_responses.go",
+        "get_lte_network_id_enodebs_parameters.go",
+        "get_lte_network_id_enodebs_responses.go",
+        "post_lte_network_id_enodebs_parameters.go",
+        "post_lte_network_id_enodebs_responses.go",
+        "put_lte_network_id_enodebs_enodeb_serial_parameters.go",
+        "put_lte_network_id_enodebs_enodeb_serial_responses.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/enode_bs",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_runtime//:go_default_library",
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+    ],
+)

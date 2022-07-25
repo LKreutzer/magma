@@ -1,0 +1,30 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "call_tracing",
+    srcs = [
+        "call_tracing_client.go",
+        "delete_networks_network_id_tracing_trace_id_parameters.go",
+        "delete_networks_network_id_tracing_trace_id_responses.go",
+        "get_networks_network_id_tracing_parameters.go",
+        "get_networks_network_id_tracing_responses.go",
+        "get_networks_network_id_tracing_trace_id_download_parameters.go",
+        "get_networks_network_id_tracing_trace_id_download_responses.go",
+        "get_networks_network_id_tracing_trace_id_parameters.go",
+        "get_networks_network_id_tracing_trace_id_responses.go",
+        "post_networks_network_id_tracing_parameters.go",
+        "post_networks_network_id_tracing_responses.go",
+        "put_networks_network_id_tracing_trace_id_parameters.go",
+        "put_networks_network_id_tracing_trace_id_responses.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/call_tracing",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_runtime//:go_default_library",
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_go_openapi_validate//:go_default_library",
+    ],
+)

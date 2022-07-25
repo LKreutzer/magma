@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "service",
+    srcs = ["sync_rpc_client.go"],
+    importpath = "github.com/magma/magma/orc8r/gateway/go/services/sync_rpc/service",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_x_net//http2",
+    ],
+)
+
+go_test(
+    name = "service_test",
+    srcs = [
+        "sync_rpc_broker_test.go",
+        "sync_rpc_client_test.go",
+    ],
+    embed = [":service"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_stretchr_testify//assert",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//status",
+        "@org_golang_x_net//http2",
+    ],
+)

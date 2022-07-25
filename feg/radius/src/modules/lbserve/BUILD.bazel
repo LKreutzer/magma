@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "lbserve",
+    srcs = ["lb_serve.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/lbserve",
+    visibility = ["//visibility:public"],
+    deps = ["@org_uber_go_zap//:zap"],
+)
+
+go_test(
+    name = "lbserve_test",
+    srcs = ["lb_serve_test.go"],
+    embed = [":lbserve"],
+    deps = [
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+    ],
+)

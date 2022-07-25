@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "dae",
+    srcs = [
+        "dae.go",
+        "dae_external.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/aaa/radius/dae",
+    visibility = ["//visibility:public"],
+)

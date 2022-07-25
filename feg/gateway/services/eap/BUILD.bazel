@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "eap",
+    srcs = [
+        "attribute.go",
+        "crypto.go",
+        "dedup.go",
+        "header.go",
+        "packet.go",
+        "session.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/eap",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "eap_test",
+    srcs = ["attribute_test.go"],
+    embed = [":eap"],
+)

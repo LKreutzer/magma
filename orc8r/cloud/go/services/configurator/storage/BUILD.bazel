@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "storage",
+    srcs = [
+        "doc.go",
+        "sql.go",
+        "sql_entity_graph_helpers.go",
+        "sql_entity_load_helpers.go",
+        "sql_entity_write_helpers.go",
+        "sql_network_helpers.go",
+        "storage.go",
+        "storage.pb.go",
+        "union.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/configurator/storage",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_masterminds_squirrel//:go_default_library",
+        "@com_github_thoas_go_funk//:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
+        "@org_golang_google_protobuf//proto",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+go_test(
+    name = "storage_test",
+    srcs = [
+        "sql_integ_test.go",
+        "sql_test.go",
+        "union_test.go",
+    ],
+    embed = [":storage"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_thoas_go_funk//:go_default_library",
+        "@in_gopkg_data_dog_go_sqlmock_v1//:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
+        "@org_golang_google_protobuf//proto",
+    ],
+)

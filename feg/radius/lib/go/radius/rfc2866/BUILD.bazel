@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "rfc2866",
+    srcs = [
+        "generate.go",
+        "generated.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/rfc2866",
+    visibility = ["//visibility:public"],
+)

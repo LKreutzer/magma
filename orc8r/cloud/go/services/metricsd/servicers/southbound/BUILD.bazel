@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "southbound",
+    srcs = ["servicer.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/servicers/southbound",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_prometheus_client_model//go",
+    ],
+)
+
+go_test(
+    name = "southbound_test",
+    srcs = ["servicer_southbound_test.go"],
+    embed = [":southbound"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_prometheus_client_model//go",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

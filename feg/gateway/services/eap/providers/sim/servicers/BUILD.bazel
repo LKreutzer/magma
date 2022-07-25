@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "servicers",
+    srcs = [
+        "rpc.go",
+        "service.go",
+        "subtype_handler.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/eap/providers/sim/servicers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//codes",
+    ],
+)

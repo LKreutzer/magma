@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "xwfv3",
+    srcs = ["xwfv3.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/xwfv3",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_mitchellh_mapstructure//:mapstructure",
+        "@org_uber_go_zap//:zap",
+    ],
+)

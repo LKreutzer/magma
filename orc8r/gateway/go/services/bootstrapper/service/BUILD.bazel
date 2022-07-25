@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "service",
+    srcs = [
+        "bootstrapper.go",
+        "csr.go",
+        "key.go",
+        "rpc.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/gateway/go/services/bootstrapper/service",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_emakeev_snowflake//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//backoff",
+        "@org_golang_google_grpc//credentials",
+    ],
+)
+
+go_test(
+    name = "service_test",
+    srcs = ["config_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

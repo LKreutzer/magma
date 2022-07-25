@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "servicers",
+    srcs = [
+        "expectation.go",
+        "n7_handlers.go",
+        "pcf.go",
+        "rpc_handlers.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/testcore/pcf/servicers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_google_uuid//:uuid",
+        "@com_github_labstack_echo_v4//:echo",
+    ],
+)
+
+go_test(
+    name = "servicers_test",
+    srcs = ["mock_driven_test.go"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+    ],
+)

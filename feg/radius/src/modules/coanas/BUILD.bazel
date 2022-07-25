@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "coanas",
+    srcs = ["coa_nas.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/coanas",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_mitchellh_mapstructure//:mapstructure",
+        "@org_uber_go_zap//:zap",
+    ],
+)
+
+go_test(
+    name = "coanas_test",
+    srcs = ["coa_nas_test.go"],
+    embed = [":coanas"],
+    deps = [
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+    ],
+)

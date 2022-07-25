@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "radiusd",
+    srcs = [
+        "const.go",
+        "doc.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/radiusd",
+    visibility = ["//visibility:public"],
+)

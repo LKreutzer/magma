@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "servicers",
+    srcs = ["southbound.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/configurator/servicers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_thoas_go_funk//:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)

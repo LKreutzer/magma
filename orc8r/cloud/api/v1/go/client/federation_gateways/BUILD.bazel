@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "federation_gateways",
+    srcs = [
+        "delete_feg_network_id_gateways_gateway_id_federation_parameters.go",
+        "delete_feg_network_id_gateways_gateway_id_federation_responses.go",
+        "delete_feg_network_id_gateways_gateway_id_parameters.go",
+        "delete_feg_network_id_gateways_gateway_id_responses.go",
+        "federation_gateways_client.go",
+        "get_feg_network_id_gateways_gateway_id_federation_parameters.go",
+        "get_feg_network_id_gateways_gateway_id_federation_responses.go",
+        "get_feg_network_id_gateways_gateway_id_health_status_parameters.go",
+        "get_feg_network_id_gateways_gateway_id_health_status_responses.go",
+        "get_feg_network_id_gateways_gateway_id_parameters.go",
+        "get_feg_network_id_gateways_gateway_id_responses.go",
+        "get_feg_network_id_gateways_parameters.go",
+        "get_feg_network_id_gateways_responses.go",
+        "post_feg_network_id_gateways_gateway_id_federation_parameters.go",
+        "post_feg_network_id_gateways_gateway_id_federation_responses.go",
+        "post_feg_network_id_gateways_parameters.go",
+        "post_feg_network_id_gateways_responses.go",
+        "put_feg_network_id_gateways_gateway_id_federation_parameters.go",
+        "put_feg_network_id_gateways_gateway_id_federation_responses.go",
+        "put_feg_network_id_gateways_gateway_id_parameters.go",
+        "put_feg_network_id_gateways_gateway_id_responses.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/federation_gateways",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_runtime//:go_default_library",
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+    ],
+)

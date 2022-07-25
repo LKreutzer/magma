@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "pipelined",
+    srcs = ["client_api.go"],
+    importpath = "github.com/magma/magma/feg/gateway/services/aaa/pipelined",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_test(
+    name = "pipelined_test",
+    srcs = ["client_api_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

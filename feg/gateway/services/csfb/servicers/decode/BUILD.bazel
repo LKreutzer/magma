@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "decode",
+    srcs = [
+        "field_definitions.go",
+        "message_type.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/csfb/servicers/decode",
+    visibility = ["//visibility:public"],
+)

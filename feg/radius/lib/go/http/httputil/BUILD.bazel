@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "httputil",
+    srcs = ["httputil.go"],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/http/httputil",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "httputil_test",
+    srcs = ["httputil_test.go"],
+    embed = [":httputil"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

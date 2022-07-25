@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "aaa_server_lib",
+    srcs = [
+        "main.go",
+        "without_builtin_radius.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/aaa/aaa_server",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//proto:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "aaa_server",
+    embed = [":aaa_server_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "aaa_server_test",
+    srcs = ["aaa_aka_auth_test.go"],
+)

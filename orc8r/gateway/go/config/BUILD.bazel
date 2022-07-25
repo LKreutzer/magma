@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "config",
+    srcs = [
+        "common.go",
+        "control_proxy_config.go",
+        "magmad_config.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/gateway/go/config",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_test(
+    name = "config_test",
+    srcs = ["config_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

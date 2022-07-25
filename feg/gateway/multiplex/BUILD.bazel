@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "multiplex",
+    srcs = ["multiplex.go"],
+    importpath = "github.com/magma/magma/feg/gateway/multiplex",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "multiplex_test",
+    srcs = ["multiplex_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "state",
+    srcs = [
+        "client_api.go",
+        "const.go",
+        "conversion.go",
+        "doc.go",
+        "error.go",
+        "serde.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_thoas_go_funk//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "state_test",
+    srcs = ["client_api_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

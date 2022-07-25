@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "utils",
+    srcs = [
+        "get_all_gateways.go",
+        "get_teids.go",
+    ],
+    importpath = "github.com/magma/magma/feg/cloud/go/services/feg_relay/utils",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//metadata",
+    ],
+)

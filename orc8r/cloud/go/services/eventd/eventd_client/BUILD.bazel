@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "eventd_client",
+    srcs = ["eventd_client.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/eventd/eventd_client",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_olivere_elastic_v7//:go_default_library",
+        "@com_github_thoas_go_funk//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "eventd_client_test",
+    srcs = ["eventd_client_test.go"],
+    embed = [":eventd_client"],
+    deps = [
+        "@com_github_olivere_elastic_v7//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

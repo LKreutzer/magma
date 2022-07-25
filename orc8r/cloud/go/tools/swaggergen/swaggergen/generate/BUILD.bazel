@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "generate",
+    srcs = [
+        "generate.go",
+        "rewrite.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/swaggergen/swaggergen/generate",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_thoas_go_funk//:go_default_library",
+        "@in_gopkg_yaml_v2//:yaml_v2",
+        "@org_golang_x_tools//go/ast/astutil",
+    ],
+)
+
+go_test(
+    name = "generate_test",
+    srcs = [
+        "generate_test.go",
+        "rewrite_test.go",
+    ],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@in_gopkg_yaml_v2//:yaml_v2",
+    ],
+)

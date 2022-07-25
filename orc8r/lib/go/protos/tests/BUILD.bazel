@@ -1,0 +1,10 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "tests_test",
+    srcs = [
+        "identity_test.go",
+        "vm_only_identity_test.go",
+    ],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

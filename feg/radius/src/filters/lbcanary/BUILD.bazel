@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "lbcanary",
+    srcs = ["lb_canary.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/filters/lbcanary",
+    visibility = ["//visibility:public"],
+    deps = ["@org_uber_go_zap//:zap"],
+)
+
+go_test(
+    name = "lbcanary_test",
+    srcs = ["lb_canary_test.go"],
+    embed = [":lbcanary"],
+    deps = [
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+    ],
+)

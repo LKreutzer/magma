@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "migrations",
+    srcs = [
+        "configurator.go",
+        "datastore_to_blobstore.go",
+        "doc.go",
+        "env.go",
+        "sql_operations.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/migrations",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_google_uuid//:uuid",
+        "@com_github_masterminds_squirrel//:go_default_library",
+    ],
+)

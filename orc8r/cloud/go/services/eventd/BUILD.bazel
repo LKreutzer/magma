@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "eventd",
+    srcs = [
+        "const.go",
+        "doc.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/eventd",
+    visibility = ["//visibility:public"],
+)

@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "test_utils",
+    srcs = [
+        "hss_test_server.go",
+        "test_subscribers.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/testcore/hss/servicers/test_utils",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

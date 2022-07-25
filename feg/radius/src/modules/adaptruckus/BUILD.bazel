@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "adaptruckus",
+    srcs = ["adapt_ruckus.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/adaptruckus",
+    visibility = ["//visibility:public"],
+    deps = ["@org_uber_go_zap//:zap"],
+)
+
+go_test(
+    name = "adaptruckus_test",
+    srcs = ["adapt_ruckus_test.go"],
+    embed = [":adaptruckus"],
+    deps = [
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+    ],
+)

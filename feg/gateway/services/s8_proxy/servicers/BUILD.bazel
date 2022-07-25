@@ -1,0 +1,39 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "servicers",
+    srcs = [
+        "config.go",
+        "gtp_handlers.go",
+        "gw_s8_client_api.go",
+        "ie_conversions.go",
+        "proto_conversions.go",
+        "s8_proxy.go",
+        "senders.go",
+        "tft_proto_conversion.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/s8_proxy/servicers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_wmnsk_go_gtp//gtpv2:go_default_library",
+        "@com_github_wmnsk_go_gtp//gtpv2/ie:go_default_library",
+        "@com_github_wmnsk_go_gtp//gtpv2/message:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "servicers_test",
+    srcs = [
+        "config_test.go",
+        "s8_proxy_test.go",
+    ],
+    embed = [":servicers"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+        "@com_github_wmnsk_go_gtp//gtpv2:go_default_library",
+        "@com_github_wmnsk_go_gtp//gtpv2/ie:go_default_library",
+    ],
+)

@@ -1,0 +1,13 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "storage",
+    srcs = [
+        "health_blobstore.go",
+        "storage.go",
+        "util.go",
+    ],
+    importpath = "github.com/magma/magma/feg/cloud/go/services/health/storage",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)

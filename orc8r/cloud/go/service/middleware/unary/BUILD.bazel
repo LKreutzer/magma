@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "unary",
+    srcs = [
+        "doc.go",
+        "identity_decorator.go",
+        "identity_decorator_bypass.go",
+        "interceptors.go",
+        "registered_gw_enforcer.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/service/middleware/unary",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_grpc_ecosystem_go_grpc_prometheus//:go_default_library",
+        "@com_github_prometheus_client_golang//prometheus:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//metadata",
+        "@org_golang_google_grpc//peer",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "unary_test",
+    srcs = [
+        "identity_decorator_test.go",
+        "interceptors_test.go",
+    ],
+    deps = [
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@org_golang_google_grpc//metadata",
+    ],
+)

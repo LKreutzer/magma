@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "libgraphql",
+    srcs = [
+        "client.go",
+        "xwf_customer.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/libgraphql",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_google_uuid//:uuid"],
+)
+
+go_test(
+    name = "libgraphql_test",
+    srcs = ["example_test.go"],
+    embed = [":libgraphql"],
+)

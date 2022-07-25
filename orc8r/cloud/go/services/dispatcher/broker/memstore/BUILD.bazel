@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "memstore",
+    srcs = [
+        "request_queue.go",
+        "response_table.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/dispatcher/broker/memstore",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_test(
+    name = "memstore_test",
+    srcs = [
+        "request_queue_test.go",
+        "response_table_test.go",
+    ],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "metrics",
+    srcs = [
+        "gateway_status_reporter.go",
+        "metrics.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/metrics",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_prometheus_client_golang//prometheus:go_default_library",
+        "@com_github_prometheus_client_golang//prometheus/promauto:go_default_library",
+    ],
+)

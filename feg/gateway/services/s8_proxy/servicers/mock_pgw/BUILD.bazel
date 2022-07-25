@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "mock_pgw",
+    srcs = [
+        "cb.go",
+        "cs.go",
+        "db.go",
+        "ds.go",
+        "mb.go",
+        "mock_pgw.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/s8_proxy/servicers/mock_pgw",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_wmnsk_go_gtp//gtpv2:go_default_library",
+        "@com_github_wmnsk_go_gtp//gtpv2/ie:go_default_library",
+        "@com_github_wmnsk_go_gtp//gtpv2/message:go_default_library",
+    ],
+)

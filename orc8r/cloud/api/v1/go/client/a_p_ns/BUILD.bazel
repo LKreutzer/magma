@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "a_p_ns",
+    srcs = [
+        "ap_ns_client.go",
+        "delete_lte_network_id_apns_apn_name_parameters.go",
+        "delete_lte_network_id_apns_apn_name_responses.go",
+        "get_lte_network_id_apns_apn_name_parameters.go",
+        "get_lte_network_id_apns_apn_name_responses.go",
+        "get_lte_network_id_apns_parameters.go",
+        "get_lte_network_id_apns_responses.go",
+        "post_lte_network_id_apns_parameters.go",
+        "post_lte_network_id_apns_responses.go",
+        "put_lte_network_id_apns_apn_name_parameters.go",
+        "put_lte_network_id_apns_apn_name_responses.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/a_p_ns",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_runtime//:go_default_library",
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+    ],
+)

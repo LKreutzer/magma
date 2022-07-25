@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "parallel",
+    srcs = ["map.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/parallel",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_hashicorp_go_multierror//:go_default_library"],
+)
+
+go_test(
+    name = "parallel_test",
+    srcs = ["map_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

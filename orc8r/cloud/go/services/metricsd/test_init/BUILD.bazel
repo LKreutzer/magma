@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "test_init",
+    srcs = [
+        "test_exporter_servicer.go",
+        "test_service_init.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/test_init",
+    visibility = ["//visibility:public"],
+)

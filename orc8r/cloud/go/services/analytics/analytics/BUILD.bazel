@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "analytics_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/analytics/analytics",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_binary(
+    name = "analytics",
+    embed = [":analytics_lib"],
+    visibility = ["//visibility:public"],
+)

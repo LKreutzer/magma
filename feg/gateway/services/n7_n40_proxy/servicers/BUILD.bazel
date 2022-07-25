@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "servicers",
+    srcs = [
+        "create_session.go",
+        "health.go",
+        "session_controller.go",
+        "terminate_session.go",
+        "update_session.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/n7_n40_proxy/servicers",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_test(
+    name = "servicers_test",
+    srcs = [
+        "create_session_test.go",
+        "terminate_session_test.go",
+        "update_session_test.go",
+    ],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+        "@com_github_stretchr_testify//require",
+    ],
+)

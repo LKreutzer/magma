@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "ocstats",
+    srcs = [
+        "handler.go",
+        "views.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/oc/ocstats",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_prometheus_client_golang//prometheus:go_default_library",
+        "@io_opencensus_go//plugin/ochttp:go_default_library",
+        "@io_opencensus_go//stats/view:go_default_library",
+        "@io_opencensus_go//tag:go_default_library",
+        "@io_opencensus_go_contrib_exporter_prometheus//:go_default_library",
+        "@org_uber_go_zap//:zap",
+    ],
+)
+
+go_test(
+    name = "ocstats_test",
+    srcs = ["handler_test.go"],
+    embed = [":ocstats"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+        "@io_opencensus_go_contrib_exporter_prometheus//:go_default_library",
+        "@org_uber_go_zap//:zap",
+        "@org_uber_go_zap//zaptest/observer",
+    ],
+)

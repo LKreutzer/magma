@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "coafixedip",
+    srcs = ["coa_fixed_ip.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/coafixedip",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_mitchellh_mapstructure//:mapstructure",
+        "@org_uber_go_zap//:zap",
+    ],
+)
+
+go_test(
+    name = "coafixedip_test",
+    srcs = ["coa_fixed_ip_test.go"],
+    embed = [":coafixedip"],
+    deps = [
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+    ],
+)

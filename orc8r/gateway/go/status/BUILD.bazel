@@ -1,0 +1,28 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "status",
+    srcs = [
+        "definitions.go",
+        "gateway_status.go",
+        "host_info.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/gateway/go/status",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_emakeev_snowflake//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_shirou_gopsutil_v3//cpu:go_default_library",
+        "@com_github_shirou_gopsutil_v3//disk:go_default_library",
+        "@com_github_shirou_gopsutil_v3//host:go_default_library",
+        "@com_github_shirou_gopsutil_v3//mem:go_default_library",
+        "@com_github_shirou_gopsutil_v3//net:go_default_library",
+        "@com_github_vishvananda_netlink//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "status_test",
+    srcs = ["status_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

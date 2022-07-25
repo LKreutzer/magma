@@ -1,0 +1,26 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "servicers",
+    srcs = [
+        "accounting.go",
+        "authenticator.go",
+        "common.go",
+        "responders.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/aaa/servicers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_emakeev_snowflake//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "servicers_test",
+    srcs = ["accounting_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

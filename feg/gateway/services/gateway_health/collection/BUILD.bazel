@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "collection",
+    srcs = [
+        "services.go",
+        "system.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/gateway_health/collection",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_shirou_gopsutil_v3//cpu:go_default_library",
+        "@com_github_shirou_gopsutil_v3//mem:go_default_library",
+    ],
+)

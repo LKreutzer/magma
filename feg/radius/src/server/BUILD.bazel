@@ -1,0 +1,39 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "server",
+    srcs = [
+        "grpc_listener.go",
+        "listener.go",
+        "server.go",
+        "session_id.go",
+        "sse_listener.go",
+        "udp_listener.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/src/server",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_donovanhide_eventsource//:go_default_library",
+        "@com_github_mitchellh_mapstructure//:mapstructure",
+        "@com_github_patrickmn_go_cache//:go_default_library",
+        "@io_opencensus_go//tag:go_default_library",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_uber_go_zap//:zap",
+    ],
+)
+
+go_test(
+    name = "server_test",
+    srcs = [
+        "server_test.go",
+        "sse_listener_test.go",
+    ],
+    embed = [":server"],
+    deps = [
+        "@com_github_donovanhide_eventsource//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+    ],
+)

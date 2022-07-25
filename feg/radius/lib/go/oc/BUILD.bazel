@@ -1,0 +1,47 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "oc",
+    srcs = [
+        "client_cache.go",
+        "config.go",
+        "server_options.go",
+        "viewer.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/oc",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_jessevdk_go_flags//:go_default_library",
+        "@com_github_prometheus_client_golang//prometheus:go_default_library",
+        "@io_opencensus_go//plugin/ochttp:go_default_library",
+        "@io_opencensus_go//stats/view:go_default_library",
+        "@io_opencensus_go//tag:go_default_library",
+        "@io_opencensus_go//trace:go_default_library",
+        "@io_opencensus_go_contrib_exporter_aws//:go_default_library",
+        "@io_opencensus_go_contrib_exporter_jaeger//:go_default_library",
+        "@io_opencensus_go_contrib_exporter_prometheus//:go_default_library",
+        "@org_uber_go_zap//:zap",
+    ],
+)
+
+go_test(
+    name = "oc_test",
+    srcs = [
+        "client_cache_test.go",
+        "config_test.go",
+        "example_test.go",
+        "server_options_test.go",
+        "viewer_test.go",
+    ],
+    embed = [":oc"],
+    deps = [
+        "@com_github_jessevdk_go_flags//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+        "@io_opencensus_go//plugin/ochttp:go_default_library",
+        "@io_opencensus_go//stats/view:go_default_library",
+        "@io_opencensus_go//trace:go_default_library",
+        "@io_opencensus_go_contrib_exporter_jaeger//:go_default_library",
+        "@org_uber_go_zap//:zap",
+    ],
+)

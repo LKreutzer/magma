@@ -1,0 +1,39 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "storage",
+    srcs = [
+        "errors.go",
+        "memory_storage.go",
+        "storage.go",
+        "streamer.go",
+        "validate.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/testcore/hss/storage",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_mennanov_fieldmask_utils//:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "storage_test",
+    srcs = [
+        "memory_storage_test.go",
+        "storage_integ_test.go",
+        "storage_test.go",
+        "validate_test.go",
+    ],
+    embed = [":storage"],
+    deps = [
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//suite",
+        "@io_bazel_rules_go//proto/wkt:field_mask_go_proto",
+    ],
+)

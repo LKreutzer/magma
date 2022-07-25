@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "mconfig",
+    srcs = [
+        "definitions.go",
+        "impl.go",
+        "mconfig.go",
+        "test_utils.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/gateway/go/mconfig",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+    ],
+)

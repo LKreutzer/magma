@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "session",
+    srcs = [
+        "counters.go",
+        "storage.go",
+        "storage.memory.go",
+        "storage.redis.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/src/session",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_redis_redis//:go_default_library",
+        "@io_opencensus_go//tag:go_default_library",
+    ],
+)
+
+go_test(
+    name = "session_test",
+    srcs = [
+        "storage.common_test.go",
+        "storage.memory_test.go",
+        "storage.redis_test.go",
+        "storage_test.go",
+    ],
+    embed = [":session"],
+    deps = [
+        "@com_github_alicebob_miniredis//:go_default_library",
+        "@com_github_stretchr_testify//require",
+    ],
+)

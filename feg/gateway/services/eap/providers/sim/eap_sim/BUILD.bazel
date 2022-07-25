@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "eap_sim_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/feg/gateway/services/eap/providers/sim/eap_sim",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_binary(
+    name = "eap_sim",
+    embed = [":eap_sim_lib"],
+    visibility = ["//visibility:public"],
+)

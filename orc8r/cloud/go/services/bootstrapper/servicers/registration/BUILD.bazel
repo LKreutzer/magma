@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "registration",
+    srcs = [
+        "cloud_registration.go",
+        "nonce.go",
+        "registration.go",
+        "storage.go",
+        "time.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/bootstrapper/servicers/registration",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "registration_test",
+    srcs = [
+        "cloud_registration_test.go",
+        "nonce_test.go",
+        "registration_test.go",
+        "storage_test.go",
+    ],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)

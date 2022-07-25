@@ -1,0 +1,43 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "log",
+    srcs = [
+        "config.go",
+        "context.go",
+        "factory.go",
+        "rate_limit_core.go",
+        "span.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/log",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_davecgh_go_spew//spew",
+        "@io_opencensus_go//trace:go_default_library",
+        "@org_golang_x_time//rate:go_default_library",
+        "@org_uber_go_zap//:zap",
+        "@org_uber_go_zap//zapcore",
+    ],
+)
+
+go_test(
+    name = "log_test",
+    srcs = [
+        "config_test.go",
+        "context_test.go",
+        "factory_test.go",
+        "rate_limit_core_test.go",
+        "span_test.go",
+    ],
+    embed = [":log"],
+    deps = [
+        "@com_github_jessevdk_go_flags//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+        "@io_opencensus_go//trace:go_default_library",
+        "@org_golang_x_time//rate:go_default_library",
+        "@org_uber_go_zap//:zap",
+        "@org_uber_go_zap//zapcore",
+        "@org_uber_go_zap//zaptest/observer",
+    ],
+)

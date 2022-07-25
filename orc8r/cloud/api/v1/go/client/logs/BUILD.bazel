@@ -1,0 +1,20 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "logs",
+    srcs = [
+        "get_networks_network_id_logs_count_parameters.go",
+        "get_networks_network_id_logs_count_responses.go",
+        "get_networks_network_id_logs_search_parameters.go",
+        "get_networks_network_id_logs_search_responses.go",
+        "logs_client.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/logs",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_runtime//:go_default_library",
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+    ],
+)

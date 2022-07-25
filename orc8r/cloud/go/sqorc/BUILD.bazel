@@ -1,0 +1,47 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "sqorc",
+    srcs = [
+        "builder.go",
+        "doc.go",
+        "error_checker.go",
+        "locker.go",
+        "open.go",
+        "table.go",
+        "test_init_utils.go",
+        "tx.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/sqorc",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_sql_driver_mysql//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_lann_builder//:go_default_library",
+        "@com_github_lib_pq//:go_default_library",
+        "@com_github_masterminds_squirrel//:go_default_library",
+        "@com_github_mattn_go_sqlite3//:go_default_library",
+        "@com_github_stretchr_testify//require",
+        "@com_github_thoas_go_funk//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "sqorc_test",
+    srcs = [
+        "builder_test.go",
+        "error_checker_test.go",
+        "locker_test.go",
+        "table_test.go",
+    ],
+    embed = [":sqorc"],
+    deps = [
+        "@com_github_lann_builder//:go_default_library",
+        "@com_github_lib_pq//:go_default_library",
+        "@com_github_masterminds_squirrel//:go_default_library",
+        "@com_github_mattn_go_sqlite3//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//suite",
+        "@in_gopkg_data_dog_go_sqlmock_v1//:go_default_library",
+    ],
+)

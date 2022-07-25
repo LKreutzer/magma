@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "sign_csr_lib",
+    srcs = ["sign_csr.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/sign_csr",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "sign_csr",
+    embed = [":sign_csr_lib"],
+    visibility = ["//visibility:public"],
+)

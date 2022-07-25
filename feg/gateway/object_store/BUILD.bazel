@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "object_store",
+    srcs = [
+        "object_store.go",
+        "redis.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/object_store",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_redis_redis//:go_default_library",
+        "@com_github_golang_glog//:glog",
+    ],
+)
+
+go_test(
+    name = "object_store_test",
+    srcs = ["object_store_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

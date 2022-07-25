@@ -1,0 +1,32 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "radius",
+    srcs = [
+        "acct.go",
+        "auth.go",
+        "config.go",
+        "encr.go",
+        "server.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/aaa/radius",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_layeh_radius//:go_default_library",
+        "@com_layeh_radius//rfc2865:go_default_library",
+        "@com_layeh_radius//rfc2866:go_default_library",
+        "@com_layeh_radius//rfc2869:go_default_library",
+        "@com_layeh_radius//rfc6911:go_default_library",
+        "@org_golang_google_protobuf//proto",
+    ],
+)
+
+go_test(
+    name = "radius_test",
+    srcs = ["encr_test.go"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_layeh_radius//:go_default_library",
+    ],
+)

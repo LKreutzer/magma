@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "addmsisdn",
+    srcs = ["add_msisdn.go"],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/addmsisdn",
+    visibility = ["//visibility:public"],
+    deps = ["@org_uber_go_zap//:zap"],
+)
+
+go_test(
+    name = "addmsisdn_test",
+    srcs = ["add_msisdn_test.go"],
+    embed = [":addmsisdn"],
+    deps = [
+        "@com_github_stretchr_testify//require",
+        "@org_uber_go_zap//:zap",
+    ],
+)

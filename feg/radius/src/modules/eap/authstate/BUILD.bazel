@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "authstate",
+    srcs = [
+        "manager.go",
+        "manager.memory.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/eap/authstate",
+    visibility = ["//visibility:public"],
+    deps = ["@io_opencensus_go//tag:go_default_library"],
+)
+
+go_test(
+    name = "authstate_test",
+    srcs = ["manager.memory_test.go"],
+    embed = [":authstate"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//require",
+    ],
+)

@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "protected",
+    srcs = ["kubernetes_servicer.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/service_registry/servicers/protected",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_robfig_cron_v3//:go_default_library",
+        "@io_k8s_api//core/v1:go_default_library",
+        "@io_k8s_apimachinery//pkg/apis/meta/v1:go_default_library",
+        "@io_k8s_client_go//kubernetes/typed/core/v1:go_default_library",
+    ],
+)
+
+go_test(
+    name = "protected_test",
+    srcs = ["kubernetes_servicer_test.go"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@io_k8s_api//core/v1:go_default_library",
+        "@io_k8s_apimachinery//pkg/apis/meta/v1:go_default_library",
+        "@io_k8s_client_go//kubernetes/fake:go_default_library",
+        "@io_k8s_client_go//kubernetes/typed/core/v1:go_default_library",
+    ],
+)

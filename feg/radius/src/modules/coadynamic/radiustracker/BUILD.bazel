@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "radiustracker",
+    srcs = [
+        "tracker.go",
+        "tracker.memory.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/coadynamic/radiustracker",
+    visibility = ["//visibility:public"],
+)

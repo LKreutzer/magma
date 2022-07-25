@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "packet",
+    srcs = [
+        "packet.go",
+        "packet_code.go",
+        "packet_type.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/src/modules/eap/packet",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "packet_test",
+    srcs = ["packet_test.go"],
+    embed = [":packet"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

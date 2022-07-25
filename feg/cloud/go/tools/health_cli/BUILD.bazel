@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "health_cli_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/feg/cloud/go/tools/health_cli",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "health_cli",
+    embed = [":health_cli_lib"],
+    visibility = ["//visibility:public"],
+)

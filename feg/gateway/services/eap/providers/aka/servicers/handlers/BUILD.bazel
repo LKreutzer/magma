@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "handlers",
+    srcs = [
+        "aka_challenge.go",
+        "aka_identity.go",
+        "aka_peer_failure.go",
+        "aka_resync.go",
+        "auth_utils.go",
+        "s6a_auth_utils.go",
+    ],
+    importpath = "github.com/magma/magma/feg/gateway/services/eap/providers/aka/servicers/handlers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "handlers_test",
+    srcs = [
+        "aka_challenge_test.go",
+        "aka_identity_test.go",
+    ],
+    embed = [":handlers"],
+)

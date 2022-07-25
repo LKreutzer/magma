@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "debug",
+    srcs = [
+        "debug.go",
+        "doc.go",
+        "generate.go",
+        "generated.go",
+    ],
+    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/debug",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "debug_test",
+    srcs = ["debug_test.go"],
+)

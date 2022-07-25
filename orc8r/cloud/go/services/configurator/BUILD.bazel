@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "configurator",
+    srcs = [
+        "client_api.go",
+        "const.go",
+        "doc.go",
+        "graph.go",
+        "serde.go",
+        "types.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/configurator",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_thoas_go_funk//:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
+    ],
+)
+
+go_test(
+    name = "configurator_test",
+    srcs = ["client_api_test.go"],
+    deps = [
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

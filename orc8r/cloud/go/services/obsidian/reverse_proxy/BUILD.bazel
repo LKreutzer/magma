@@ -1,0 +1,24 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "reverse_proxy",
+    srcs = ["reverse_proxy.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/obsidian/reverse_proxy",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_labstack_echo_v4//:echo",
+        "@com_github_labstack_echo_v4//middleware",
+    ],
+)
+
+go_test(
+    name = "reverse_proxy_test",
+    srcs = ["reverse_proxy_test.go"],
+    embed = [":reverse_proxy"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_labstack_echo_v4//:echo",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

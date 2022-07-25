@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "operations",
+    srcs = [
+        "get_foo_parameters.go",
+        "get_foo_responses.go",
+        "operations_client.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/operations",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_errors//:go_default_library",
+        "@com_github_go_openapi_runtime//:go_default_library",
+        "@com_github_go_openapi_runtime//client:go_default_library",
+        "@com_github_go_openapi_strfmt//:go_default_library",
+    ],
+)

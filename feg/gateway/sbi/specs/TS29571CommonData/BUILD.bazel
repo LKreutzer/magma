@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "TS29571CommonData",
+    srcs = ["TS29571CommonData.gen.go"],
+    importpath = "github.com/magma/magma/feg/gateway/sbi/specs/TS29571CommonData",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_deepmap_oapi_codegen//pkg/types:go_default_library"],
+)

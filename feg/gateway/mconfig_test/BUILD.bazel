@@ -1,0 +1,7 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "mconfig_test_test",
+    srcs = ["mconfig_test.go"],
+    deps = ["@com_github_golang_protobuf//ptypes:go_default_library_gen"],
+)

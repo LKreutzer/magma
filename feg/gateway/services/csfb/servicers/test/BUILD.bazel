@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_test")
+
+go_test(
+    name = "test_test",
+    srcs = [
+        "csfb_sctp_integration_test.go",
+        "csfb_test.go",
+        "ie_encoder_decoder_integration_test.go",
+        "safe_buffer_test.go",
+        "sctp_connection_test.go",
+    ],
+    deps = [
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_ishidawataru_sctp//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+    ],
+)

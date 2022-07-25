@@ -1,0 +1,12 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "tests",
+    srcs = ["unit_test_utils.go"],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/services/obsidian/tests",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_labstack_echo_v4//:echo",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

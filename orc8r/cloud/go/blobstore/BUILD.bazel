@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "blobstore",
+    srcs = [
+        "blobstore.go",
+        "blobstore_sql.go",
+        "doc.go",
+        "gen.go",
+        "types.go",
+    ],
+    importpath = "github.com/magma/magma/orc8r/cloud/go/blobstore",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_masterminds_squirrel//:go_default_library",
+        "@com_github_thoas_go_funk//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "blobstore_test",
+    srcs = [
+        "blobstore_integ_test.go",
+        "blobstore_migration_test.go",
+        "blobstore_sql_test.go",
+    ],
+    deps = [
+        "@com_github_mattn_go_sqlite3//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@in_gopkg_data_dog_go_sqlmock_v1//:go_default_library",
+    ],
+)
