@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "types",
+    srcs = [
+        "new.go",
+        "old.go",
+    ],
+    importpath = "github.com/magma/magma/lte/cloud/go/tools/migrations/m012_policy_qos/types",
+    visibility = ["//visibility:public"],
+)

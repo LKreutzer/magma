@@ -1,0 +1,21 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "southbound",
+    srcs = ["assignments.go"],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/policydb/servicers/southbound",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "southbound_test",
+    srcs = ["assignments_test.go"],
+    deps = [
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

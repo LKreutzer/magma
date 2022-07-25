@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "sms_ll",
+    srcs = [
+        "sms_cp.go",
+        "sms_ll.go",
+        "sms_rp.go",
+    ],
+    importpath = "github.com/magma/magma/lte/cloud/go/sms_ll",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_warthog618_sms//:go_default_library",
+        "@com_github_warthog618_sms//encoding/tpdu:go_default_library",
+    ],
+)
+
+go_test(
+    name = "sms_ll_test",
+    srcs = ["sms_ll_test.go"],
+    embed = [":sms_ll"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

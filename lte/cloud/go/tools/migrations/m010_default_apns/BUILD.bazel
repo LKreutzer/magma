@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "m010_default_apns_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/lte/cloud/go/tools/migrations/m010_default_apns",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@com_github_go_sql_driver_mysql//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_google_uuid//:uuid",
+        "@com_github_lib_pq//:go_default_library",
+        "@com_github_masterminds_squirrel//:go_default_library",
+        "@com_github_thoas_go_funk//:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "m010_default_apns",
+    embed = [":m010_default_apns_lib"],
+    visibility = ["//visibility:public"],
+)

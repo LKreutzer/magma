@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "lte_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/lte",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_binary(
+    name = "lte",
+    embed = [":lte_lib"],
+    visibility = ["//visibility:public"],
+)

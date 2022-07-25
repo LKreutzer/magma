@@ -1,0 +1,36 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "protected",
+    srcs = [
+        "builder_servicer.go",
+        "indexer_servicer.go",
+        "lookup.go",
+    ],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/servicers/protected",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_thoas_go_funk//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "protected_test",
+    srcs = [
+        "builder_servicer_test.go",
+        "indexer_servicer_test.go",
+        "lookup_test.go",
+    ],
+    deps = [
+        "@com_github_go_openapi_strfmt//:go_default_library",
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

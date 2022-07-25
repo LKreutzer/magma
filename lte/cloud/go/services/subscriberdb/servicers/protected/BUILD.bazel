@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "protected",
+    srcs = [
+        "indexer_servicer.go",
+        "lookup.go",
+    ],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/subscriberdb/servicers/protected",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_hashicorp_go_multierror//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+    ],
+)
+
+go_test(
+    name = "protected_test",
+    srcs = [
+        "indexer_servicer_test.go",
+        "lookup_test.go",
+    ],
+    deps = [
+        "@com_github_google_go_cmp//cmp",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

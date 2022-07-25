@@ -15,23 +15,9 @@ load("@rules_proto_grpc//python:defs.bzl", "python_proto_library")
 
 package(default_visibility = ["//visibility:public"])
 
-proto_library(
-    name = "common_types_proto",
-    srcs = ["common_types.proto"],
-)
-
 cpp_proto_library(
     name = "common_types_cpp_proto",
     protos = [":common_types_proto"],
-)
-
-proto_library(
-    name = "nas_state_proto",
-    srcs = ["nas_state.proto"],
-    deps = [
-        ":common_types_proto",
-        ":spgw_state_proto",
-    ],
 )
 
 cpp_proto_library(
@@ -40,15 +26,6 @@ cpp_proto_library(
     deps = [
         ":common_types_cpp_proto",
         ":spgw_state_cpp_proto",
-    ],
-)
-
-proto_library(
-    name = "spgw_state_proto",
-    srcs = ["spgw_state.proto"],
-    deps = [
-        ":common_types_proto",
-        ":std_3gpp_types_proto",
     ],
 )
 
@@ -61,27 +38,9 @@ cpp_proto_library(
     ],
 )
 
-proto_library(
-    name = "std_3gpp_types_proto",
-    srcs = ["std_3gpp_types.proto"],
-    deps = [":common_types_proto"],
-)
-
 cpp_proto_library(
     name = "std_3gpp_types_cpp_proto",
     protos = [":std_3gpp_types_proto"],
-)
-
-proto_library(
-    name = "mme_nas_state_proto",
-    srcs = ["mme_nas_state.proto"],
-    deps = [
-        ":common_types_proto",
-        ":nas_state_proto",
-        ":spgw_state_proto",
-        ":std_3gpp_types_proto",
-        "@com_google_protobuf//:timestamp_proto",
-    ],
 )
 
 cpp_proto_library(
@@ -94,24 +53,9 @@ cpp_proto_library(
     ],
 )
 
-proto_library(
-    name = "s1ap_state_proto",
-    srcs = ["s1ap_state.proto"],
-)
-
 cpp_proto_library(
     name = "s1ap_state_cpp_proto",
     protos = [":s1ap_state_proto"],
-)
-
-proto_library(
-    name = "sgw_state_proto",
-    srcs = ["sgw_state.proto"],
-    deps = [
-        ":common_types_proto",
-        ":spgw_state_proto",
-        ":std_3gpp_types_proto",
-    ],
 )
 
 cpp_proto_library(
@@ -122,11 +66,6 @@ cpp_proto_library(
         ":spgw_state_cpp_proto",
         ":std_3gpp_types_cpp_proto",
     ],
-)
-
-proto_library(
-    name = "ngap_state_proto",
-    srcs = ["ngap_state.proto"],
 )
 
 cpp_proto_library(

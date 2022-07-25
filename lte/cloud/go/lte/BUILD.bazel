@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "lte",
+    srcs = [
+        "const.go",
+        "lte_bands.go",
+    ],
+    importpath = "github.com/magma/magma/lte/cloud/go/lte",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "lte_test",
+    srcs = ["lte_bands_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

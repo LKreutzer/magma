@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "subscriberdb_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/subscriberdb/subscriberdb",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_binary(
+    name = "subscriberdb",
+    embed = [":subscriberdb_lib"],
+    visibility = ["//visibility:public"],
+)

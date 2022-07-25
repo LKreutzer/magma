@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "subscriberdb",
+    srcs = [
+        "client_api.go",
+        "config.go",
+        "const.go",
+        "digest.go",
+        "load.go",
+    ],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/subscriberdb",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_thoas_go_funk//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "subscriberdb_test",
+    srcs = [
+        "digest_test.go",
+        "load_test.go",
+    ],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

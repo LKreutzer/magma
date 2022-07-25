@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "eps_authentication_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/eps_authentication/eps_authentication",
+    visibility = ["//visibility:private"],
+    deps = ["@com_github_golang_glog//:glog"],
+)
+
+go_binary(
+    name = "eps_authentication",
+    embed = [":eps_authentication_lib"],
+    visibility = ["//visibility:public"],
+)

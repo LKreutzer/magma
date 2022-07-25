@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "streamer",
+    srcs = ["providers.go"],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/subscriberdb/streamer",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+    ],
+)
+
+go_test(
+    name = "streamer_test",
+    srcs = ["providers_test.go"],
+    deps = [
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_golang_protobuf//proto:go_default_library",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_thoas_go_funk//:go_default_library",
+    ],
+)

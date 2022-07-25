@@ -1,0 +1,17 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "servicers",
+    srcs = ["provider_servicer.go"],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/servicers",
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "servicers_test",
+    srcs = ["provider_servicer_test.go"],
+    deps = [
+        "@com_github_go_openapi_swag//:go_default_library",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

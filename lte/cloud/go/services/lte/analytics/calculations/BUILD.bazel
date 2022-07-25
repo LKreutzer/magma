@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "calculations",
+    srcs = [
+        "state.go",
+        "user_throughput.go",
+    ],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/analytics/calculations",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_influxdata_tdigest//:go_default_library",
+        "@com_github_prometheus_client_golang//prometheus",
+    ],
+)
+
+go_test(
+    name = "calculations_test",
+    srcs = [
+        "state_test.go",
+        "user_throughput_test.go",
+    ],
+    deps = [
+        "@com_github_prometheus_common//model",
+        "@com_github_stretchr_testify//assert",
+        "@com_github_stretchr_testify//mock",
+    ],
+)

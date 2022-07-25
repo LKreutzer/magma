@@ -1,0 +1,31 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "encoding",
+    srcs = [
+        "asn1.go",
+        "const.go",
+        "header.go",
+        "record.go",
+        "utils.go",
+    ],
+    importpath = "github.com/magma/magma/lte/cloud/go/services/nprobe/encoding",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_gofrs_uuid//:go_default_library"],
+)
+
+go_test(
+    name = "encoding_test",
+    srcs = [
+        "asn1_test.go",
+        "header_test.go",
+        "record_test.go",
+    ],
+    data = glob(["testdata/**"]),
+    embed = [":encoding"],
+    deps = [
+        "@com_github_gofrs_uuid//:go_default_library",
+        "@com_github_google_go_cmp//cmp",
+        "@com_github_stretchr_testify//assert",
+    ],
+)

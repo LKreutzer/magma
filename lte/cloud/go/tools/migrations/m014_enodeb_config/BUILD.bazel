@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "m014_enodeb_config_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/magma/magma/lte/cloud/go/tools/migrations/m014_enodeb_config",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_masterminds_squirrel//:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "m014_enodeb_config",
+    embed = [":m014_enodeb_config_lib"],
+    visibility = ["//visibility:public"],
+)
