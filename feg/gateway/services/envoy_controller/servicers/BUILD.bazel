@@ -5,7 +5,11 @@ go_library(
     srcs = ["envoy_controller.go"],
     importpath = "github.com/magma/magma/feg/gateway/services/envoy_controller/servicers",
     visibility = ["//visibility:public"],
-    deps = ["@com_github_golang_glog//:glog"],
+    deps = [
+        "//feg/cloud/go/protos",
+        "//feg/gateway/services/envoy_controller/control_plane",
+        "@com_github_golang_glog//:glog",
+    ],
 )
 
 go_test(
