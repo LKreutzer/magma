@@ -8,7 +8,12 @@ go_library(
     ],
     importpath = "github.com/magma/magma/feg/gateway/registry",
     visibility = ["//visibility:public"],
-    deps = ["@org_golang_google_grpc//:go_default_library"],
+    deps = [
+        "//orc8r/gateway/go/service_registry",
+	    "//orc8r/lib/go/protos",
+	    "//orc8r/lib/go/registry",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
 )
 
 go_test(
