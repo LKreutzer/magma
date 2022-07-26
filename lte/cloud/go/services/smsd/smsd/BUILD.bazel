@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "smsd_lib",
     srcs = ["main.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/smsd/smsd",
+    importpath = "magma/lte/cloud/go/services/smsd/smsd",
     visibility = ["//visibility:private"],
     deps = ["@com_github_golang_glog//:glog"],
 )

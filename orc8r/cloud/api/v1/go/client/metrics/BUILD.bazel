@@ -29,7 +29,7 @@ go_library(
         "post_networks_network_id_metrics_push_parameters.go",
         "post_networks_network_id_metrics_push_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/metrics",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/metrics",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

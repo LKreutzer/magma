@@ -7,7 +7,7 @@ go_library(
         "SessionProxyResponderServer.go",
         "servicers.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/session_proxy/relay/mocks",
+    importpath = "magma/feg/gateway/services/session_proxy/relay/mocks",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_stretchr_testify//assert",

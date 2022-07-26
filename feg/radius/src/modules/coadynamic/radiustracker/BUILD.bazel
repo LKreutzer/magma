@@ -6,6 +6,6 @@ go_library(
         "tracker.go",
         "tracker.memory.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/modules/coadynamic/radiustracker",
+    importpath = "magma/feg/radius/src/modules/coadynamic/radiustracker",
     visibility = ["//visibility:public"],
 )

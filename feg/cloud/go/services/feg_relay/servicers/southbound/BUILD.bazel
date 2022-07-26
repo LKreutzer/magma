@@ -21,7 +21,7 @@ go_library(
         "terminate_registration.go",
         "vlr.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/feg_relay/servicers/southbound",
+    importpath = "magma/feg/cloud/go/services/feg_relay/servicers/southbound",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

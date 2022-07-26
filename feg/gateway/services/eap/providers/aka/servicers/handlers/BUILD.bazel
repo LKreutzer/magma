@@ -10,7 +10,7 @@ go_library(
         "auth_utils.go",
         "s6a_auth_utils.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/eap/providers/aka/servicers/handlers",
+    importpath = "magma/feg/gateway/services/eap/providers/aka/servicers/handlers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

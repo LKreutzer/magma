@@ -7,7 +7,7 @@ go_library(
         "packet_code.go",
         "packet_type.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/modules/eap/packet",
+    importpath = "magma/feg/radius/src/modules/eap/packet",
     visibility = ["//visibility:public"],
 )
 

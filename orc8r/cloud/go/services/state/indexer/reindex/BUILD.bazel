@@ -11,7 +11,7 @@ go_library(
         "store.go",
         "versioner.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/indexer/reindex",
+    importpath = "magma/orc8r/cloud/go/services/state/indexer/reindex",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

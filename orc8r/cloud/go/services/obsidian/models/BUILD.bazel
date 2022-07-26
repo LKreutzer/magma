@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "models",
     srcs = ["mconfig_converters.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/obsidian/models",
+    importpath = "magma/orc8r/cloud/go/services/obsidian/models",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_strfmt//:go_default_library",

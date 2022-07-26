@@ -12,7 +12,7 @@ go_library(
         "spgw_state.pb.go",
         "std_3gpp_types.pb.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/protos/oai",
+    importpath = "magma/lte/cloud/go/protos/oai",
     visibility = ["//visibility:public"],
     deps = [
         "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",

@@ -11,7 +11,7 @@ go_library(
         "server.go",
         "ul.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/eps_authentication/servicers",
+    importpath = "magma/lte/cloud/go/services/eps_authentication/servicers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

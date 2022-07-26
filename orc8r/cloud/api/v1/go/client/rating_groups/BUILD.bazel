@@ -15,7 +15,7 @@ go_library(
         "put_networks_network_id_rating_groups_rating_group_id_responses.go",
         "rating_groups_client.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/rating_groups",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/rating_groups",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

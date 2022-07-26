@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "m005_certifier_to_blobstore_lib",
     srcs = ["main.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/migrations/m005_certifier_to_blobstore",
+    importpath = "magma/orc8r/cloud/go/tools/migrations/m005_certifier_to_blobstore",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_go_sql_driver_mysql//:go_default_library",

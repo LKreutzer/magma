@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "redis",
     srcs = ["client.go"],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/redis",
+    importpath = "magma/orc8r/gateway/go/redis",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_redis_redis//:go_default_library",

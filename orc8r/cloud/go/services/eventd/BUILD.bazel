@@ -6,6 +6,6 @@ go_library(
         "const.go",
         "doc.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/eventd",
+    importpath = "magma/orc8r/cloud/go/services/eventd",
     visibility = ["//visibility:public"],
 )

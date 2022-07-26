@@ -7,7 +7,7 @@ go_library(
         "service.go",
         "service303.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/lib/go/service",
+    importpath = "magma/orc8r/lib/go/service",
     visibility = ["//visibility:public"],
     deps = [
         "//orc8r/lib/go/metrics",

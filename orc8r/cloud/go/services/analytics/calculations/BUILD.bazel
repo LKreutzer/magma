@@ -8,7 +8,7 @@ go_library(
         "raw_metrics_calculations.go",
         "user_state.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/analytics/calculations",
+    importpath = "magma/orc8r/cloud/go/services/analytics/calculations",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "cache",
     srcs = ["swx_cache.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/swx_proxy/cache",
+    importpath = "magma/feg/gateway/services/swx_proxy/cache",
     visibility = ["//visibility:public"],
     deps = ["@org_golang_google_protobuf//proto"],
 )

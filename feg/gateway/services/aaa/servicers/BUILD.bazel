@@ -8,7 +8,7 @@ go_library(
         "common.go",
         "responders.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/aaa/servicers",
+    importpath = "magma/feg/gateway/services/aaa/servicers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_emakeev_snowflake//:go_default_library",

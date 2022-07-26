@@ -23,7 +23,7 @@ go_library(
         "put_ci_nodes_node_id_parameters.go",
         "put_ci_nodes_node_id_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/baremetal",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/baremetal",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

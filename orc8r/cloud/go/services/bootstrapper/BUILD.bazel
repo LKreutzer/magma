@@ -6,7 +6,7 @@ go_library(
         "client_api.go",
         "const.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/bootstrapper",
+    importpath = "magma/orc8r/cloud/go/services/bootstrapper",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

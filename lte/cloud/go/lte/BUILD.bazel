@@ -6,7 +6,7 @@ go_library(
         "const.go",
         "lte_bands.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/lte",
+    importpath = "magma/lte/cloud/go/lte",
     visibility = ["//visibility:public"],
 )
 

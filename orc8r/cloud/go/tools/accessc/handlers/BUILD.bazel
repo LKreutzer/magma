@@ -17,7 +17,7 @@ go_library(
         "purge_expired_certs.go",
         "revoke.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/accessc/handlers",
+    importpath = "magma/orc8r/cloud/go/tools/accessc/handlers",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_protobuf//ptypes:go_default_library_gen"],
 )

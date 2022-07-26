@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "gw_s6a_service_cli_lib",
     srcs = ["main.go"],
-    importpath = "github.com/magma/magma/feg/gateway/tools/gw_s6a_service_cli",
+    importpath = "magma/feg/gateway/tools/gw_s6a_service_cli",
     visibility = ["//visibility:private"],
 )
 

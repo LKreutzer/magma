@@ -7,7 +7,7 @@ go_library(
         "mock.go",
         "ocs.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/testcore/ocs/mock_ocs",
+    importpath = "magma/feg/gateway/services/testcore/ocs/mock_ocs",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_fiorix_go_diameter_v4//diam:go_default_library",

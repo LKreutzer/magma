@@ -8,7 +8,7 @@ go_library(
         "feg_config.pb.go",
         "proto_validation.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/controller/protos",
+    importpath = "magma/feg/cloud/go/services/controller/protos",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_protobuf//proto:go_default_library",

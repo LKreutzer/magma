@@ -243,7 +243,7 @@ go_library(
         "virtual_apn_rule.go",
         "webhook_receiver.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/models",
+    importpath = "magma/orc8r/cloud/api/v1/go/models",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

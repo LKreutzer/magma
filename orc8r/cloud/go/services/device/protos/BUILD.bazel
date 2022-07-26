@@ -7,7 +7,7 @@ go_library(
         "device_helper.go",
         "validate.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/device/protos",
+    importpath = "magma/orc8r/cloud/go/services/device/protos",
     visibility = ["//visibility:public"],
     deps = [
         "@org_golang_google_grpc//:go_default_library",

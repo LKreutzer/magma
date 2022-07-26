@@ -6,7 +6,7 @@ go_library(
         "new.go",
         "old.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/tools/migrations/m013_relay_split/types",
+    importpath = "magma/lte/cloud/go/tools/migrations/m013_relay_split/types",
     visibility = ["//visibility:public"],
     deps = ["@com_github_go_openapi_strfmt//:go_default_library"],
 )

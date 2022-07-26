@@ -6,7 +6,7 @@ go_library(
         "storage.go",
         "storage_blobstore.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/nprobe/storage",
+    importpath = "magma/lte/cloud/go/services/nprobe/storage",
     visibility = ["//visibility:public"],
 )
 

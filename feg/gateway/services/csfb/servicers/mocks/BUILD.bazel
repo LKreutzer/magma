@@ -6,7 +6,7 @@ go_library(
         "ClientConnectionInterface.go",
         "ServerConnectionInterface.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/csfb/servicers/mocks",
+    importpath = "magma/feg/gateway/services/csfb/servicers/mocks",
     visibility = ["//visibility:public"],
     deps = ["@com_github_stretchr_testify//mock"],
 )

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "test",
     srcs = ["test_s6a_server.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/s6a_proxy/servicers/test",
+    importpath = "magma/feg/gateway/services/s6a_proxy/servicers/test",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_fiorix_go_diameter_v4//diam:go_default_library",

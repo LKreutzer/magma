@@ -14,7 +14,7 @@ go_library(
         "network_handlers.go",
         "upgrade_handlers.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/orchestrator/obsidian/handlers",
+    importpath = "magma/orc8r/cloud/go/services/orchestrator/obsidian/handlers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_swag//:go_default_library",

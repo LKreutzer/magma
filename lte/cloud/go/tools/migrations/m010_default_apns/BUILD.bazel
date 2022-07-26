@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "m010_default_apns_lib",
     srcs = ["main.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/tools/migrations/m010_default_apns",
+    importpath = "magma/lte/cloud/go/tools/migrations/m010_default_apns",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_go_sql_driver_mysql//:go_default_library",

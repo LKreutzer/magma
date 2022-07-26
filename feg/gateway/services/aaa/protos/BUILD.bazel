@@ -34,7 +34,7 @@ go_library(
         "context.pb.go",
         "eap.pb.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/aaa/protos",
+    importpath = "magma/feg/gateway/services/aaa/protos",
     deps = [
         "@org_golang_google_grpc//:go_default_library",
         "@org_golang_google_grpc//codes",

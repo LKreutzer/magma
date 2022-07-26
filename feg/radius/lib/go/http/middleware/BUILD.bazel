@@ -8,7 +8,7 @@ go_library(
         "request_id.go",
         "tracing.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/http/middleware",
+    importpath = "magma/feg/radius/lib/go/http/middleware",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_google_uuid//:uuid",

@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "cert",
     srcs = ["cert.go"],
-    importpath = "github.com/magma/magma/orc8r/lib/go/security/cert",
+    importpath = "magma/orc8r/lib/go/security/cert",
     visibility = ["//visibility:public"],
 )

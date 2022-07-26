@@ -10,7 +10,7 @@ go_library(
         "viewer.go",
         "with.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/monitoring/census",
+    importpath = "magma/feg/radius/src/monitoring/census",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_prometheus_client_golang//prometheus:go_default_library",

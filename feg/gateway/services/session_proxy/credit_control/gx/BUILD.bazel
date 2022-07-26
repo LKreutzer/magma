@@ -10,7 +10,7 @@ go_library(
         "handlers.go",
         "model_conversion.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/session_proxy/credit_control/gx",
+    importpath = "magma/feg/gateway/services/session_proxy/credit_control/gx",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_fiorix_go_diameter_v4//diam:go_default_library",

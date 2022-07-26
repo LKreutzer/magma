@@ -55,7 +55,7 @@ go_library(
         "unmanaged_enodeb_configuration_swaggergen.go",
         "validate.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/obsidian/models",
+    importpath = "magma/lte/cloud/go/services/lte/obsidian/models",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

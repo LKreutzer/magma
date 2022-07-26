@@ -10,7 +10,7 @@ go_library(
         "session_proxy_relay.go",
         "swx_proxy_relay.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/feg_relay/gw_to_feg_relay/servicers/southbound",
+    importpath = "magma/feg/cloud/go/services/feg_relay/gw_to_feg_relay/servicers/southbound",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

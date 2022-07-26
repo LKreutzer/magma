@@ -6,7 +6,7 @@ go_library(
         "indexer_servicer.go",
         "lookup.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/subscriberdb/servicers/protected",
+    importpath = "magma/lte/cloud/go/services/subscriberdb/servicers/protected",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

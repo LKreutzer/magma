@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "servicers",
     srcs = ["envoy_controller.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/envoy_controller/servicers",
+    importpath = "magma/feg/gateway/services/envoy_controller/servicers",
     visibility = ["//visibility:public"],
     deps = [
         "//feg/cloud/go/protos",

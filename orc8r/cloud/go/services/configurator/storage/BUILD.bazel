@@ -13,7 +13,7 @@ go_library(
         "storage.pb.go",
         "union.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/configurator/storage",
+    importpath = "magma/orc8r/cloud/go/services/configurator/storage",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -7,7 +7,7 @@ go_library(
         "gen.go",
         "tenant_swaggergen.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/tenants/obsidian/models",
+    importpath = "magma/orc8r/cloud/go/services/tenants/obsidian/models",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

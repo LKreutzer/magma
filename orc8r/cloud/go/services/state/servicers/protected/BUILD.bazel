@@ -6,7 +6,7 @@ go_library(
         "indexer_mgr_servicer.go",
         "servicer.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/servicers/protected",
+    importpath = "magma/orc8r/cloud/go/services/state/servicers/protected",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_thoas_go_funk//:go_default_library",

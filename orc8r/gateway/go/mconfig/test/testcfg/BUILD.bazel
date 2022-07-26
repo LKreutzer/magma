@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "testcfg",
     srcs = ["test_configs.pb.go"],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/mconfig/test/testcfg",
+    importpath = "magma/orc8r/gateway/go/mconfig/test/testcfg",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_protobuf//proto:go_default_library"],
 )

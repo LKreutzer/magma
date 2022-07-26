@@ -8,7 +8,7 @@ go_library(
         "poller.go",
         "reporter.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/services/magmad/status",
+    importpath = "magma/orc8r/gateway/go/services/magmad/status",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -6,7 +6,7 @@ go_library(
         "test_indexer_servicer.go",
         "test_service_init.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/test_init",
+    importpath = "magma/orc8r/cloud/go/services/state/test_init",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_stretchr_testify//assert",

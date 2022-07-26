@@ -6,7 +6,7 @@ go_library(
         "metrics.go",
         "server.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/obsidian/server",
+    importpath = "magma/orc8r/cloud/go/services/obsidian/server",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

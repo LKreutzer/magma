@@ -9,7 +9,7 @@ go_library(
         "n7.go",
         "notifier_handler.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/n7_n40_proxy/n7",
+    importpath = "magma/feg/gateway/services/n7_n40_proxy/n7",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

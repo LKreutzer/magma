@@ -6,7 +6,7 @@ go_library(
         "gen.go",
         "relay.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/session_proxy/relay",
+    importpath = "magma/feg/gateway/services/session_proxy/relay",
     visibility = ["//visibility:public"],
     deps = ["@org_golang_google_grpc//:go_default_library"],
 )

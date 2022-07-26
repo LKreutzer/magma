@@ -9,7 +9,7 @@ go_library(
         "interceptors.go",
         "registered_gw_enforcer.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/service/middleware/unary",
+    importpath = "magma/orc8r/cloud/go/service/middleware/unary",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

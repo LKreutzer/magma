@@ -7,7 +7,7 @@ go_library(
         "SeriesAPI.go",
         "httpClient.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/prometheus/handlers/mocks",
+    importpath = "magma/orc8r/cloud/go/services/metricsd/prometheus/handlers/mocks",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_prometheus_client_golang//api/prometheus/v1:go_default_library",

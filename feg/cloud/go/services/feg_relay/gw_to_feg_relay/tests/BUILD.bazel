@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "tests",
     srcs = ["test_setup.go"],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/feg_relay/gw_to_feg_relay/tests",
+    importpath = "magma/feg/cloud/go/services/feg_relay/gw_to_feg_relay/tests",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_swag//:go_default_library",

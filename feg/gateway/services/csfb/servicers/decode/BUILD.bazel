@@ -6,6 +6,6 @@ go_library(
         "field_definitions.go",
         "message_type.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/csfb/servicers/decode",
+    importpath = "magma/feg/gateway/services/csfb/servicers/decode",
     visibility = ["//visibility:public"],
 )

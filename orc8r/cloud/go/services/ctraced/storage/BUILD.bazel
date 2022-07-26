@@ -6,7 +6,7 @@ go_library(
         "storage.go",
         "storage_blobstore.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/ctraced/storage",
+    importpath = "magma/orc8r/cloud/go/services/ctraced/storage",
     visibility = ["//visibility:public"],
 )
 

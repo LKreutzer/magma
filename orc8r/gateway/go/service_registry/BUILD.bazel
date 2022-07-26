@@ -6,7 +6,7 @@ go_library(
         "registry.go",
         "shared_registry.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/service_registry",
+    importpath = "magma/orc8r/gateway/go/service_registry",
     visibility = ["//visibility:public"],
     deps = [
         "//orc8r/lib/go/protos",

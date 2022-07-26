@@ -10,7 +10,7 @@ go_library(
         "service_manager.go",
         "systemd_controller.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/services/magmad/service_manager",
+    importpath = "magma/orc8r/gateway/go/services/magmad/service_manager",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

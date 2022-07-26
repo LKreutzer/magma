@@ -6,7 +6,7 @@ go_library(
         "Indexer.go",
         "test_utils.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/indexer/mocks",
+    importpath = "magma/orc8r/cloud/go/services/state/indexer/mocks",
     visibility = ["//visibility:public"],
     deps = ["@com_github_stretchr_testify//mock"],
 )

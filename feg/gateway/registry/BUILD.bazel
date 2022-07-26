@@ -6,7 +6,7 @@ go_library(
         "cloud_registry.go",
         "local_registry.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/registry",
+    importpath = "magma/feg/gateway/registry",
     visibility = ["//visibility:public"],
     deps = [
         "//orc8r/gateway/go/service_registry",

@@ -6,7 +6,7 @@ go_library(
         "client_api.go",
         "doc.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/directoryd",
+    importpath = "magma/orc8r/cloud/go/services/directoryd",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

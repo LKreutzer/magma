@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "octest",
     srcs = ["mockexporter.go"],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/oc/octest",
+    importpath = "magma/feg/radius/lib/go/oc/octest",
     visibility = ["//visibility:public"],
     deps = ["@io_opencensus_go//trace:go_default_library"],
 )

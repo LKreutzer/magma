@@ -9,7 +9,7 @@ go_library(
         "env.go",
         "sql_operations.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/migrations",
+    importpath = "magma/orc8r/cloud/go/tools/migrations",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

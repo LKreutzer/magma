@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "protected",
     srcs = ["collector_servicer.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/analytics/servicers/protected",
+    importpath = "magma/orc8r/cloud/go/services/analytics/servicers/protected",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

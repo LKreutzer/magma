@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "multiplex",
     srcs = ["multiplex.go"],
-    importpath = "github.com/magma/magma/feg/gateway/multiplex",
+    importpath = "magma/feg/gateway/multiplex",
     visibility = ["//visibility:public"],
 )
 

@@ -6,7 +6,7 @@ go_library(
         "memstats.go",
         "profiler_disabled.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/lib/go/profile",
+    importpath = "magma/orc8r/lib/go/profile",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

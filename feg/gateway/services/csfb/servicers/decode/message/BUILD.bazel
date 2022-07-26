@@ -6,7 +6,7 @@ go_library(
         "decoder.go",
         "decoder_helper.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/csfb/servicers/decode/message",
+    importpath = "magma/feg/gateway/services/csfb/servicers/decode/message",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

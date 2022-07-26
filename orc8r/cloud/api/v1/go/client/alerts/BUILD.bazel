@@ -35,7 +35,7 @@ go_library(
         "put_networks_network_id_prometheus_alert_receiver_receiver_parameters.go",
         "put_networks_network_id_prometheus_alert_receiver_receiver_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/alerts",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/alerts",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

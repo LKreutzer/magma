@@ -9,7 +9,7 @@ go_library(
         "server.go",
         "tags.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/monitoring",
+    importpath = "magma/feg/radius/src/monitoring",
     visibility = ["//visibility:public"],
     deps = [
         "@io_opencensus_go//stats:go_default_library",

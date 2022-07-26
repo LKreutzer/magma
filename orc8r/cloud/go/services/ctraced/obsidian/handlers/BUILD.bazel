@@ -6,7 +6,7 @@ go_library(
         "gateway_api.go",
         "handlers.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/ctraced/obsidian/handlers",
+    importpath = "magma/orc8r/cloud/go/services/ctraced/obsidian/handlers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

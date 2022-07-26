@@ -7,7 +7,7 @@ go_library(
         "sms_ll.go",
         "sms_rp.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/sms_ll",
+    importpath = "magma/lte/cloud/go/sms_ll",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_warthog618_sms//:go_default_library",

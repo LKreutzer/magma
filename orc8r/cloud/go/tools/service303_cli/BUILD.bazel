@@ -10,7 +10,7 @@ go_library(
         "metrics.go",
         "stop.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/service303_cli",
+    importpath = "magma/orc8r/cloud/go/tools/service303_cli",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_golang_glog//:glog",

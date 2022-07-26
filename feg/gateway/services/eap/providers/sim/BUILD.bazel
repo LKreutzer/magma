@@ -8,7 +8,7 @@ go_library(
         "notification.go",
         "start.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/eap/providers/sim",
+    importpath = "magma/feg/gateway/services/eap/providers/sim",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

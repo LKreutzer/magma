@@ -13,7 +13,7 @@ go_library(
         "server.go",
         "server-packet.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/radius",
+    importpath = "magma/feg/radius/lib/go/radius",
     visibility = ["//visibility:public"],
     deps = ["@org_uber_go_zap//:zap"],
 )

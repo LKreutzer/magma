@@ -7,7 +7,7 @@ go_library(
         "gateway_status.go",
         "host_info.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/status",
+    importpath = "magma/orc8r/gateway/go/status",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_emakeev_snowflake//:go_default_library",

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "auth",
     srcs = ["mac.go"],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/http/auth",
+    importpath = "magma/feg/radius/lib/go/http/auth",
     visibility = ["//visibility:public"],
 )
 

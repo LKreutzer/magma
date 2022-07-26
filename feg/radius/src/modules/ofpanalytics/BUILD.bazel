@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "ofpanalytics",
     srcs = ["ofpanalytics.go"],
-    importpath = "github.com/magma/magma/feg/radius/src/modules/ofpanalytics",
+    importpath = "magma/feg/radius/src/modules/ofpanalytics",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_mitchellh_mapstructure//:mapstructure",

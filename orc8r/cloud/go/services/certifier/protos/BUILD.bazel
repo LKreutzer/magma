@@ -6,7 +6,7 @@ go_library(
         "certifier.pb.go",
         "helpers.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/certifier/protos",
+    importpath = "magma/orc8r/cloud/go/services/certifier/protos",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_protobuf//proto:go_default_library",

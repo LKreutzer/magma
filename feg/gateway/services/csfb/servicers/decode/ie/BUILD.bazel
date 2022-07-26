@@ -6,7 +6,7 @@ go_library(
         "decoder.go",
         "decoder_helper.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/csfb/servicers/decode/ie",
+    importpath = "magma/feg/gateway/services/csfb/servicers/decode/ie",
     visibility = ["//visibility:public"],
 )
 

@@ -7,7 +7,7 @@ go_library(
         "servicer.go",
         "update_servicer.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/directoryd/servicers/protected",
+    importpath = "magma/orc8r/cloud/go/services/directoryd/servicers/protected",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

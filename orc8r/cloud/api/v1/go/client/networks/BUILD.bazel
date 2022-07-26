@@ -51,7 +51,7 @@ go_library(
         "put_networks_network_id_type_parameters.go",
         "put_networks_network_id_type_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/networks",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/networks",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

@@ -8,7 +8,7 @@ go_library(
         "ods.go",
         "scuba.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/config",
+    importpath = "magma/feg/radius/src/config",
     visibility = ["//visibility:public"],
 )
 

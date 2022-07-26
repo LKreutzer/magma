@@ -6,6 +6,6 @@ go_library(
         "const.go",
         "doc.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/feg",
+    importpath = "magma/feg/cloud/go/services/feg",
     visibility = ["//visibility:public"],
 )

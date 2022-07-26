@@ -9,7 +9,7 @@ go_library(
         "digest.go",
         "load.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/subscriberdb",
+    importpath = "magma/lte/cloud/go/services/subscriberdb",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_swag//:go_default_library",

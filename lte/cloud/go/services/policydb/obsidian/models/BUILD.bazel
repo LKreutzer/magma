@@ -32,7 +32,7 @@ go_library(
         "subscriber_id_swaggergen.go",
         "validate.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/policydb/obsidian/models",
+    importpath = "magma/lte/cloud/go/services/policydb/obsidian/models",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

@@ -6,7 +6,7 @@ go_library(
         "generate.go",
         "generated.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/vendors/aruba",
+    importpath = "magma/feg/radius/lib/go/radius/vendors/aruba",
     visibility = ["//visibility:public"],
 )
 

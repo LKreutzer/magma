@@ -6,7 +6,7 @@ go_library(
         "state.go",
         "user_throughput.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/analytics/calculations",
+    importpath = "magma/lte/cloud/go/services/lte/analytics/calculations",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

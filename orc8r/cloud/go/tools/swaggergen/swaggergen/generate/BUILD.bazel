@@ -6,7 +6,7 @@ go_library(
         "generate.go",
         "rewrite.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/swaggergen/swaggergen/generate",
+    importpath = "magma/orc8r/cloud/go/tools/swaggergen/swaggergen/generate",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_thoas_go_funk//:go_default_library",

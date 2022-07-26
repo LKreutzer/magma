@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "TS29122NpConfiguration",
     srcs = ["TS29122NpConfiguration.gen.go"],
-    importpath = "github.com/magma/magma/feg/gateway/sbi/specs/TS29122NpConfiguration",
+    importpath = "magma/feg/gateway/sbi/specs/TS29122NpConfiguration",
     visibility = ["//visibility:public"],
 )

@@ -25,7 +25,7 @@ go_library(
         "put_lte_network_id_network_probe_tasks_task_id_parameters.go",
         "put_lte_network_id_network_probe_tasks_task_id_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/network_probes",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/network_probes",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

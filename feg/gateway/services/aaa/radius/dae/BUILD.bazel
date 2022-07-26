@@ -6,6 +6,6 @@ go_library(
         "dae.go",
         "dae_external.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/aaa/radius/dae",
+    importpath = "magma/feg/gateway/services/aaa/radius/dae",
     visibility = ["//visibility:public"],
 )

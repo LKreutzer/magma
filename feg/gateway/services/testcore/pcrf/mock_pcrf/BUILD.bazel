@@ -8,7 +8,7 @@ go_library(
         "mock.go",
         "pcrf.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/testcore/pcrf/mock_pcrf",
+    importpath = "magma/feg/gateway/services/testcore/pcrf/mock_pcrf",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_fiorix_go_diameter_v4//diam:go_default_library",

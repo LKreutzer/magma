@@ -10,7 +10,7 @@ go_library(
         "store_reader.go",
         "store_writer.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/syncstore",
+    importpath = "magma/orc8r/cloud/go/syncstore",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

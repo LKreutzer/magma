@@ -6,6 +6,6 @@ go_library(
         "const.go",
         "env.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/lib/go/definitions",
+    importpath = "magma/orc8r/lib/go/definitions",
     visibility = ["//visibility:public"],
 )

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "query_api",
     srcs = ["query_api.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/analytics/query_api",
+    importpath = "magma/orc8r/cloud/go/services/analytics/query_api",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_prometheus_client_golang//api/prometheus/v1:go_default_library",

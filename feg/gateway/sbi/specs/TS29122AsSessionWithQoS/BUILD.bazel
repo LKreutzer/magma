@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "TS29122AsSessionWithQoS",
     srcs = ["TS29122AsSessionWithQoS.gen.go"],
-    importpath = "github.com/magma/magma/feg/gateway/sbi/specs/TS29122AsSessionWithQoS",
+    importpath = "magma/feg/gateway/sbi/specs/TS29122AsSessionWithQoS",
     visibility = ["//visibility:public"],
 )

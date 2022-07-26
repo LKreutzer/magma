@@ -6,7 +6,7 @@ go_library(
         "common.go",
         "mock_driver.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/testcore/mock_driver",
+    importpath = "magma/feg/gateway/services/testcore/mock_driver",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_fiorix_go_diameter_v4//diam/datatype:go_default_library",

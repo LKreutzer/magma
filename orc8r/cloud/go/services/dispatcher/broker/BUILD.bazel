@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "broker",
     srcs = ["broker.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/dispatcher/broker",
+    importpath = "magma/orc8r/cloud/go/services/dispatcher/broker",
     visibility = ["//visibility:public"],
 )

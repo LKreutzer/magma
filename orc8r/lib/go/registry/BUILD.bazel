@@ -10,7 +10,7 @@ go_library(
         "service_registry.go",
         "shared_cloud_conn.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/lib/go/registry",
+    importpath = "magma/orc8r/lib/go/registry",
     visibility = ["//visibility:public"],
     deps = [
         "//orc8r/lib/go/service/config",

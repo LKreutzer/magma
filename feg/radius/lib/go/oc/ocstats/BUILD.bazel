@@ -6,7 +6,7 @@ go_library(
         "handler.go",
         "views.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/oc/ocstats",
+    importpath = "magma/feg/radius/lib/go/oc/ocstats",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_prometheus_client_golang//prometheus:go_default_library",

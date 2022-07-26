@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "hss",
     srcs = ["client_api.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/testcore/hss",
+    importpath = "magma/feg/gateway/services/testcore/hss",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

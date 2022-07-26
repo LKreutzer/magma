@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "storage",
     srcs = ["enodeb_state_lookup.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/storage",
+    importpath = "magma/lte/cloud/go/services/lte/storage",
     visibility = ["//visibility:public"],
     deps = ["@com_github_masterminds_squirrel//:go_default_library"],
 )

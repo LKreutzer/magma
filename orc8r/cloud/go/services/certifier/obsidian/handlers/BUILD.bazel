@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "handlers",
     srcs = ["handlers.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/certifier/obsidian/handlers",
+    importpath = "magma/orc8r/cloud/go/services/certifier/obsidian/handlers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_strfmt//:go_default_library",

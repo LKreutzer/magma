@@ -10,7 +10,7 @@ go_library(
         "operator.go",
         "rest_middleware.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/obsidian/access",
+    importpath = "magma/orc8r/cloud/go/services/obsidian/access",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

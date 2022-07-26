@@ -7,7 +7,7 @@ go_library(
         "const.go",
         "doc.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/health",
+    importpath = "magma/feg/cloud/go/services/health",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

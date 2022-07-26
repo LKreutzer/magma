@@ -12,7 +12,7 @@ go_library(
         "senders.go",
         "tft_proto_conversion.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/s8_proxy/servicers",
+    importpath = "magma/feg/gateway/services/s8_proxy/servicers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

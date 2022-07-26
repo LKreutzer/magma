@@ -7,6 +7,6 @@ go_library(
         "doc.go",
         "internal.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/clock",
+    importpath = "magma/orc8r/cloud/go/clock",
     visibility = ["//visibility:public"],
 )

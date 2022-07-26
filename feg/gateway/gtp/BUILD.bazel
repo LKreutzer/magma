@@ -7,7 +7,7 @@ go_library(
         "handlers.go",
         "session_manager.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/gtp",
+    importpath = "magma/feg/gateway/gtp",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

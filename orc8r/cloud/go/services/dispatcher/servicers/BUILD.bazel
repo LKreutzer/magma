@@ -6,7 +6,7 @@ go_library(
         "sync_rpc_service.go",
         "sync_rpc_test_service.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/dispatcher/servicers",
+    importpath = "magma/orc8r/cloud/go/services/dispatcher/servicers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

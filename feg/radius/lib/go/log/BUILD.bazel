@@ -9,7 +9,7 @@ go_library(
         "rate_limit_core.go",
         "span.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/log",
+    importpath = "magma/feg/radius/lib/go/log",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_davecgh_go_spew//spew",

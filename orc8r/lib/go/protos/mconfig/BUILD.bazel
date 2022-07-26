@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "mconfig",
     srcs = ["mconfigs.pb.go"],
-    importpath = "github.com/magma/magma/orc8r/lib/go/protos/mconfig",
+    importpath = "magma/orc8r/lib/go/protos/mconfig",
     visibility = ["//visibility:public"],
     deps = [
         "@org_golang_google_protobuf//reflect/protoreflect",

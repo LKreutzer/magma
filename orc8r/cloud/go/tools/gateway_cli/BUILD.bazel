@@ -10,7 +10,7 @@ go_library(
         "restart_services.go",
         "tail_logs.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/gateway_cli",
+    importpath = "magma/orc8r/cloud/go/tools/gateway_cli",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_golang_glog//:glog",

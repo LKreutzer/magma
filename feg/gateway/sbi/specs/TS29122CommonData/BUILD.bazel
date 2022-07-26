@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "TS29122CommonData",
     srcs = ["TS29122CommonData.gen.go"],
-    importpath = "github.com/magma/magma/feg/gateway/sbi/specs/TS29122CommonData",
+    importpath = "magma/feg/gateway/sbi/specs/TS29122CommonData",
     visibility = ["//visibility:public"],
 )

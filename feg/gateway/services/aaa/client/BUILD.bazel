@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "client",
     srcs = ["client_api.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/aaa/client",
+    importpath = "magma/feg/gateway/services/aaa/client",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

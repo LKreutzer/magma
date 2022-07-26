@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "mocks",
     srcs = ["mock_pcf.go"],
-    importpath = "github.com/magma/magma/feg/gateway/sbi/mocks",
+    importpath = "magma/feg/gateway/sbi/mocks",
     visibility = ["//visibility:public"],
     deps = ["@com_github_labstack_echo_v4//:echo"],
 )

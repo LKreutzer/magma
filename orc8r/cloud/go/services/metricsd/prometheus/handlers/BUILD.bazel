@@ -8,7 +8,7 @@ go_library(
         "alert_silencing_handlers.go",
         "promo_handlers.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/prometheus/handlers",
+    importpath = "magma/orc8r/cloud/go/services/metricsd/prometheus/handlers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_facebookincubator_prometheus_configmanager//alertmanager/config:go_default_library",

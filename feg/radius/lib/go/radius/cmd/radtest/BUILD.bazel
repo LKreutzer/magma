@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "radtest_lib",
     srcs = ["main.go"],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/cmd/radtest",
+    importpath = "magma/feg/radius/lib/go/radius/cmd/radtest",
     visibility = ["//visibility:private"],
 )
 

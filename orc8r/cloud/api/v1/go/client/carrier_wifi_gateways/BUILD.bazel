@@ -43,7 +43,7 @@ go_library(
         "put_cwf_network_id_gateways_gateway_id_tier_parameters.go",
         "put_cwf_network_id_gateways_gateway_id_tier_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/carrier_wifi_gateways",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/carrier_wifi_gateways",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "merrors",
     srcs = ["client_errors.go"],
-    importpath = "github.com/magma/magma/orc8r/lib/go/merrors",
+    importpath = "magma/orc8r/lib/go/merrors",
     visibility = ["//visibility:public"],
 )

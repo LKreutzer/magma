@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "TS29510NnrfAccessToken",
     srcs = ["TS29510NnrfAccessToken.gen.go"],
-    importpath = "github.com/magma/magma/feg/gateway/sbi/specs/TS29510NnrfAccessToken",
+    importpath = "magma/feg/gateway/sbi/specs/TS29510NnrfAccessToken",
     visibility = ["//visibility:public"],
 )

@@ -7,7 +7,7 @@ go_library(
         "const.go",
         "doc.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/nprobe",
+    importpath = "magma/lte/cloud/go/services/nprobe",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

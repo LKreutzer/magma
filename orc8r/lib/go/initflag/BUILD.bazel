@@ -7,6 +7,6 @@ go_library(
         "parse_flag_release.go",
         "syslog.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/lib/go/initflag",
+    importpath = "magma/orc8r/lib/go/initflag",
     visibility = ["//visibility:public"],
 )

@@ -9,7 +9,7 @@ go_library(
         "sim_peer_failure.go",
         "sim_start.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/eap/providers/sim/servicers/handlers",
+    importpath = "magma/feg/gateway/services/eap/providers/sim/servicers/handlers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

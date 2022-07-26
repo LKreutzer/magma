@@ -6,7 +6,7 @@ go_library(
         "get_all_gateways.go",
         "get_teids.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/feg_relay/utils",
+    importpath = "magma/feg/cloud/go/services/feg_relay/utils",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_swag//:go_default_library",

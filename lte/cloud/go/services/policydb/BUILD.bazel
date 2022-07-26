@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "policydb",
     srcs = ["client_api.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/policydb",
+    importpath = "magma/lte/cloud/go/services/policydb",
     visibility = ["//visibility:public"],
 )

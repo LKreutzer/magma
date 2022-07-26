@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "ie",
     srcs = ["encoder.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/csfb/servicers/encode/ie",
+    importpath = "magma/feg/gateway/services/csfb/servicers/encode/ie",
     visibility = ["//visibility:public"],
 )
 

@@ -6,7 +6,7 @@ go_library(
         "client.go",
         "xwf_customer.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/libgraphql",
+    importpath = "magma/feg/radius/lib/go/libgraphql",
     visibility = ["//visibility:public"],
     deps = ["@com_github_google_uuid//:uuid"],
 )

@@ -15,7 +15,7 @@ go_library(
         "serdes.go",
         "validate.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/nprobe/obsidian/models",
+    importpath = "magma/lte/cloud/go/services/nprobe/obsidian/models",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

@@ -8,7 +8,7 @@ go_library(
         "gw_to_feg_relay.go",
         "nh_router.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/feg_relay/gw_to_feg_relay",
+    importpath = "magma/feg/cloud/go/services/feg_relay/gw_to_feg_relay",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "filterstest",
     srcs = ["filter_mock.go"],
-    importpath = "github.com/magma/magma/feg/radius/src/filters/filterstest",
+    importpath = "magma/feg/radius/src/filters/filterstest",
     visibility = ["//visibility:public"],
     deps = ["@com_github_stretchr_testify//mock"],
 )

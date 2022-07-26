@@ -13,7 +13,7 @@ go_library(
         "post_networks_network_id_gateways_gateway_id_command_restart_services_parameters.go",
         "post_networks_network_id_gateways_gateway_id_command_restart_services_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/commands",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/commands",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

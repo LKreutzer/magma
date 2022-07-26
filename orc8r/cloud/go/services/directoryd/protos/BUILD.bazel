@@ -6,7 +6,7 @@ go_library(
         "directoryd.pb.go",
         "directoryd_helper.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/directoryd/protos",
+    importpath = "magma/orc8r/cloud/go/services/directoryd/protos",
     visibility = ["//visibility:public"],
     deps = [
         "@org_golang_google_grpc//:go_default_library",

@@ -6,7 +6,7 @@ go_library(
         "manager.go",
         "manager.memory.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/modules/eap/authstate",
+    importpath = "magma/feg/radius/src/modules/eap/authstate",
     visibility = ["//visibility:public"],
     deps = ["@io_opencensus_go//tag:go_default_library"],
 )

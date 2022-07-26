@@ -7,7 +7,7 @@ go_library(
         "get_foo_responses.go",
         "operations_client.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/operations",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/operations",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

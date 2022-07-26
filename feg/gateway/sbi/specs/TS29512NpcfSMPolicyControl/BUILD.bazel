@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "TS29512NpcfSMPolicyControl",
     srcs = ["TS29512NpcfSMPolicyControl.gen.go"],
-    importpath = "github.com/magma/magma/feg/gateway/sbi/specs/TS29512NpcfSMPolicyControl",
+    importpath = "magma/feg/gateway/sbi/specs/TS29512NpcfSMPolicyControl",
     visibility = ["//visibility:public"],
     deps = ["@com_github_deepmap_oapi_codegen//pkg/runtime:go_default_library"],
 )

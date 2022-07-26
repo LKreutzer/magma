@@ -8,7 +8,7 @@ go_library(
         "context.pb.go",
         "eap.pb.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/modules/protos",
+    importpath = "magma/feg/radius/src/modules/protos",
     visibility = ["//visibility:public"],
     deps = [
         "@org_golang_google_grpc//:go_default_library",

@@ -7,7 +7,7 @@ go_library(
         "config.go",
         "tokens.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/certifier",
+    importpath = "magma/orc8r/cloud/go/services/certifier",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -13,7 +13,7 @@ go_library(
         "post_lte_network_id_sms_responses.go",
         "sms_client.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/sms",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/sms",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

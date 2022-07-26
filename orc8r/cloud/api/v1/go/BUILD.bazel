@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "go",
     srcs = ["gen.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go",
+    importpath = "magma/orc8r/cloud/api/v1/go",
     visibility = ["//visibility:public"],
 )

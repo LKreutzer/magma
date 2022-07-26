@@ -50,7 +50,7 @@ go_library(
         "validate.go",
         "virtual_apn_rule_swaggergen.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/feg/obsidian/models",
+    importpath = "magma/feg/cloud/go/services/feg/obsidian/models",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

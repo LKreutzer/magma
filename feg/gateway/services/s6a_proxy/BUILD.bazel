@@ -6,7 +6,7 @@ go_library(
         "client.go",
         "gw_s6a_client_api.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/s6a_proxy",
+    importpath = "magma/feg/gateway/services/s6a_proxy",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "m013_policy_ipv6_lib",
     srcs = ["main.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/tools/migrations/m013_policy_ipv6",
+    importpath = "magma/lte/cloud/go/tools/migrations/m013_policy_ipv6",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_go_sql_driver_mysql//:go_default_library",

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "protected",
     srcs = ["builder_servicer.go"],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/feg/servicers/protected",
+    importpath = "magma/feg/cloud/go/services/feg/servicers/protected",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_swag//:go_default_library",

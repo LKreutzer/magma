@@ -7,7 +7,7 @@ go_library(
         "listener.go",
         "streamer.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/streamer",
+    importpath = "magma/orc8r/gateway/go/streamer",
     visibility = ["//visibility:public"],
     deps = [
         "@io_bazel_rules_go//proto/wkt:any_go_proto",

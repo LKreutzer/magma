@@ -7,7 +7,7 @@ go_library(
         "indexer_servicer.go",
         "lookup.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/servicers/protected",
+    importpath = "magma/lte/cloud/go/services/lte/servicers/protected",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_strfmt//:go_default_library",

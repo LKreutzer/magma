@@ -8,7 +8,7 @@ go_library(
         "http2_server.go",
         "http_grpc_error.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/http2",
+    importpath = "magma/orc8r/cloud/go/http2",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

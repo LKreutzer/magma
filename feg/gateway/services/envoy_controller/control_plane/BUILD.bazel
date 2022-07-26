@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "control_plane",
     srcs = ["control_plane.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/envoy_controller/control_plane",
+    importpath = "magma/feg/gateway/services/envoy_controller/control_plane",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_envoyproxy_go_control_plane//envoy/config/cluster/v3:cluster",

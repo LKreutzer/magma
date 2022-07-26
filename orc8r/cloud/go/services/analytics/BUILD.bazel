@@ -10,7 +10,7 @@ go_library(
         "doc.go",
         "exporter.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/analytics",
+    importpath = "magma/orc8r/cloud/go/services/analytics",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

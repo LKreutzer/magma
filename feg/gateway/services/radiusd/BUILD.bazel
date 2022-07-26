@@ -6,6 +6,6 @@ go_library(
         "const.go",
         "doc.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/radiusd",
+    importpath = "magma/feg/gateway/services/radiusd",
     visibility = ["//visibility:public"],
 )

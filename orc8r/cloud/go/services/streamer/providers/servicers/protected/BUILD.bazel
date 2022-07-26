@@ -7,7 +7,7 @@ go_library(
         "providers.go",
         "remote_provider.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/streamer/providers/servicers/protected",
+    importpath = "magma/orc8r/cloud/go/services/streamer/providers/servicers/protected",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

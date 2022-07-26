@@ -6,7 +6,7 @@ go_library(
         "main.go",
         "s8_client.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/tools/s8_cli",
+    importpath = "magma/feg/gateway/tools/s8_cli",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_golang_glog//:glog",

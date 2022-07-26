@@ -9,7 +9,7 @@ go_library(
         "gen.go",
         "types.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/blobstore",
+    importpath = "magma/orc8r/cloud/go/blobstore",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

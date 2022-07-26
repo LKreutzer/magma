@@ -8,7 +8,7 @@ go_library(
         "heartbeat_reset_go1_15.go",
         "heartbeat_reset_prego1_15.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/aaa/base_acct",
+    importpath = "magma/feg/gateway/services/aaa/base_acct",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

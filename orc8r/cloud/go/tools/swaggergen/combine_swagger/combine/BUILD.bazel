@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "combine",
     srcs = ["combine.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/swaggergen/combine_swagger/combine",
+    importpath = "magma/orc8r/cloud/go/tools/swaggergen/combine_swagger/combine",
     visibility = ["//visibility:public"],
 )
 

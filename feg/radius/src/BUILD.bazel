@@ -6,7 +6,7 @@ go_library(
         "main.go",
         "main_test_manual.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src",
+    importpath = "magma/feg/radius/src",
     visibility = ["//visibility:private"],
     deps = ["@org_uber_go_zap//:zap"],
 )

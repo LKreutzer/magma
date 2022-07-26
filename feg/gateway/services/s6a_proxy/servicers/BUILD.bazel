@@ -14,7 +14,7 @@ go_library(
         "ul.go",
         "util.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/s6a_proxy/servicers",
+    importpath = "magma/feg/gateway/services/s6a_proxy/servicers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_fiorix_go_diameter_v4//diam:go_default_library",

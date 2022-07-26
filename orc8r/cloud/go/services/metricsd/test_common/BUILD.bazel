@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "test_common",
     srcs = ["utils.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/test_common",
+    importpath = "magma/orc8r/cloud/go/services/metricsd/test_common",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_prometheus_client_golang//prometheus:go_default_library",

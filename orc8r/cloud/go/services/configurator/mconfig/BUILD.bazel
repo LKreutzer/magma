@@ -9,7 +9,7 @@ go_library(
         "registry.go",
         "remote_builder.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/configurator/mconfig",
+    importpath = "magma/orc8r/cloud/go/services/configurator/mconfig",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

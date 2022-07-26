@@ -6,7 +6,7 @@ go_library(
         "config.go",
         "health.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/health/servicers/southbound",
+    importpath = "magma/feg/cloud/go/services/health/servicers/southbound",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "service",
     srcs = ["sync_rpc_client.go"],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/services/sync_rpc/service",
+    importpath = "magma/orc8r/gateway/go/services/sync_rpc/service",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

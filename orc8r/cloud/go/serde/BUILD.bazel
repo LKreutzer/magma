@@ -7,7 +7,7 @@ go_library(
         "registry.go",
         "serde.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/serde",
+    importpath = "magma/orc8r/cloud/go/serde",
     visibility = ["//visibility:public"],
 )
 

@@ -9,7 +9,7 @@ go_library(
         "util.go",
         "vendor.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/dictionarygen",
+    importpath = "magma/feg/radius/lib/go/radius/dictionarygen",
     visibility = ["//visibility:public"],
 )
 

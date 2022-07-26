@@ -6,7 +6,7 @@ go_library(
         "storage.go",
         "storage_blobstore.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/certifier/storage",
+    importpath = "magma/orc8r/cloud/go/services/certifier/storage",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_protobuf//proto:go_default_library",

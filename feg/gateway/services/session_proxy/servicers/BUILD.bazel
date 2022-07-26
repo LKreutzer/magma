@@ -8,7 +8,7 @@ go_library(
         "policy.go",
         "session_controller.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/session_proxy/servicers",
+    importpath = "magma/feg/gateway/services/session_proxy/servicers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

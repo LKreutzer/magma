@@ -6,6 +6,6 @@ go_library(
         "new.go",
         "old.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/tools/migrations/m012_policy_qos/types",
+    importpath = "magma/lte/cloud/go/tools/migrations/m012_policy_qos/types",
     visibility = ["//visibility:public"],
 )

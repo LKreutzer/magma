@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "gateway_info",
     srcs = ["get_info.go"],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/services/bootstrapper/gateway_info",
+    importpath = "magma/orc8r/gateway/go/services/bootstrapper/gateway_info",
     visibility = ["//visibility:public"],
     deps = ["@com_github_emakeev_snowflake//:go_default_library"],
 )

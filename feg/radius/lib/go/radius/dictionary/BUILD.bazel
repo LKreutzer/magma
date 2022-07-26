@@ -11,7 +11,7 @@ go_library(
         "sort.go",
         "util.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/dictionary",
+    importpath = "magma/feg/radius/lib/go/radius/dictionary",
     visibility = ["//visibility:public"],
 )
 

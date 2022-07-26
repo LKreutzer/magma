@@ -8,7 +8,7 @@ go_library(
         "storage.memory.go",
         "storage.redis.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/session",
+    importpath = "magma/feg/radius/src/session",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_redis_redis//:go_default_library",

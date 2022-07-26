@@ -49,7 +49,7 @@ go_library(
         "put_networks_network_id_tiers_tier_id_version_responses.go",
         "upgrades_client.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/upgrades",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/upgrades",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

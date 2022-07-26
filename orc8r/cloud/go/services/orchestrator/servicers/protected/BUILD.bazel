@@ -9,7 +9,7 @@ go_library(
         "grpc_exporter_servicer.go",
         "indexer_servicer.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/orchestrator/servicers/protected",
+    importpath = "magma/orc8r/cloud/go/services/orchestrator/servicers/protected",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_facebookincubator_prometheus_edge_hub//grpc:go_default_library",

@@ -8,7 +8,7 @@ go_library(
         "mutable_sms_message_swaggergen.go",
         "sms_message_swaggergen.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/smsd/obsidian/models",
+    importpath = "magma/lte/cloud/go/services/smsd/obsidian/models",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

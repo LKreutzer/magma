@@ -6,6 +6,6 @@ go_library(
         "generate.go",
         "generated.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/radius/ruckus",
+    importpath = "magma/feg/radius/lib/go/radius/ruckus",
     visibility = ["//visibility:public"],
 )

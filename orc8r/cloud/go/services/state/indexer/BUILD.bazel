@@ -10,7 +10,7 @@ go_library(
         "registry.go",
         "remote_indexer.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/indexer",
+    importpath = "magma/orc8r/cloud/go/services/state/indexer",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

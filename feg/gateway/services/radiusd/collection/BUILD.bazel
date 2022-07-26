@@ -9,7 +9,7 @@ go_library(
         "parse.go",
         "registry_wrapper.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/radiusd/collection",
+    importpath = "magma/feg/gateway/services/radiusd/collection",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

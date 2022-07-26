@@ -6,7 +6,7 @@ go_library(
         "access.pb.go",
         "access_helper.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/accessd/protos",
+    importpath = "magma/orc8r/cloud/go/services/accessd/protos",
     visibility = ["//visibility:public"],
     deps = [
         "@org_golang_google_grpc//:go_default_library",

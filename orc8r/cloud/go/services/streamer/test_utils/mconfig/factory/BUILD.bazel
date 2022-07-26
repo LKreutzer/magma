@@ -6,7 +6,7 @@ go_library(
         "builder.go",
         "factory.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/streamer/test_utils/mconfig/factory",
+    importpath = "magma/orc8r/cloud/go/services/streamer/test_utils/mconfig/factory",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_protobuf//proto:go_default_library",

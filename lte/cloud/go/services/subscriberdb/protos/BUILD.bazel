@@ -6,7 +6,7 @@ go_library(
         "subscriberdb.pb.go",
         "validate.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/subscriberdb/protos",
+    importpath = "magma/lte/cloud/go/services/subscriberdb/protos",
     visibility = ["//visibility:public"],
     deps = [
         "@org_golang_google_grpc//:go_default_library",

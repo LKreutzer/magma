@@ -9,7 +9,7 @@ go_library(
         "encr.go",
         "server.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/aaa/radius",
+    importpath = "magma/feg/gateway/services/aaa/radius",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

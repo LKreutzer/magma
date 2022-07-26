@@ -6,7 +6,7 @@ go_library(
         "main.go",
         "without_builtin_radius.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/aaa/aaa_server",
+    importpath = "magma/feg/gateway/services/aaa/aaa_server",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_golang_glog//:glog",

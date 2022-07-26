@@ -7,7 +7,7 @@ go_library(
         "storage.go",
         "util.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/health/storage",
+    importpath = "magma/feg/cloud/go/services/health/storage",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

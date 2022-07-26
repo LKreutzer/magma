@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "eps_authentication",
     srcs = ["eps_authentication.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/eps_authentication",
+    importpath = "magma/lte/cloud/go/services/eps_authentication",
     visibility = ["//visibility:public"],
 )

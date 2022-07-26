@@ -6,6 +6,6 @@ go_library(
         "const.go",
         "doc.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/ctraced",
+    importpath = "magma/orc8r/cloud/go/services/ctraced",
     visibility = ["//visibility:public"],
 )

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "utils",
     srcs = ["utils.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/obsidian/utils",
+    importpath = "magma/orc8r/cloud/go/services/metricsd/obsidian/utils",
     visibility = ["//visibility:public"],
 )
 

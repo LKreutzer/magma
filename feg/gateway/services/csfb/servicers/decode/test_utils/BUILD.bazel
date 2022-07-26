@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "test_utils",
     srcs = ["message_decoder_test_helper.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/csfb/servicers/decode/test_utils",
+    importpath = "magma/feg/gateway/services/csfb/servicers/decode/test_utils",
     visibility = ["//visibility:public"],
 )

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "health_lib",
     srcs = ["main.go"],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/health/health",
+    importpath = "magma/feg/cloud/go/services/health/health",
     visibility = ["//visibility:private"],
     deps = ["@com_github_golang_glog//:glog"],
 )

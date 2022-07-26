@@ -6,7 +6,7 @@ go_library(
         "config_map.go",
         "service_config.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/lib/go/service/config",
+    importpath = "magma/orc8r/lib/go/service/config",
     visibility = ["//visibility:public"],
     deps = [
         "//orc8r/lib/go/initflag",

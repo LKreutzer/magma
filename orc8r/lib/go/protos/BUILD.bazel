@@ -29,7 +29,7 @@ go_library(
         "streamer.pb.go",
         "sync_rpc_service.pb.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/lib/go/protos",
+    importpath = "magma/orc8r/lib/go/protos",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

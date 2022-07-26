@@ -6,7 +6,7 @@ go_library(
         "filter.go",
         "loader.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/filters",
+    importpath = "magma/feg/radius/src/filters",
     visibility = ["//visibility:public"],
     deps = ["@org_uber_go_zap//:zap"],
 )

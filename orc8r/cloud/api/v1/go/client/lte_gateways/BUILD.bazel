@@ -77,7 +77,7 @@ go_library(
         "put_lte_network_id_gateways_gateway_id_vpn_parameters.go",
         "put_lte_network_id_gateways_gateway_id_vpn_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/lte_gateways",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/lte_gateways",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

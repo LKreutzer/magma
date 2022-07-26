@@ -8,7 +8,7 @@ go_library(
         "server_options.go",
         "viewer.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/oc",
+    importpath = "magma/feg/radius/lib/go/oc",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_jessevdk_go_flags//:go_default_library",

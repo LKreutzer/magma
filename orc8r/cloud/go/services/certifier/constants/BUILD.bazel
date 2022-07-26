@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "constants",
     srcs = ["constants.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/certifier/constants",
+    importpath = "magma/orc8r/cloud/go/services/certifier/constants",
     visibility = ["//visibility:public"],
 )

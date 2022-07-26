@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "southbound",
     srcs = ["trace_servicer.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/ctraced/servicers/southbound",
+    importpath = "magma/orc8r/cloud/go/services/ctraced/servicers/southbound",
     visibility = ["//visibility:public"],
     deps = [
         "@org_golang_google_grpc//codes",

@@ -39,7 +39,7 @@ go_library(
         "put_networks_network_id_policies_rules_rule_id_parameters.go",
         "put_networks_network_id_policies_rules_rule_id_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/policies",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/policies",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

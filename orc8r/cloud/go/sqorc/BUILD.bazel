@@ -12,7 +12,7 @@ go_library(
         "test_init_utils.go",
         "tx.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/sqorc",
+    importpath = "magma/orc8r/cloud/go/sqorc",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_sql_driver_mysql//:go_default_library",

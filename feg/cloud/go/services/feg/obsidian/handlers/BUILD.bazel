@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "handlers",
     srcs = ["handlers.go"],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/feg/obsidian/handlers",
+    importpath = "magma/feg/cloud/go/services/feg/obsidian/handlers",
     visibility = ["//visibility:public"],
     deps = ["@com_github_labstack_echo_v4//:echo"],
 )

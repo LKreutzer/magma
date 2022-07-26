@@ -6,7 +6,7 @@ go_library(
         "configurator.go",
         "io.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/services/configurator/service",
+    importpath = "magma/orc8r/gateway/go/services/configurator/service",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

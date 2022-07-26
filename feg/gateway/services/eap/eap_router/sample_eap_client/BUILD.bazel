@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "sample_eap_client_lib",
     srcs = ["grpc_client.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/eap/eap_router/sample_eap_client",
+    importpath = "magma/feg/gateway/services/eap/eap_router/sample_eap_client",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_golang_glog//:glog",

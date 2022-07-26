@@ -14,7 +14,7 @@ go_library(
         "requests.go",
         "util.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/diameter",
+    importpath = "magma/feg/gateway/diameter",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_fiorix_go_diameter_v4//diam:go_default_library",

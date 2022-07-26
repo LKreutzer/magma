@@ -6,7 +6,7 @@ go_library(
         "gateway_status_reporter.go",
         "metrics.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/metrics",
+    importpath = "magma/orc8r/cloud/go/services/state/metrics",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_swag//:go_default_library",

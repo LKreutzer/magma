@@ -6,7 +6,7 @@ go_library(
         "servicer.go",
         "validate.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/state/servicers/southbound",
+    importpath = "magma/orc8r/cloud/go/services/state/servicers/southbound",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

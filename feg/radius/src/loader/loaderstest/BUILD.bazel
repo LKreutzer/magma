@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "loaderstest",
     srcs = ["loader_mock.go"],
-    importpath = "github.com/magma/magma/feg/radius/src/loader/loaderstest",
+    importpath = "magma/feg/radius/src/loader/loaderstest",
     visibility = ["//visibility:public"],
     deps = ["@com_github_stretchr_testify//mock"],
 )

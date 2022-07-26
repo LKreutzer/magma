@@ -9,7 +9,7 @@ go_library(
         "serializers.go",
         "streamer.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/policydb",
+    importpath = "magma/feg/gateway/policydb",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -10,7 +10,7 @@ go_library(
         "packet.go",
         "session.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/eap",
+    importpath = "magma/feg/gateway/services/eap",
     visibility = ["//visibility:public"],
 )
 

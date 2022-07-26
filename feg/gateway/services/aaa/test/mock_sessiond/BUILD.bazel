@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "mock_sessiond",
     srcs = ["services.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/aaa/test/mock_sessiond",
+    importpath = "magma/feg/gateway/services/aaa/test/mock_sessiond",
     visibility = ["//visibility:public"],
 )

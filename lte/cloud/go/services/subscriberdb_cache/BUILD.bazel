@@ -7,7 +7,7 @@ go_library(
         "const.go",
         "worker.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/subscriberdb_cache",
+    importpath = "magma/lte/cloud/go/services/subscriberdb_cache",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -6,7 +6,7 @@ go_library(
         "math.go",
         "util.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/lib/go/util",
+    importpath = "magma/orc8r/lib/go/util",
     visibility = ["//visibility:public"],
 )
 

@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "streamer",
     srcs = ["providers.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/subscriberdb/streamer",
+    importpath = "magma/lte/cloud/go/services/subscriberdb/streamer",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_protobuf//proto:go_default_library",

@@ -24,7 +24,7 @@ go_library(
         "subscriberauth.pb.go",
         "subscriberdb.pb.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/protos",
+    importpath = "magma/lte/cloud/go/protos",
     visibility = ["//visibility:public"],
     deps = [
         "//orc8r/lib/go/protos",

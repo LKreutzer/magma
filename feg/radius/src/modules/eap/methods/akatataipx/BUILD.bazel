@@ -9,7 +9,7 @@ go_library(
         "state.go",
         "tata_client.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/modules/eap/methods/akatataipx",
+    importpath = "magma/feg/radius/src/modules/eap/methods/akatataipx",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_mitchellh_mapstructure//:mapstructure",

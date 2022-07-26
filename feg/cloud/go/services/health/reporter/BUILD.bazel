@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "reporter",
     srcs = ["network_health_reporter.go"],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/health/reporter",
+    importpath = "magma/feg/cloud/go/services/health/reporter",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_swag//:go_default_library",

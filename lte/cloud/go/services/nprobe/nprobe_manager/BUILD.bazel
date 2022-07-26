@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "nprobe_manager",
     srcs = ["nprobe_manager.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/nprobe/nprobe_manager",
+    importpath = "magma/lte/cloud/go/services/nprobe/nprobe_manager",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_strfmt//:go_default_library",

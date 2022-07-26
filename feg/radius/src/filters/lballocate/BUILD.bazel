@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "lballocate",
     srcs = ["lb_allocate.go"],
-    importpath = "github.com/magma/magma/feg/radius/src/filters/lballocate",
+    importpath = "magma/feg/radius/src/filters/lballocate",
     visibility = ["//visibility:public"],
     deps = ["@org_uber_go_zap//:zap"],
 )

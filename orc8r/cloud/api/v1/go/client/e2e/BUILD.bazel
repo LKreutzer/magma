@@ -17,7 +17,7 @@ go_library(
         "put_tests_e2e_enodebd_test_pk_parameters.go",
         "put_tests_e2e_enodebd_test_pk_responses.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/api/v1/go/client/e2e",
+    importpath = "magma/orc8r/cloud/api/v1/go/client/e2e",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

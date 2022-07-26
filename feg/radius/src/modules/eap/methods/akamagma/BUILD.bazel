@@ -6,7 +6,7 @@ go_library(
         "aka_magma.go",
         "counters.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/modules/eap/methods/akamagma",
+    importpath = "magma/feg/radius/src/modules/eap/methods/akamagma",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_mitchellh_mapstructure//:mapstructure",

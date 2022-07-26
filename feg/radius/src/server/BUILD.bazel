@@ -10,7 +10,7 @@ go_library(
         "sse_listener.go",
         "udp_listener.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/server",
+    importpath = "magma/feg/radius/src/server",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_donovanhide_eventsource//:go_default_library",

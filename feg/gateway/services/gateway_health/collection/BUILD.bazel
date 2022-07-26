@@ -6,7 +6,7 @@ go_library(
         "services.go",
         "system.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/gateway_health/collection",
+    importpath = "magma/feg/gateway/services/gateway_health/collection",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_shirou_gopsutil_v3//cpu:go_default_library",

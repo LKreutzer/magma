@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "test_init",
     srcs = ["test_service_init.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/test_init",
+    importpath = "magma/lte/cloud/go/services/lte/test_init",
     visibility = ["//visibility:public"],
     deps = ["@com_github_stretchr_testify//assert"],
 )

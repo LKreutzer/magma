@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "m004_gateway_device_lib",
     srcs = ["main.go"],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/tools/migrations/m004_gateway_device",
+    importpath = "magma/orc8r/cloud/go/tools/migrations/m004_gateway_device",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_go_sql_driver_mysql//:go_default_library",

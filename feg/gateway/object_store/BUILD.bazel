@@ -6,7 +6,7 @@ go_library(
         "object_store.go",
         "redis.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/object_store",
+    importpath = "magma/feg/gateway/object_store",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_redis_redis//:go_default_library",

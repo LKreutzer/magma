@@ -6,7 +6,7 @@ go_library(
         "config.go",
         "server.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/lib/go/http/server",
+    importpath = "magma/feg/radius/lib/go/http/server",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_justinas_alice//:go_default_library",

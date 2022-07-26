@@ -10,7 +10,7 @@ go_library(
         "gatherer.go",
         "metric_families.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/metricsd/collection",
+    importpath = "magma/orc8r/cloud/go/services/metricsd/collection",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

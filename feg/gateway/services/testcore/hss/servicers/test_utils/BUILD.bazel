@@ -6,7 +6,7 @@ go_library(
         "hss_test_server.go",
         "test_subscribers.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/testcore/hss/servicers/test_utils",
+    importpath = "magma/feg/gateway/services/testcore/hss/servicers/test_utils",
     visibility = ["//visibility:public"],
     deps = ["@com_github_stretchr_testify//assert"],
 )

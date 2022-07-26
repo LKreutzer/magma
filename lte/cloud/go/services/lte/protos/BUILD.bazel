@@ -6,7 +6,7 @@ go_library(
         "enodeb_state.pb.go",
         "validate.go",
     ],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/lte/protos",
+    importpath = "magma/lte/cloud/go/services/lte/protos",
     visibility = ["//visibility:public"],
     deps = [
         "@org_golang_google_grpc//:go_default_library",

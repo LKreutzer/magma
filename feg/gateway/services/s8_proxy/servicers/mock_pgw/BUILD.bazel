@@ -10,7 +10,7 @@ go_library(
         "mb.go",
         "mock_pgw.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/s8_proxy/servicers/mock_pgw",
+    importpath = "magma/feg/gateway/services/s8_proxy/servicers/mock_pgw",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_wmnsk_go_gtp//gtpv2:go_default_library",

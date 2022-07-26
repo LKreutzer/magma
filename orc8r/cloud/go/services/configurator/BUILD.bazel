@@ -10,7 +10,7 @@ go_library(
         "serde.go",
         "types.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/configurator",
+    importpath = "magma/orc8r/cloud/go/services/configurator",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

@@ -3,6 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
 go_library(
     name = "mock_feg_relay",
     srcs = ["mock_feg_relay.go"],
-    importpath = "github.com/magma/magma/feg/gateway/services/s8_proxy/servicers/mock_feg_relay",
+    importpath = "magma/feg/gateway/services/s8_proxy/servicers/mock_feg_relay",
     visibility = ["//visibility:public"],
 )

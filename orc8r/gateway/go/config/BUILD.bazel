@@ -7,7 +7,7 @@ go_library(
         "control_proxy_config.go",
         "magmad_config.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/gateway/go/config",
+    importpath = "magma/orc8r/gateway/go/config",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

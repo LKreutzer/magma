@@ -6,7 +6,7 @@ go_library(
         "request_queue.go",
         "response_table.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/dispatcher/broker/memstore",
+    importpath = "magma/orc8r/cloud/go/services/dispatcher/broker/memstore",
     visibility = ["//visibility:public"],
     deps = ["@com_github_golang_glog//:glog"],
 )

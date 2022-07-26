@@ -9,7 +9,7 @@ go_library(
         "tasks.go",
         "xwf_vendors.go",
     ],
-    importpath = "github.com/magma/magma/feg/radius/src/modules/analytics",
+    importpath = "magma/feg/radius/src/modules/analytics",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_mitchellh_mapstructure//:mapstructure",

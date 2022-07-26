@@ -8,7 +8,7 @@ go_library(
         "pcf.go",
         "rpc_handlers.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/testcore/pcf/servicers",
+    importpath = "magma/feg/gateway/services/testcore/pcf/servicers",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

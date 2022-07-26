@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "southbound",
     srcs = ["smsd.go"],
-    importpath = "github.com/magma/magma/lte/cloud/go/services/smsd/servicers/southbound",
+    importpath = "magma/lte/cloud/go/services/smsd/servicers/southbound",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_protobuf//ptypes:go_default_library_gen",

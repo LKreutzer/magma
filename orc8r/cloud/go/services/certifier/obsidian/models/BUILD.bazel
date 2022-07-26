@@ -9,7 +9,7 @@ go_library(
         "policy_swaggergen.go",
         "user_swaggergen.go",
     ],
-    importpath = "github.com/magma/magma/orc8r/cloud/go/services/certifier/obsidian/models",
+    importpath = "magma/orc8r/cloud/go/services/certifier/obsidian/models",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_go_openapi_errors//:go_default_library",

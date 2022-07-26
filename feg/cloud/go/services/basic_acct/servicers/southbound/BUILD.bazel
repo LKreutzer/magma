@@ -8,7 +8,7 @@ go_library(
         "participants.go",
         "service.go",
     ],
-    importpath = "github.com/magma/magma/feg/cloud/go/services/basic_acct/servicers/southbound",
+    importpath = "magma/feg/cloud/go/services/basic_acct/servicers/southbound",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",

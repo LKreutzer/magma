@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 go_library(
     name = "alwaysaccept",
     srcs = ["always_accept.go"],
-    importpath = "github.com/magma/magma/feg/radius/src/modules/alwaysaccept",
+    importpath = "magma/feg/radius/src/modules/alwaysaccept",
     visibility = ["//visibility:public"],
     deps = ["@org_uber_go_zap//:zap"],
 )

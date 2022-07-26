@@ -9,7 +9,7 @@ go_library(
         "streamer.go",
         "validate.go",
     ],
-    importpath = "github.com/magma/magma/feg/gateway/services/testcore/hss/storage",
+    importpath = "magma/feg/gateway/services/testcore/hss/storage",
     visibility = ["//visibility:public"],
     deps = [
         "@com_github_golang_glog//:glog",
