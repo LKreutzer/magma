@@ -19,6 +19,7 @@ go_library(
     importpath = "magma/feg/cloud/go/protos",
     visibility = ["//visibility:public"],
     deps = [
+        "//lte/cloud/go/protos/oai",
         "//lte/cloud/go/protos",
         "//orc8r/lib/go/protos",
         "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",

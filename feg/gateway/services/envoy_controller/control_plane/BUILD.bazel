@@ -6,6 +6,7 @@ go_library(
     importpath = "magma/feg/gateway/services/envoy_controller/control_plane",
     visibility = ["//visibility:public"],
     deps = [
+        "//feg/cloud/go/protos",
         "@com_github_envoyproxy_go_control_plane//envoy/config/cluster/v3:cluster",
         "@com_github_envoyproxy_go_control_plane//envoy/config/core/v3:core",
         "@com_github_envoyproxy_go_control_plane//envoy/config/listener/v3:listener",

@@ -187,11 +187,17 @@ def go_repositories():
         sum = "h1:clC1lXBpe2kTj2VHdaIu9ajZQe4kcEY9j0NsnDDBZ3o=",
         version = "v0.0.0-20171010120322-cdade1c07385",
     )
+    # go_repository(
+    #     name = "com_github_envoyproxy_go_control_plane",
+    #     importpath = "github.com/envoyproxy/go-control-plane",
+    #     sum = "h1:dulLQAYQFYtG5MTplgNGHWuV2D+OBD+Z8lmDBmbLg+s=",
+    #     version = "v0.9.9-0.20210512163311-63b5d3c536b0",
+    # )
     go_repository(
         name = "com_github_envoyproxy_go_control_plane",
         importpath = "github.com/envoyproxy/go-control-plane",
-        sum = "h1:dulLQAYQFYtG5MTplgNGHWuV2D+OBD+Z8lmDBmbLg+s=",
-        version = "v0.9.9-0.20210512163311-63b5d3c536b0",
+        sum = "h1:fP+fF0up6oPY49OrjPrhIJ8yQfdIM85NXMLkMg1EXVs=",
+        version = "v0.9.10-0.20210907150352-cf90f659a021",
     )
     # go_repository(
     #     name = "com_github_envoyproxy_protoc_gen_validate",

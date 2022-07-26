@@ -14,7 +14,7 @@ module magma/feg/gateway
 replace (
 	magma/feg/cloud/go => ../../feg/cloud/go
 	magma/feg/cloud/go/protos => ../../feg/cloud/go/protos
-	magma/gateway => ../../orc8r/gateway/go
+	magma/orc8r/gateway/go => ../../orc8r/gateway/go
 	magma/lte/cloud/go => ../../lte/cloud/go
 	magma/orc8r/cloud/go => ../../orc8r/cloud/go
 	magma/orc8r/lib/go => ../../orc8r/lib/go
