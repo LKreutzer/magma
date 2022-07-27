@@ -69,7 +69,7 @@ def go_repositories():
         importpath = "github.com/census-instrumentation/opencensus-proto",
         sum = "h1:glEXhBS5PSLLv4IXzLA5yPRVX4bilULVyxxbrfOtDAk=",
         version = "v0.2.1",
-        build_extra_args = ["-exclude=src"], 
+        build_extra_args = ["-exclude=src"],
     )
     go_repository(
         name = "com_github_cespare_xxhash",

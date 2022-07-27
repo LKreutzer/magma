@@ -13,9 +13,9 @@ go_library(
     importpath = "magma/orc8r/lib/go/registry",
     visibility = ["//visibility:public"],
     deps = [
-        "//orc8r/lib/go/service/config",
         "//orc8r/lib/go/protos",
-        "//orc8r/lib/go/registry/client",        
+        "//orc8r/lib/go/registry/client",
+        "//orc8r/lib/go/service/config",
         "@com_github_golang_glog//:glog",
         "@org_golang_google_grpc//:go_default_library",
         "@org_golang_google_grpc//backoff",

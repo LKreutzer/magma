@@ -13,7 +13,7 @@ go_library(
         "//orc8r/lib/go/metrics",
         "//orc8r/lib/go/protos",
         "//orc8r/lib/go/registry",
-	    "//orc8r/lib/go/service/config",
+        "//orc8r/lib/go/service/config",
         "@com_github_golang_glog//:glog",
         "@com_github_golang_protobuf//jsonpb:go_default_library_gen",
         "@com_github_golang_protobuf//proto:go_default_library",
