@@ -21,7 +21,7 @@ go_library(
         # "s6a_service.pb.go",
         # "sctpd.pb.go",
         # "session_manager.pb.go",
-        # "sid.go",
+        "sid.go" , # needed for test
         # "sms_orc8r.pb.go",
         # "spgw_service.pb.go",
         # "subscriber_data_lock.go",
@@ -45,5 +45,8 @@ go_library(
 go_test(
     name = "protos_test",
     srcs = ["sid_test.go"],
-    deps = ["@com_github_stretchr_testify//assert"],
+    deps = [
+        "//lte/cloud/go/protos",
+        "@com_github_stretchr_testify//assert",
+    ],
 )
