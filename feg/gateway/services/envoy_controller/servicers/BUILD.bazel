@@ -13,9 +13,14 @@ go_library(
 )
 
 go_test(
-    name = "servicers_test",
+    name = "envoy_controller_test",
     srcs = ["envoy_controller_test.go"],
     deps = [
+        "//feg/cloud/go/protos",
+        "//lte/cloud/go/protos",
+        "//feg/gateway/services/envoy_controller/control_plane",
+        "//feg/gateway/services/envoy_controller/control_plane/mocks",
+        "//feg/gateway/services/envoy_controller/servicers",
         "@com_github_envoyproxy_go_control_plane//envoy/config/core/v3:core",
         "@com_github_envoyproxy_go_control_plane//envoy/config/listener/v3:listener",
         "@com_github_envoyproxy_go_control_plane//envoy/config/route/v3:route",
