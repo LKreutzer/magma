@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "oai",
+    srcs = [
+        "common_types.pb.go",
+        "mme_nas_state.pb.go",
+        "nas_state.pb.go",
+        "ngap_state.pb.go",
+        "s1ap_state.pb.go",
+        "sgw_state.pb.go",
+        "spgw_state.pb.go",
+        "std_3gpp_types.pb.go",
+    ],
+    importpath = "magma/lte/cloud/go/protos/oai",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)

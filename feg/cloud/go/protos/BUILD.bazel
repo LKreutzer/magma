@@ -1,0 +1,33 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "protos",
+    srcs = [
+        "basic_acct.pb.go",
+        "csfb.pb.go",
+        "envoy_controller.pb.go",
+        "health.pb.go",
+        "hello.pb.go",
+        "hss_service.pb.go",
+        "mock_core.pb.go",
+        "mock_core_conversions.go",
+        "s6a_proxy.pb.go",
+        "s8_proxy.pb.go",
+        "service_health.pb.go",
+        "swx_proxy.pb.go",
+    ],
+    importpath = "magma/feg/cloud/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//lte/cloud/go/protos/oai",
+        "//lte/cloud/go/protos",
+        "//orc8r/lib/go/protos",
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)

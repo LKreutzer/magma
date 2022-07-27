@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "servicers",
+    srcs = ["envoy_controller.go"],
+    importpath = "magma/feg/gateway/services/envoy_controller/servicers",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//feg/cloud/go/protos",
+        "//feg/gateway/services/envoy_controller/control_plane",
+        "@com_github_golang_glog//:glog",
+    ],
+)
+
+go_test(
+    name = "servicers_test",
+    srcs = ["envoy_controller_test.go"],
+    deps = [
+        "@com_github_envoyproxy_go_control_plane//envoy/config/core/v3:core",
+        "@com_github_envoyproxy_go_control_plane//envoy/config/listener/v3:listener",
+        "@com_github_envoyproxy_go_control_plane//envoy/config/route/v3:route",
+        "@com_github_envoyproxy_go_control_plane//envoy/extensions/filters/listener/original_src/v3:original_src",
+        "@com_github_envoyproxy_go_control_plane//envoy/extensions/filters/network/http_connection_manager/v3:http_connection_manager",
+        "@com_github_envoyproxy_go_control_plane//pkg/wellknown",
+        "@com_github_golang_protobuf//ptypes:go_default_library_gen",
+        "@com_github_stretchr_testify//assert",
+        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
+    ],
+)

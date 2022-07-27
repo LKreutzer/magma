@@ -1,0 +1,27 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "registry",
+    srcs = [
+        "cloud_registry.go",
+        "local_registry.go",
+    ],
+    importpath = "magma/feg/gateway/registry",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//orc8r/gateway/go/service_registry",
+	    "//orc8r/lib/go/protos",
+	    "//orc8r/lib/go/registry",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)
+
+go_test(
+    name = "registry_test",
+    srcs = ["registry_test.go"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//metadata",
+    ],
+)

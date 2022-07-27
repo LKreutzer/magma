@@ -1,0 +1,23 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "config",
+    srcs = [
+        "config_map.go",
+        "service_config.go",
+    ],
+    importpath = "magma/orc8r/lib/go/service/config",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//orc8r/lib/go/initflag",
+        "@com_github_golang_glog//:glog",
+        "@in_gopkg_yaml_v2//:yaml_v2",
+    ],
+)
+
+go_test(
+    name = "config_test",
+    srcs = ["service_config_test.go"],
+    embed = [":config"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

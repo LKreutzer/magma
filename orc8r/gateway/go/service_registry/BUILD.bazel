@@ -1,0 +1,19 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "service_registry",
+    srcs = [
+        "registry.go",
+        "shared_registry.go",
+    ],
+    importpath = "magma/orc8r/gateway/go/service_registry",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//orc8r/lib/go/protos",
+        "//orc8r/lib/go/registry",
+        "//orc8r/lib/go/service/config",
+	    "//orc8r/lib/go/initflag",
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//:go_default_library",
+    ],
+)

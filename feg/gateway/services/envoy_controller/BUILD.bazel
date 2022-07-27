@@ -1,0 +1,22 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "envoy_controller_lib",
+    srcs = ["main.go"],
+    importpath = "magma/feg/gateway/services/envoy_controller",
+    visibility = ["//visibility:private"],
+    deps = [
+        "//feg/cloud/go/protos",
+        "//feg/gateway/registry",
+        "//feg/gateway/services/envoy_controller/control_plane",
+        "//feg/gateway/services/envoy_controller/servicers",
+        "//orc8r/lib/go/service",
+        "@com_github_golang_glog//:glog",
+    ],
+)
+
+go_binary(
+    name = "envoy_controller",
+    embed = [":envoy_controller_lib"],
+    visibility = ["//visibility:public"],
+)

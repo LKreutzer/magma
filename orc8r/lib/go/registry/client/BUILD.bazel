@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "client",
+    srcs = ["client_api.go"],
+    importpath = "magma/orc8r/lib/go/registry/client",
+    visibility = ["//visibility:public"],
+    deps = ["//orc8r/lib/go/protos"],
+)

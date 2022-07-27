@@ -1,0 +1,34 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "registry",
+    srcs = [
+        "cloud_connection.go",
+        "global_registry.go",
+        "interceptors.go",
+        "registry.go",
+        "service_registry.go",
+        "shared_cloud_conn.go",
+    ],
+    importpath = "magma/orc8r/lib/go/registry",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//orc8r/lib/go/service/config",
+        "//orc8r/lib/go/protos",
+        "//orc8r/lib/go/registry/client",        
+        "@com_github_golang_glog//:glog",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//backoff",
+        "@org_golang_google_grpc//connectivity",
+        "@org_golang_google_grpc//credentials",
+        "@org_golang_google_grpc//keepalive",
+        "@org_golang_google_grpc//metadata",
+    ],
+)
+
+go_test(
+    name = "registry_test",
+    srcs = ["registry_test.go"],
+    embed = [":registry"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)

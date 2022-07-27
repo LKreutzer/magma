@@ -1,0 +1,45 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "protos",
+    srcs = [
+        "abort_session.pb.go",
+        "apn.pb.go",
+        "diam_errors.pb.go",
+        "enodebd.pb.go",
+        "ha_orc8r.pb.go",
+        "ha_service.pb.go",
+        "keyval.pb.go",
+        "mobilityd.pb.go",
+        "pipelined.pb.go",
+        "policydb.pb.go",
+        "s1ap_service.pb.go",
+        "s6a_service.pb.go",
+        "sctpd.pb.go",
+        "session_manager.pb.go",
+        "sid.go",
+        "sms_orc8r.pb.go",
+        "spgw_service.pb.go",
+        "subscriber_data_lock.go",
+        "subscriberauth.pb.go",
+        "subscriberdb.pb.go",
+    ],
+    importpath = "magma/lte/cloud/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//orc8r/lib/go/protos",
+        "@io_bazel_rules_go//proto/wkt:field_mask_go_proto",
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+go_test(
+    name = "protos_test",
+    srcs = ["sid_test.go"],
+    deps = ["@com_github_stretchr_testify//assert"],
+)
