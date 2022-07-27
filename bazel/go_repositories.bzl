@@ -64,27 +64,13 @@ def go_repositories():
         sum = "h1:WXkYYl6Yr3qBf1K79EBnL4mak0OimBfB0XUf9Vl28OQ=",
         version = "v0.3.1",
     )
-    # https://github.com/bazelbuild/bazel-gazelle/issues/498
-    # Missing dependencies in the source code/confused build files?
     go_repository(
         name = "com_github_census_instrumentation_opencensus_proto",
         importpath = "github.com/census-instrumentation/opencensus-proto",
         sum = "h1:glEXhBS5PSLLv4IXzLA5yPRVX4bilULVyxxbrfOtDAk=",
         version = "v0.2.1",
         build_extra_args = ["-exclude=src"], 
-        # From https://sourcegraph.com/github.com/googlecloudrobotics/core/-/blob/third_party/go_repositories.bzl
-        # Seems to have fixed it?
     )
-    # go_repository(
-    #     name = "com_github_census_instrumentation_opencensus_proto",
-    #     build_file_proto_mode = "disable_global",
-    #     importpath = "github.com/census-instrumentation/opencensus-proto",
-    #     sha256 = "b3c09f3e635d47b4138695a547d1f2c7138f382cbe5a8b5865b66a8e08233461",
-    #     strip_prefix = "github.com/census-instrumentation/opencensus-proto@v0.2.1",
-    #     urls = [
-    #         "https://storage.googleapis.com/cockroach-godeps/gomod/github.com/census-instrumentation/opencensus-proto/com_github_census_instrumentation_opencensus_proto-v0.2.1.zip",
-    #     ],
-    # )
     go_repository(
         name = "com_github_cespare_xxhash",
         importpath = "github.com/cespare/xxhash",
@@ -187,40 +173,14 @@ def go_repositories():
         sum = "h1:clC1lXBpe2kTj2VHdaIu9ajZQe4kcEY9j0NsnDDBZ3o=",
         version = "v0.0.0-20171010120322-cdade1c07385",
     )
-    # go_repository(
-    #     name = "com_github_envoyproxy_go_control_plane",
-    #     importpath = "github.com/envoyproxy/go-control-plane",
-    #     sum = "h1:dulLQAYQFYtG5MTplgNGHWuV2D+OBD+Z8lmDBmbLg+s=",
-    #     version = "v0.9.9-0.20210512163311-63b5d3c536b0",
-    # )
     go_repository(
         name = "com_github_envoyproxy_go_control_plane",
         importpath = "github.com/envoyproxy/go-control-plane",
         sum = "h1:fP+fF0up6oPY49OrjPrhIJ8yQfdIM85NXMLkMg1EXVs=",
         version = "v0.9.10-0.20210907150352-cf90f659a021",
     )
-    # go_repository(
-    #     name = "com_github_envoyproxy_protoc_gen_validate",
-    #     importpath = "github.com/envoyproxy/protoc-gen-validate",
-    #     sum = "h1:EQciDnbrYxy13PgWoY8AqoxGiPrpgBZ1R8UNe3ddc+A=",
-    #     version = "v0.1.0", 
-            # in this version the target validate does not exist with this name
-            # https://github.com/bazelbuild/bazel-gazelle/issues/988
-    # )
-    # go_repository(
-    #     name = "com_github_envoyproxy_protoc_gen_validate",
-    #     # build_file_proto_mode = "disable_global",
-    #     # build_naming_convention = "go_default_library",
-    #     importpath = "github.com/envoyproxy/protoc-gen-validate",
-    #     sha256 = "6e705cabc09d7d130e0d24acf474c0654a62d1e292f1ea2fb558b5565f43f7f3",
-    #     strip_prefix = "github.com/envoyproxy/protoc-gen-validate@v0.6.2",
-    #     urls = [
-    #         "https://storage.googleapis.com/cockroach-godeps/gomod/github.com/envoyproxy/protoc-gen-validate/com_github_envoyproxy_protoc_gen_validate-v0.6.2.zip",
-    #     ],
-    # )
     go_repository(
         name = "com_github_envoyproxy_protoc_gen_validate",
-        # build_file_proto_mode = "disable",
         importpath = "github.com/envoyproxy/protoc-gen-validate",
         sum = "h1:JiO+kJTpmYGjEodY7O1Zk8oZcNz1+f30UtwtXoFUPzE=",
         version = "v0.6.2",
