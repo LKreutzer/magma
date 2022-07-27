@@ -207,16 +207,23 @@ def go_repositories():
             # in this version the target validate does not exist with this name
             # https://github.com/bazelbuild/bazel-gazelle/issues/988
     # )
+    # go_repository(
+    #     name = "com_github_envoyproxy_protoc_gen_validate",
+    #     # build_file_proto_mode = "disable_global",
+    #     # build_naming_convention = "go_default_library",
+    #     importpath = "github.com/envoyproxy/protoc-gen-validate",
+    #     sha256 = "6e705cabc09d7d130e0d24acf474c0654a62d1e292f1ea2fb558b5565f43f7f3",
+    #     strip_prefix = "github.com/envoyproxy/protoc-gen-validate@v0.6.2",
+    #     urls = [
+    #         "https://storage.googleapis.com/cockroach-godeps/gomod/github.com/envoyproxy/protoc-gen-validate/com_github_envoyproxy_protoc_gen_validate-v0.6.2.zip",
+    #     ],
+    # )
     go_repository(
         name = "com_github_envoyproxy_protoc_gen_validate",
-        build_file_proto_mode = "disable_global",
-        build_naming_convention = "go_default_library",
+        # build_file_proto_mode = "disable",
         importpath = "github.com/envoyproxy/protoc-gen-validate",
-        sha256 = "6e705cabc09d7d130e0d24acf474c0654a62d1e292f1ea2fb558b5565f43f7f3",
-        strip_prefix = "github.com/envoyproxy/protoc-gen-validate@v0.6.2",
-        urls = [
-            "https://storage.googleapis.com/cockroach-godeps/gomod/github.com/envoyproxy/protoc-gen-validate/com_github_envoyproxy_protoc_gen_validate-v0.6.2.zip",
-        ],
+        sum = "h1:JiO+kJTpmYGjEodY7O1Zk8oZcNz1+f30UtwtXoFUPzE=",
+        version = "v0.6.2",
     )
     go_repository(
         name = "com_github_etcd_io_bbolt",
