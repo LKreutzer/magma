@@ -1,27 +1,31 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 
+
+# Weird behaviour sometimes
+# Are all sources needed???
+
 go_library(
     name = "protos",
     srcs = [
-        "abort_session.pb.go",
+        # "abort_session.pb.go",
         "apn.pb.go",
-        "diam_errors.pb.go",
-        "enodebd.pb.go",
-        "ha_orc8r.pb.go",
-        "ha_service.pb.go",
-        "keyval.pb.go",
+        # "diam_errors.pb.go",
+        # "enodebd.pb.go",
+        # "ha_orc8r.pb.go",
+        # "ha_service.pb.go",
+        # "keyval.pb.go",
         "mobilityd.pb.go",
-        "pipelined.pb.go",
+        # "pipelined.pb.go",
         "policydb.pb.go",
-        "s1ap_service.pb.go",
-        "s6a_service.pb.go",
-        "sctpd.pb.go",
-        "session_manager.pb.go",
-        "sid.go",
-        "sms_orc8r.pb.go",
-        "spgw_service.pb.go",
-        "subscriber_data_lock.go",
-        "subscriberauth.pb.go",
+        # "s1ap_service.pb.go",
+        # "s6a_service.pb.go",
+        # "sctpd.pb.go",
+        # "session_manager.pb.go",
+        # "sid.go",
+        # "sms_orc8r.pb.go",
+        # "spgw_service.pb.go",
+        # "subscriber_data_lock.go",
+        # "subscriberauth.pb.go",
         "subscriberdb.pb.go",
     ],
     importpath = "magma/lte/cloud/go/protos",
