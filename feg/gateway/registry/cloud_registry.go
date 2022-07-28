@@ -14,8 +14,8 @@ limitations under the License.
 package registry
 
 import (
-	"magma/orc8r/gateway/go/service_registry"
-	// "magma/gateway/service_registry"
+	// "magma/orc8r/gateway/go/service_registry"
+	"magma/gateway/service_registry"
 )
 
 // Get returns a singleton of gateway's registry

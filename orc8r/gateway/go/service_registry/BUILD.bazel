@@ -18,6 +18,8 @@ go_library(
         "shared_registry.go",
     ],
     importpath = "magma/orc8r/gateway/go/service_registry",
+    # Equivalent to replace directives in go.mod files.
+    importpath_aliases = ["magma/gateway/service_registry"],
     visibility = ["//visibility:public"],
     deps = [
         "//orc8r/lib/go/initflag",

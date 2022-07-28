@@ -28,8 +28,8 @@ import (
 
 	"magma/feg/cloud/go/protos"
 	"magma/feg/gateway/registry"
-	"magma/orc8r/gateway/go/service_registry"
-	// "magma/gateway/service_registry"
+	// "magma/orc8r/gateway/go/service_registry"
+	"magma/gateway/service_registry"
 	platform_registry "magma/orc8r/lib/go/registry"
 	"magma/orc8r/lib/go/service/config"
 )
