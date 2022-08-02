@@ -31,7 +31,7 @@ go_test(
         "//feg/gateway/services/envoy_controller/control_plane",
         "//feg/gateway/services/envoy_controller/control_plane/mocks:envoy_controller_mocks",
         "//feg/gateway/services/envoy_controller/servicers:envoy_controller_servicers",
-        "//lte/cloud/go/protos",
+        "//lte/cloud/go/protos:mobilityd_go_proto",
         "@com_github_envoyproxy_go_control_plane//envoy/config/core/v3:core",
         "@com_github_envoyproxy_go_control_plane//envoy/config/listener/v3:listener",
         "@com_github_envoyproxy_go_control_plane//envoy/config/route/v3:route",

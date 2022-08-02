@@ -20,7 +20,7 @@ go_library(
     importpath = "magma/feg/cloud/go/protos",
     visibility = ["//visibility:public"],
     deps = [
-        "//lte/cloud/go/protos",
+        "//lte/cloud/go/protos:mobilityd_go_proto",
         "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
         "@org_golang_google_grpc//:go_default_library",
         "@org_golang_google_grpc//codes",
