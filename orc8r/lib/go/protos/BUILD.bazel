@@ -49,19 +49,8 @@ go_library(
     srcs = [
         "common.pb.go",
         "mconfig.pb.go",
+        "digest.pb.go",
     ],
-    importpath = "magma/orc8r/lib/go/protos",
-    visibility = ["//visibility:public"],
-    deps = [
-        "@io_bazel_rules_go//proto/wkt:any_go_proto",
-        "@org_golang_google_protobuf//reflect/protoreflect",
-        "@org_golang_google_protobuf//runtime/protoimpl",
-    ],
-)
-
-go_library(
-    name = "digest_go_proto",
-    srcs = ["digest.pb.go"],
     importpath = "magma/orc8r/lib/go/protos",
     visibility = ["//visibility:public"],
     deps = [

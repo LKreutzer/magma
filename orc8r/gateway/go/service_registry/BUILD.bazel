@@ -23,7 +23,7 @@ go_library(
     visibility = ["//visibility:public"],
     deps = [
         "//orc8r/lib/go/initflag",
-        "//orc8r/lib/go/protos",
+        "//orc8r/lib/go/protos:service_registry_go_proto",
         "//orc8r/lib/go/registry",
         "//orc8r/lib/go/service/config",
         "@com_github_golang_glog//:glog",
