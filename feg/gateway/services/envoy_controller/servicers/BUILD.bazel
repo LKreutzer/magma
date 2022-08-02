@@ -17,7 +17,7 @@ go_library(
     importpath = "magma/feg/gateway/services/envoy_controller/servicers",
     visibility = ["//visibility:public"],
     deps = [
-        "//feg/cloud/go/protos:envoy_controller_proto",
+        "//feg/cloud/go/protos:envoy_controller_go_proto",
         "//feg/gateway/services/envoy_controller/control_plane",
         "@com_github_golang_glog//:glog",
     ],
@@ -27,7 +27,7 @@ go_test(
     name = "envoy_controller_test",
     srcs = ["envoy_controller_test.go"],
     deps = [
-        "//feg/cloud/go/protos:envoy_controller_proto",
+        "//feg/cloud/go/protos:envoy_controller_go_proto",
         "//feg/gateway/services/envoy_controller/control_plane",
         "//feg/gateway/services/envoy_controller/control_plane/mocks:envoy_controller_mocks",
         "//feg/gateway/services/envoy_controller/servicers:envoy_controller_servicers",

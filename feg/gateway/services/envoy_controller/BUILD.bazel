@@ -17,7 +17,7 @@ go_library(
     importpath = "magma/feg/gateway/services/envoy_controller",
     visibility = ["//visibility:private"],
     deps = [
-        "//feg/cloud/go/protos:envoy_controller_proto",
+        "//feg/cloud/go/protos:envoy_controller_go_proto",
         "//feg/gateway/registry",
         "//feg/gateway/services/envoy_controller/control_plane",
         "//feg/gateway/services/envoy_controller/servicers:envoy_controller_servicers",

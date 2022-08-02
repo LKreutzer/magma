@@ -31,7 +31,7 @@ go_test(
     name = "registry_test",
     srcs = ["registry_test.go"],
     deps = [
-        "//feg/cloud/go/protos:envoy_controller_proto",
+        "//feg/cloud/go/protos:hello_go_proto",
         "//feg/gateway/registry",
         "//orc8r/gateway/go/service_registry",
         "//orc8r/lib/go/registry",

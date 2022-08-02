@@ -12,15 +12,26 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
-    name = "envoy_controller_proto",
-    srcs = [
-        "envoy_controller.pb.go",
-        "hello.pb.go",
-    ],
+    name = "envoy_controller_go_proto",
+    srcs = ["envoy_controller.pb.go"],
     importpath = "magma/feg/cloud/go/protos",
     visibility = ["//visibility:public"],
     deps = [
         "//lte/cloud/go/protos:mobilityd_go_proto",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+go_library(
+    name = "hello_go_proto",
+    srcs = ["hello.pb.go"],
+    importpath = "magma/feg/cloud/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
         "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
         "@org_golang_google_grpc//:go_default_library",
         "@org_golang_google_grpc//codes",
