@@ -12,32 +12,16 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
 
 go_library(
-    name = "protos",
-    srcs = [
-        "bootstrapper.pb.go",
-        "certifier.pb.go",
-        "common.pb.go",
-        "digest.pb.go",
-        "fillin.go",
-        "identity.pb.go",
-        "marshaler.go",
-        "mconfig.pb.go",
-        "mconfig_digest.go",
-        "metricsd.pb.go",
-        "service303.pb.go",
-        "service_registry.pb.go",
+    name = "bootstrapper_go_proto",
+    srcs = ["bootstrapper.pb.go"],
+    embed = [
+        ":identity_go_proto",
+        ":certifier_go_proto",
     ],
     importpath = "magma/orc8r/lib/go/protos",
     visibility = ["//visibility:public"],
     deps = [
-        "@com_github_golang_glog//:glog",
-        "@com_github_golang_protobuf//jsonpb:go_default_library_gen",
-        "@com_github_golang_protobuf//proto:go_default_library",
-        "@com_github_prometheus_client_model//go",
-        "@io_bazel_rules_go//proto/wkt:any_go_proto",
-        "@io_bazel_rules_go//proto/wkt:duration_go_proto",
         "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
-        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
         "@org_golang_google_grpc//:go_default_library",
         "@org_golang_google_grpc//codes",
         "@org_golang_google_grpc//status",
@@ -46,11 +30,146 @@ go_library(
     ],
 )
 
+go_library(
+    name = "certifier_go_proto",
+    srcs = ["certifier.pb.go"],
+    embed = [":identity_go_proto"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@io_bazel_rules_go//proto/wkt:duration_go_proto",
+        "@io_bazel_rules_go//proto/wkt:timestamp_go_proto",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+go_library(
+    name = "common_go_proto",
+    srcs = ["common.pb.go"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+go_library(
+    name = "digest_go_proto",
+    srcs = ["digest.pb.go"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+go_library(
+    name = "fillin",
+    srcs = ["fillin.go"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+)
+
+go_library(
+    name = "identity_go_proto",
+    srcs = ["identity.pb.go"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+go_library(
+    name = "marshaler",
+    srcs = ["marshaler.go"],
+    embed = [":common_go_proto"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_golang_glog//:glog",
+        "@com_github_golang_protobuf//jsonpb:go_default_library_gen",
+        "@com_github_golang_protobuf//proto:go_default_library",
+    ],
+)
+
+go_library(
+    name = "mconfig_go_proto",
+    srcs = ["mconfig.pb.go"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@io_bazel_rules_go//proto/wkt:any_go_proto",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+go_library(
+    name = "mconfig_digest",
+    srcs = ["mconfig_digest.go"],
+    embed = [":mconfig_go_proto"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_golang_protobuf//proto:go_default_library"],
+)
+
+go_library(
+    name = "metricsd_go_proto",
+    srcs = ["metricsd.pb.go"],
+    embed = [":common_go_proto"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_prometheus_client_model//go",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+go_library(
+    name = "service303_go_proto",
+    srcs = ["service303.pb.go"],
+    embed = [":metricsd_go_proto"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@io_bazel_rules_go//proto/wkt:wrappers_go_proto",
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+go_library(
+    name = "service_registry_go_proto",
+    srcs = ["service_registry.pb.go"],
+    embed = [":common_go_proto"],
+    importpath = "magma/orc8r/lib/go/protos",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@org_golang_google_grpc//:go_default_library",
+        "@org_golang_google_grpc//codes",
+        "@org_golang_google_grpc//status",
+        "@org_golang_google_protobuf//reflect/protoreflect",
+        "@org_golang_google_protobuf//runtime/protoimpl",
+    ],
+)
+
+
 go_test(
     name = "fill_in_test",
     srcs = ["fill_in_test.go"],
     deps = [
-        "//orc8r/lib/go/protos",
+        ":fillin",
         "@com_github_stretchr_testify//assert",
     ],
 )
@@ -59,8 +178,10 @@ go_test(
     name = "marshaler_test",
     srcs = ["marshaler_test.go"],
     deps = [
-        "//orc8r/lib/go/protos",
+        ":marshaler",
+        # "//orc8r/lib/go/protos:mconfig_digest",
         "//orc8r/lib/go/protos/mconfig",
+        # ":common_go_proto",
         "@com_github_golang_protobuf//ptypes:go_default_library_gen",
         "@com_github_stretchr_testify//assert",
     ],

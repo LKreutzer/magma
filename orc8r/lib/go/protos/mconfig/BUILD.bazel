@@ -18,7 +18,8 @@ go_library(
     importpath = "magma/orc8r/lib/go/protos/mconfig",
     visibility = ["//visibility:public"],
     deps = [
-        "//orc8r/lib/go/protos",
+        "//orc8r/lib/go/protos:common_go_proto",
+        "//orc8r/lib/go/protos:mconfig_go_proto",
         "@org_golang_google_protobuf//reflect/protoreflect",
         "@org_golang_google_protobuf//runtime/protoimpl",
     ],
