@@ -31,6 +31,7 @@ jobs:
       files_changed: ${{ steps.changes.outputs.files_changed }}
     steps:
       - name: Set files_changed true
+        id: changes
         if: always()
         shell: bash
         run: |
