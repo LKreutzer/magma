@@ -86,6 +86,10 @@ jobs:
           # Run a simple echo command to pull down the image. This makes it a bit more clear how much time is spent on building Magma and not pulling down the image.
           run: |
             echo "Pulled the bazel base image!"
+      - name: Set buildbuddy password
+        shell: bash
+        run: |
+          echo "build --remote_header=x-buildbuddy-api-key=${{ secrets.BUILD_BUDDY_KEY }}" >> .bazelrc
       - name: Run bazel build, test, starlark format check & python import check
         uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
         with:
