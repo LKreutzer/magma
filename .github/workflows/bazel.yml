@@ -29,11 +29,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       files_changed: ${{ steps.changes.outputs.files_changed }}
-    if: github.repository_owner == 'magma' || github.event_name == 'workflow_dispatch'
     steps:
       # Need to get git on push event
       - uses: dorny/paths-filter@b2feaf19c27470162a626bd6fa8438ae5b263721 # pin@v2
-        if: github.event_name == 'pull_request'
         id: changes
         with:
           filters: |
@@ -48,6 +46,12 @@ jobs:
               - '**/*.BUILD'
               - '**/*.bazel'
               - '**/*.bzl'
+      - name: Set files_changed true
+        if: always()
+        shell: bash
+        run: |
+          echo "::set-output name=files_changed::true"
+          echo "${{ steps.changes.outputs.files_changed }}"
 
   bazel_build_and_test:
     needs: path_filter
