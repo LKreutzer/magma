@@ -30,22 +30,6 @@ jobs:
     outputs:
       files_changed: ${{ steps.changes.outputs.files_changed }}
     steps:
-      # Need to get git on push event
-      - uses: dorny/paths-filter@b2feaf19c27470162a626bd6fa8438ae5b263721 # pin@v2
-        id: changes
-        with:
-          filters: |
-            files_changed:
-              - '.github/workflows/bazel.yml'
-              - 'orc8r/gateway/**'
-              - 'orc8r/protos/**'
-              - 'lte/gateway/**'
-              - 'lte/protos/**'
-              - 'src/go/**'
-              - '**/BUILD'
-              - '**/*.BUILD'
-              - '**/*.bazel'
-              - '**/*.bzl'
       - name: Set files_changed true
         if: always()
         shell: bash
