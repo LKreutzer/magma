@@ -101,6 +101,8 @@ jobs:
             cd /workspaces/magma
             set -euo pipefail
 
+            if [ "${{ matrix.bazel-config }}" = "--config=asan" ]; then exit 1; fi
+
             printf '\r%s\r' '###############################' 1>&2
             printf '\r%s\r' 'Configuring bazel remote cache.' 1>&2
             printf '\r%s\r\r' '###############################' 1>&2
