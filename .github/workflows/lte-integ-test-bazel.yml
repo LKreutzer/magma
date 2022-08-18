@@ -14,7 +14,8 @@ on:
       - completed
 
 env:
-  CACHE_KEY: magma-dev-vm
+  CACHE_KEY: magma-dev-vm-debug
+  REMOTE_DOWNLOAD_CONFIG: false
 
 jobs:
   lte-integ-test-bazel:
@@ -64,7 +65,7 @@ jobs:
       - name: Build all services with bazel
         run: |
           cd lte/gateway
-          vagrant ssh -c 'cd ~/magma; bazel/scripts/remote_cache_bazelrc_setup.sh "${{ env.CACHE_KEY }}" "${{ secrets.BAZEL_REMOTE_PASSWORD }}";' magma
+          vagrant ssh -c 'cd ~/magma; bazel/scripts/remote_cache_bazelrc_setup.sh "${{ env.CACHE_KEY }}" "${{ env.REMOTE_DOWNLOAD_CONFIG }}" "${{ secrets.BAZEL_REMOTE_PASSWORD }}";' magma
           vagrant ssh -c 'sudo sed -i "s@#precedence ::ffff:0:0/96  100@precedence ::ffff:0:0/96  100@" /etc/gai.conf;' magma
           vagrant ssh -c 'cd ~/magma; bazel build --profile=bazel_profile_lte_integ_tests `bazel query "kind(.*_binary, //orc8r/... union //lte/... union //feg/...)"`;' magma
           vagrant ssh -c 'sudo sed -i "s@precedence ::ffff:0:0/96  100@#precedence ::ffff:0:0/96  100@" /etc/gai.conf;' magma
