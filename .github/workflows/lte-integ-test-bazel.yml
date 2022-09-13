@@ -86,7 +86,7 @@ jobs:
         run: |
           cd lte/gateway
           vagrant ssh -c 'cd ~/magma; bazel/scripts/link_scripts_for_bazel_integ_tests.sh;' magma
-      - name: Run the integ test
+      - name: Setup magma test VM and traffic server VM
         run: |
           cd lte/gateway
           export MAGMA_DEV_CPUS=1
@@ -96,7 +96,6 @@ jobs:
           vagrant ssh -c 'bash -ci "disable-tcp-checksumming"' magma_test
           vagrant ssh -c 'bash -ci "disable-tcp-checksumming"' magma_trfserver
       - name: Run the integ tests
-        if: ${{ success() || steps.sudo_tests.conclusion == 'failure' }}
         run: |
           cd lte/gateway
           vagrant ssh -c 'cd ~/magma; bazel/scripts/remote_cache_bazelrc_setup.sh "${{ env.CACHE_KEY_MAGMA_TEST }}" "${{ env.REMOTE_DOWNLOAD_OPTIMIZATION }}" "${{ secrets.BAZEL_REMOTE_PASSWORD }}";' magma
