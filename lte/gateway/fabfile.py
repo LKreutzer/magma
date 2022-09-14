@@ -370,17 +370,6 @@ def bazel_integ_test_post_build(
 
     execute(_modify_for_bazel_services)
     run("sudo service magma@magmad start")
-<<<<<<< HEAD
-    execute(_modify_for_bazel_services)
-    execute(_start_gateway)
-=======
-    run("sudo service magma@magmad start")
->>>>>>> chore(ci): Run the LTE integ_tests with Bazel
-
-
-
-
-
 
     # Setup the trfserver: use the provided trfserver if given, else default to the
     # vagrant machine
