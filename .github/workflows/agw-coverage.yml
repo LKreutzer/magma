@@ -17,9 +17,6 @@ on:
       - master
       - 'v1.*'
   pull_request:
-    branches:
-      - master
-      - 'v1.*'
     types: [ opened, reopened, synchronize ]
 
 concurrency:
