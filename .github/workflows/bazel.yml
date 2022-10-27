@@ -86,6 +86,14 @@ jobs:
             bazel-target: "`bazel query 'kind(cc.*, //...)'`"
           - bazel-config: "--config=production"
             bazel-target: "`bazel query 'kind(cc.*, //...)'`"
+          - bazel-config: "--linkopt=-fsanitize=address --linkopt=-fsanitize=undefined --per_file_copt=^.*/gateway/c/.*$@-fsanitize=address,-fsanitize=undefined"
+            bazel-target: "`bazel query 'kind(cc.*, //...)'`"
+          - bazel-config: "--linkopt=-fsanitize=address --per_file_copt=^.*/gateway/c/.*$@-fsanitize=address"
+            bazel-target: "`bazel query 'kind(cc.*, //...)'`"
+          - bazel-config: "--linkopt=-fsanitize=undefined --per_file_copt=^.*/gateway/c/.*$@-fsanitize=undefined"
+            bazel-target: "`bazel query 'kind(cc.*, //...)'`"
+          - bazel-config: "--per_file_copt=^.*/gateway/c/.*$@-O0,-fno-omit-frame-pointer"
+            bazel-target: "`bazel query 'kind(cc.*, //...)'`"
     name: Bazel Build & Test Job
     runs-on: ubuntu-latest
     steps:
