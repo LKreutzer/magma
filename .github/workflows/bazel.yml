@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       files_changed: ${{ steps.changes.outputs.files_changed }}
-    if: github.repository_owner == 'magma' || github.event_name == 'workflow_dispatch'
+    if: github.repository_owner == 'LKreutzer' || github.event_name == 'workflow_dispatch'
     steps:
       # Need to get git on push event
       - uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50 # pin@v2.11.1
@@ -73,7 +73,7 @@ jobs:
     # Only run workflow if this is a push to the magma repository,
     # if the workflow has been triggered manually or if it is a pull_request.
     if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
+      (github.event_name == 'push' && github.repository_owner == 'LKreutzer') ||
       needs.path_filter.outputs.files_changed == 'true' ||
       github.event_name == 'workflow_dispatch'
     strategy:
@@ -92,6 +92,8 @@ jobs:
       - name: Check Out Repo
         # This is necessary for overlays into the Docker container below.
         uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # pin@v3.1.0
+        with:
+          fetch-depth: 100
       - name: Maximize build space
         uses: ./.github/workflows/composite/maximize-build-space
       - name: Setup Bazel Base Image
@@ -112,6 +114,7 @@ jobs:
           run: |
             cd /workspaces/magma
             set -euo pipefail
+            git config --global --add safe.directory /workspaces/magma
 
             printf '\r%s\r' '###############################' 1>&2
             printf '\r%s\r' 'Configuring bazel remote cache.' 1>&2
@@ -121,21 +124,48 @@ jobs:
             printf '\r%s\r' '###############################' 1>&2
             printf '\r%s\r' 'Executing bazel build ${{ matrix.bazel-config }}' 1>&2
             printf '\r%s\r' '###############################' 1>&2
-            bazel build \
-              ${{ matrix.bazel-target }} \
-              --config=mme_unit_test \
-              ${{ matrix.bazel-config }} \
-              --profile=Bazel_build_all_profile
+            if [[ -z "${{ matrix.bazel-config }}" && ("${{ github.event_name }}" != "workflow_dispatch")]];
+            then
+              printf '\r%s\r' 'Determining targets via bazel-diff.' 1>&2
+              IMPACTED_TARGETS=$(bazel/scripts/bazel-diff.sh "${{ github.event.pull_request.base.sha }}"  "${{ github.SHA }}")
+              echo "$IMPACTED_TARGETS"
+              bazel build \
+                $IMPACTED_TARGETS \
+                --config=mme_unit_test \
+                --profile=Bazel_build_all_profile
+            else
+              bazel build \
+                ${{ matrix.bazel-target }} \
+                --config=mme_unit_test \
+                ${{ matrix.bazel-config }} \
+                --profile=Bazel_build_all_profile
+            fi
 
             printf '\r%s\r' '###############################' 1>&2
             printf '\r%s\r' 'Executing bazel test ${{ matrix.bazel-config }}' 1>&2
             printf '\r%s\r' '###############################' 1>&2
             TEST_FAILED="false"
-            bazel test \
-              ${{ matrix.bazel-target }} \
-              ${{ matrix.bazel-config }} \
-              --test_output=errors \
-              --profile=Bazel_test_all_profile || TEST_FAILED="true"
+            if [ -z "${{ matrix.bazel-config }}" && "${{ github.event_name }}" != "workflow_dispatch" ];
+            then
+              echo "$IMPACTED_TARGETS"
+              bazel test \
+                $IMPACTED_TARGETS \
+                --test_output=errors \
+                --profile=Bazel_test_all_profile
+              TEST_EXIT_CODE=$(echo $?)
+              if [ $TEST_EXIT_CODE == 0 || $TEST_EXIT_CODE == 4 ];
+              then
+                echo "The bazel tests passed or there were no tests to be executed (exit code $TEST_EXIT_CODE)".
+              else
+                TEST_FAILED="true"
+              fi
+            else
+              bazel test \
+                ${{ matrix.bazel-target }} \
+                ${{ matrix.bazel-config }} \
+                --test_output=errors \
+                --profile=Bazel_test_all_profile || TEST_FAILED="true"
+            fi
             # Create Bazel unit-test results
             # Can't be a separate step, because the container's '/tmp' folder is not preserved between steps
             mkdir bazel_unit_test_results/
