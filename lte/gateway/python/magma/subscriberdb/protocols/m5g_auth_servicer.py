@@ -141,6 +141,8 @@ class M5GSUCIRegRpcServicer(subscriberdb_pb2_grpc.M5GSUCIRegistrationServicer):
         logging.info("starting M5GSUCIRegRpcServicer servicer")
         self._print_grpc_payload = print_grpc_payload
 
+#Testing
+
     def add_to_server(self, server):
         """
         Add the servicer to a gRPC server
