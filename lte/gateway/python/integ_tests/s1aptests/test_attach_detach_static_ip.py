@@ -17,7 +17,7 @@ import unittest
 import s1ap_types
 from integ_tests.s1aptests import s1ap_wrapper
 
-
+# Test change!
 class TestAttachDetachStaticIP(unittest.TestCase):
 
     def setUp(self):
