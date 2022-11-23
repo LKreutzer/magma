@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       files_changed: ${{ steps.changes.outputs.files_changed }}
-    if: github.repository_owner == 'magma' || github.event_name == 'workflow_dispatch'
+    if: github.repository_owner == 'LKreutzer' || github.event_name == 'workflow_dispatch'
     steps:
       # Need to get git on push event
       - uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50 # pin@v2.11.1
@@ -73,7 +73,7 @@ jobs:
     # Only run workflow if this is a push to the magma repository,
     # if the workflow has been triggered manually or if it is a pull_request.
     if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
+      (github.event_name == 'push' && github.repository_owner == 'LKreutzer') ||
       needs.path_filter.outputs.files_changed == 'true' ||
       github.event_name == 'workflow_dispatch'
     strategy:
