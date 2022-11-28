@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       files_changed: ${{ steps.changes.outputs.files_changed }}
-    if: github.repository_owner == 'magma' || github.event_name == 'workflow_dispatch'
+    if: github.repository_owner == 'LKreutzer' || github.event_name == 'workflow_dispatch'
     steps:
       # Need to get git on push event
       - uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50 # pin@v2.11.1
@@ -73,7 +73,7 @@ jobs:
     # Only run workflow if this is a push to the magma repository,
     # if the workflow has been triggered manually or if it is a pull_request.
     if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
+      (github.event_name == 'push' && github.repository_owner == 'LKreutzer') ||
       needs.path_filter.outputs.files_changed == 'true' ||
       github.event_name == 'workflow_dispatch'
     strategy:
@@ -211,7 +211,7 @@ jobs:
           echo "Available storage:"
           df -h
       - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
+        if: failure() && github.event_name == 'push' && github.repository_owner == 'LKreutzer'
         uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -270,7 +270,7 @@ jobs:
     # Only run workflow if this is a push to the magma repository,
     # if the workflow has been triggered manually or if it is a pull_request.
     if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
+      (github.event_name == 'push' && github.repository_owner == 'LKreutzer') ||
       needs.path_filter.outputs.files_changed == 'true' ||
       github.event_name == 'workflow_dispatch'
     name: Bazel Starlark Format Job
@@ -298,7 +298,7 @@ jobs:
             cd /workspaces/magma
             bazel run //:check_starlark_format
       - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
+        if: failure() && github.event_name == 'push' && github.repository_owner == 'LKreutzer'
         uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -314,7 +314,7 @@ jobs:
     # Only run workflow if this is a push to the magma repository,
     # if the workflow has been triggered manually or if it is a pull_request.
     if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
+      (github.event_name == 'push' && github.repository_owner == 'LKreutzer') ||
       needs.path_filter.outputs.files_changed == 'true' ||
       github.event_name == 'workflow_dispatch'
     name: Bazel Python Import Check
@@ -359,7 +359,7 @@ jobs:
           echo "Available storage:"
           df -h
       - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
+        if: failure() && github.event_name == 'push' && github.repository_owner == 'LKreutzer'
         uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -375,7 +375,7 @@ jobs:
     # Only run workflow if this is a push to the magma repository,
     # if the workflow has been triggered manually or if it is a pull_request.
     if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
+      (github.event_name == 'push' && github.repository_owner == 'LKreutzer') ||
       needs.path_filter.outputs.files_changed == 'true' ||
       github.event_name == 'workflow_dispatch'
     name: Bazel Package Job
@@ -524,7 +524,7 @@ jobs:
         uses: peter-evans/repository-dispatch@f2696244ec00ed5c659a5cc77f7138ad0302dffb # pin@v2.1.0
         if: |
           github.event_name == 'push' &&
-          github.repository_owner == 'magma' &&
+          github.repository_owner == 'LKreutzer' &&
           github.ref_name == 'master' &&
           needs.bazel_package.outputs.package_build_skipped == 'false'
         with:
@@ -551,7 +551,7 @@ jobs:
           df -h
 
       - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
+        if: failure() && github.event_name == 'push' && github.repository_owner == 'LKreutzer'
         uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -573,7 +573,7 @@ jobs:
         run: |
           ./bazel/scripts/check_py_bazel.sh
       - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
+        if: failure() && github.event_name == 'push' && github.repository_owner == 'LKreutzer'
         uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
@@ -595,7 +595,7 @@ jobs:
         run: |
           ./bazel/scripts/check_c_cpp_bazel.sh
       - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
+        if: failure() && github.event_name == 'push' && github.repository_owner == 'LKreutzer'
         uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
