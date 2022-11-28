@@ -29,10 +29,7 @@ on:
       - master
 
 env:
-  BAZEL_BASE_IMAGE: "ghcr.io/magma/magma/bazel-base:latest"
-  # see GH14041
-  CACHE_KEY: bazel-base-image-sha-c4de1e5
-  REMOTE_DOWNLOAD_OPTIMIZATION: true
+  BAZEL_BASE_IMAGE_CACHE: "ghcr.io/lkreutzer/gh-actions-testing/bazel_builder_cache:latest"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
@@ -43,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       files_changed: ${{ steps.changes.outputs.files_changed }}
-    if: github.repository_owner == 'magma' || github.event_name == 'workflow_dispatch'
+    if: github.repository_owner == 'LKreutzer' || github.event_name == 'workflow_dispatch'
     steps:
       # Need to get git on push event
       - uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50 # pin@v2.11.1
@@ -73,7 +70,7 @@ jobs:
     # Only run workflow if this is a push to the magma repository,
     # if the workflow has been triggered manually or if it is a pull_request.
     if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
+      (github.event_name == 'push' && github.repository_owner == 'LKreutzer') ||
       needs.path_filter.outputs.files_changed == 'true' ||
       github.event_name == 'workflow_dispatch'
     strategy:
@@ -101,7 +98,7 @@ jobs:
       - name: Setup Bazel Base Image
         uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
         with:
-          image: ${{ env.BAZEL_BASE_IMAGE }}
+          image: ${{ env.BAZEL_BASE_IMAGE_CACHE }}
           options: --pull always
           # Run a simple echo command to pull down the image. This makes it a bit more clear how much time is spent on building Magma and not pulling down the image.
           run: |
@@ -109,7 +106,7 @@ jobs:
       - name: Run bazel build and test
         uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
         with:
-          image: ${{ env.BAZEL_BASE_IMAGE }}
+          image: ${{ env.BAZEL_BASE_IMAGE_CACHE }}
           shell: bash
           # TODO: Remove work-around mount of Github workspace to /magma (https://github.com/addnab/docker-run-action/issues/11)
           options: -v ${{ github.workspace }}:/workspaces/magma/ -v ${{ github.workspace }}/lte/gateway/configs:/etc/magma
@@ -119,11 +116,6 @@ jobs:
 
             # Required for bazel-diff to perform git checkout.
             git config --global --add safe.directory /workspaces/magma
-
-            printf '\r%s\r' '###############################' 1>&2
-            printf '\r%s\r' 'Configuring bazel remote cache.' 1>&2
-            printf '\r%s\r\r' '###############################' 1>&2
-            bazel/scripts/remote_cache_bazelrc_setup.sh "${{ env.CACHE_KEY }}" "${{ env.REMOTE_DOWNLOAD_OPTIMIZATION }}" "${{ secrets.BAZEL_REMOTE_PASSWORD }}"
 
             printf '\r%s\r' '###############################' 1>&2
             printf '\r%s\r' 'Determining bazel test targets.' 1>&2
@@ -153,6 +145,7 @@ jobs:
             printf '\r%s\r' '###############################' 1>&2
             TEST_FAILED="false"
 
+            TEST_TARGETS="$(bazel query 'kind(${{ matrix.bazel-target-rule }}, //...) except attr(tags, manual, //...)')"
             if [[ -n "$TEST_TARGETS" ]];
             then
               bazel test \
@@ -235,304 +228,3 @@ jobs:
     steps:
       - id: setoutput
         run: echo "success=true" >> $GITHUB_OUTPUT
-
-  report_result_bazel_build_and_test:
-    name: Bazel build and test status
-    runs-on: ubuntu-latest
-    if: always()
-    # This job always needs to run. It will be green if the bazel_build_and_test
-    # job was successful in all matrix jobs or if the job was skipped.
-    needs: [path_filter, bazel_build_and_test, if_bazel_build_and_test_success]
-    steps:
-      - run: |
-          bazel_build_and_test_success="${{ needs.if_bazel_build_and_test_success.outputs.success }}"
-          files_changed="${{ needs.path_filter.outputs.files_changed }}"
-
-          echo "The status of this job is determined by the statuses of the previous jobs in this workflow."
-          echo "For more details on this matrix workflow please look at the following wiki page or the PR #13562:"
-          echo "https://github.com/magma/magma/wiki/How-to-set-up-a-required-matrix-workflow-on-GitHub-actions"
-          echo "https://github.com/magma/magma/pull/13562"
-
-          echo "bazel_build_and_test_success: $bazel_build_and_test_success"
-          echo "files_changed: $files_changed"
-
-          if [[ $bazel_build_and_test_success == "true" || $files_changed != "true" ]];
-          then
-            echo "Bazel build and test job passed or was skipped"
-            exit 0
-          else
-            echo "Bazel build and test job failed"
-            exit 1
-          fi
-
-  buildifier:
-    needs: path_filter
-    # Only run workflow if this is a push to the magma repository,
-    # if the workflow has been triggered manually or if it is a pull_request.
-    if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
-      needs.path_filter.outputs.files_changed == 'true' ||
-      github.event_name == 'workflow_dispatch'
-    name: Bazel Starlark Format Job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Out Repo
-        # This is necessary for overlays into the Docker container below.
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # pin@v3.1.0
-      - name: Setup Bazel Base Image
-        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
-        with:
-          image: ${{ env.BAZEL_BASE_IMAGE }}
-          options: --pull always
-          # Run a simple echo command to pull down the image. This makes it a bit more clear how much time is spent on building Magma and not pulling down the image.
-          run: |
-            echo "Pulled the bazel base image!"
-      - name: Run starlark format check
-        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
-        with:
-          image: ${{ env.BAZEL_BASE_IMAGE }}
-          shell: bash
-          # TODO: Remove work-around mount of Github workspace to /magma (https://github.com/addnab/docker-run-action/issues/11)
-          options: -v ${{ github.workspace }}:/workspaces/magma/ -v ${{ github.workspace }}/lte/gateway/configs:/etc/magma
-          run: |
-            cd /workspaces/magma
-            bazel run //:check_starlark_format
-      - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
-        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_TITLE: "Bazel starlark format check"
-          SLACK_USERNAME: ${{ github.workflow }}
-          SLACK_ICON_EMOJI: ":boom:"
-          SLACK_COLOR: "#FF0000"
-          SLACK_FOOTER: ' '
-          MSG_MINIMAL: actions url,commit
-
-  python_import_check:
-    needs: path_filter
-    # Only run workflow if this is a push to the magma repository,
-    # if the workflow has been triggered manually or if it is a pull_request.
-    if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
-      needs.path_filter.outputs.files_changed == 'true' ||
-      github.event_name == 'workflow_dispatch'
-    name: Bazel Python Import Check
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Out Repo
-        # This is necessary for overlays into the Docker container below.
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # pin@v3.1.0
-      - name: Maximize build space
-        uses: ./.github/workflows/composite/maximize-build-space
-      - name: Setup Bazel Base Image
-        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
-        with:
-          image: ${{ env.BAZEL_BASE_IMAGE }}
-          options: --pull always
-          # Run a simple echo command to pull down the image. This makes it a bit more clear how much time is spent on building Magma and not pulling down the image.
-          run: |
-            echo "Pulled the bazel base image!"
-      - name: Run Python Import Check
-        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
-        with:
-          image: ${{ env.BAZEL_BASE_IMAGE }}
-          shell: bash
-          # TODO: Remove work-around mount of Github workspace to /magma (https://github.com/addnab/docker-run-action/issues/11)
-          options: -v ${{ github.workspace }}:/workspaces/magma/ -v ${{ github.workspace }}/lte/gateway/configs:/etc/magma
-          run: |
-            cd /workspaces/magma
-            set -euo pipefail
-
-            printf '\r%s\r' '###############################' 1>&2
-            printf '\r%s\r' 'Configuring bazel remote cache.' 1>&2
-            printf '\r%s\r\r' '###############################' 1>&2
-            bazel/scripts/remote_cache_bazelrc_setup.sh "${{ env.CACHE_KEY }}" "${{ env.REMOTE_DOWNLOAD_OPTIMIZATION }}" "${{ secrets.BAZEL_REMOTE_PASSWORD }}"
-
-            printf '\r%s\r' '###############################' 1>&2
-            printf '\r%s\r' 'Executing python import bazelification check.' 1>&2
-            printf '\r%s\r' '###############################' 1>&2
-            bazel/scripts/test_python_service_imports.sh;
-      - name: Build space left after run
-        shell: bash
-        run: |
-          echo "Available storage:"
-          df -h
-      - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
-        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_TITLE: "Bazel Python Import Check"
-          SLACK_USERNAME: ${{ github.workflow }}
-          SLACK_ICON_EMOJI: ":boom:"
-          SLACK_COLOR: "#FF0000"
-          SLACK_FOOTER: ' '
-          MSG_MINIMAL: actions url,commit
-
-  bazel_package:
-    needs: path_filter
-    # Only run workflow if this is a push to the magma repository,
-    # if the workflow has been triggered manually or if it is a pull_request.
-    if: |
-      (github.event_name == 'push' && github.repository_owner == 'magma') ||
-      needs.path_filter.outputs.files_changed == 'true' ||
-      github.event_name == 'workflow_dispatch'
-    name: Bazel Package Job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Out Repo
-        # This is necessary for overlays into the Docker container below.
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # pin@v3.1.0
-      - name: Maximize build space
-        uses: ./.github/workflows/composite/maximize-build-space
-      - name: Setup Bazel Base Image
-        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
-        with:
-          image: ${{ env.BAZEL_BASE_IMAGE }}
-          options: --pull always
-          # Run a simple echo command to pull down the image. This makes it a bit more clear how much time is spent on building Magma and not pulling down the image.
-          run: |
-            echo "Pulled the bazel base image!"
-      - name: Build .deb Packages
-        uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
-        with:
-          image: ${{ env.BAZEL_BASE_IMAGE }}
-          # TODO: Remove work-around mount of Github workspace to /magma (https://github.com/addnab/docker-run-action/issues/11)
-          options: -v ${{ github.workspace }}:/workspaces/magma/ -v ${{ github.workspace }}/lte/gateway/configs:/etc/magma
-          run: |
-            cd /workspaces/magma
-            bazel/scripts/remote_cache_bazelrc_setup.sh "${{ env.CACHE_KEY }}" "${{ env.REMOTE_DOWNLOAD_OPTIMIZATION }}" "${{ secrets.BAZEL_REMOTE_PASSWORD }}"
-            bazel run //lte/gateway/release:release_build \
-              --config=production \
-              --profile=Bazel_build_package_profile
-            mkdir packages
-            mv /tmp/packages/*.deb packages
-      - name: Get magma version
-        run: |
-          version_pattern="magma_([0-9]+\.[0-9]+\.[0-9]+-[0-9]+-[a-z0-9]+)_amd64.deb"
-          for i in packages/*.deb; do
-              if [[ $i =~ $version_pattern ]]; then
-                  magma_version=${BASH_REMATCH[1]}
-              fi
-          done
-          if [[ -z "$magma_version" ]]; then
-              echo "No file found with a matching version pattern \"${version_pattern}\". Files in folder:"
-              ls -la packages/*.deb
-              exit 1
-          else
-              echo "Exporting magma version \"${magma_version}\""
-              echo "MAGMA_VERSION=${magma_version}" >> $GITHUB_ENV
-          fi
-
-      - name: Setup JFROG CLI
-        uses: jfrog/setup-jfrog-cli@d0a59b1cdaeeb16e65b5039fc92b8507337f1559 # pin@v3
-
-      - name: Set dry run environment variable
-        if: ${{ ! ( github.event_name == 'push' && github.repository_owner == 'magma' && github.ref_name == 'master' ) }}
-        run: |
-          echo "IS_DRY=--dry-run" >> $GITHUB_ENV
-
-      - name: Publish debian packages - magmacore
-        env:
-          DEBIAN_META_INFO: deb.distribution=focal-ci;deb.component=main;deb.architecture=amd64
-        run: |
-          jf rt upload \
-            --recursive=false \
-            --detailed-summary \
-            --url https://artifactory.magmacore.org:443/artifactory/ \
-            --user ${{ secrets.JFROG_USERNAME }} \
-            --password ${{ secrets.JFROG_PASSWORD }} \
-            ${{ env.IS_DRY }} \
-            --target-props="${DEBIAN_META_INFO}" \
-            "packages/(*).deb" debian-test/pool/focal-ci/{1}.deb
-
-      - name: Publish debian packages - linuxfoundation
-        env:
-          DEBIAN_META_INFO: deb.distribution=focal-ci;deb.component=main;deb.architecture=amd64
-        run: |
-          jf rt upload \
-            --recursive=false \
-            --detailed-summary \
-            --url https://linuxfoundation.jfrog.io/artifactory/ \
-            --user ${{ secrets.LF_JFROG_USERNAME }} \
-            --password ${{ secrets.LF_JFROG_PASSWORD }} \
-            ${{ env.IS_DRY }} \
-            --target-props="${DEBIAN_META_INFO}" \
-            "packages/(*).deb" magma-packages-test/pool/focal-ci/{1}.deb
-
-      - name: Trigger debian integ test workflow
-        uses: peter-evans/repository-dispatch@f2696244ec00ed5c659a5cc77f7138ad0302dffb # pin@v2.1.0
-        if: github.event_name == 'push' && github.repository_owner == 'magma' && github.ref_name == 'master'
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          repository: magma/magma
-          event-type: magma-debian-artifact
-          client-payload: '{ "magma_version": "${{ env.MAGMA_VERSION }}" }'
-
-      - name: Publish bazel profile
-        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # pin@v3
-        if: ${{ always() && github.event.inputs.publish_bazel_profile == 'true' }}
-        with:
-          name: Bazel build package profile
-          path: Bazel_build_package_profile
-      - name: Build space left after run
-        shell: bash
-        run: |
-          echo "Available storage:"
-          df -h
-      - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
-        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_TITLE: "Bazel Package Job"
-          SLACK_USERNAME: ${{ github.workflow }}
-          SLACK_ICON_EMOJI: ":boom:"
-          SLACK_COLOR: "#FF0000"
-          SLACK_FOOTER: ' '
-          MSG_MINIMAL: actions url,commit
-
-  python_file_check:
-    name: Check if there are not bazelified python files
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Out Repo
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # pin@v3.1.0
-      - name: Execute check
-        shell: bash
-        run: |
-          ./bazel/scripts/check_py_bazel.sh
-      - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
-        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_TITLE: "Bazel Python Check Job `./bazel/scripts/check_py_bazel.sh`"
-          SLACK_USERNAME: ${{ github.workflow }}
-          SLACK_ICON_EMOJI: ":boom:"
-          SLACK_COLOR: "#FF0000"
-          SLACK_FOOTER: ' '
-          MSG_MINIMAL: actions url,commit
-
-  c_cpp_file_check:
-    name: Check if there are non-bazelified c or c++ files
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check Out Repo
-        uses: actions/checkout@93ea575cb5d8a053eaa0ac8fa3b40d7e05a33cc8 # pin@v3.1.0
-      - name: Execute check
-        shell: bash
-        run: |
-          ./bazel/scripts/check_c_cpp_bazel.sh
-      - name: Notify failure to slack
-        if: failure() && github.event_name == 'push' && github.repository_owner == 'magma'
-        uses: rtCamp/action-slack-notify@12e36fc18b0689399306c2e0b3e0f2978b7f1ee7 # pin@v2.2.0
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_TITLE: "Bazel C/C++ Check Job `./bazel/scripts/check_c_cpp_bazel.sh`"
-          SLACK_USERNAME: ${{ github.workflow }}
-          SLACK_ICON_EMOJI: ":boom:"
-          SLACK_COLOR: "#FF0000"
-          SLACK_FOOTER: ' '
-          MSG_MINIMAL: actions url,commit
