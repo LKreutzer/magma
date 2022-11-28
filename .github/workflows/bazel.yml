@@ -28,9 +28,6 @@ on:
     branches:
       - master
 
-env:
-  BAZEL_BASE_IMAGE_CACHE: "ghcr.io/lkreutzer/gh-actions-testing/bazel_builder_cache:latest"
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: true
@@ -79,10 +76,13 @@ jobs:
         include:
           - bazel-config: ""
             bazel-target-rule: ".*_test"
+            docker-image: "ghcr.io/lkreutzer/gh-actions-testing/bazel_builder_cache:latest"
           - bazel-config: "--config=asan"
             bazel-target-rule: "cc_test"
+            docker-image: "ghcr.io/lkreutzer/gh-actions-testing/bazel_builder_cache_asan_prod:latest"
           - bazel-config: "--config=production"
             bazel-target-rule: "cc_test"
+            docker-image: "ghcr.io/lkreutzer/gh-actions-testing/bazel_builder_cache_asan_prod:latest"
     name: Bazel Build & Test Job
     runs-on: ubuntu-latest
     steps:
@@ -98,7 +98,7 @@ jobs:
       - name: Setup Bazel Base Image
         uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
         with:
-          image: ${{ env.BAZEL_BASE_IMAGE_CACHE }}
+          image: ${{ matrix.docker-image }}
           options: --pull always
           # Run a simple echo command to pull down the image. This makes it a bit more clear how much time is spent on building Magma and not pulling down the image.
           run: |
@@ -106,7 +106,7 @@ jobs:
       - name: Run bazel build and test
         uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
         with:
-          image: ${{ env.BAZEL_BASE_IMAGE_CACHE }}
+          image: ${{ matrix.docker-image }}
           shell: bash
           # TODO: Remove work-around mount of Github workspace to /magma (https://github.com/addnab/docker-run-action/issues/11)
           options: -v ${{ github.workspace }}:/workspaces/magma/ -v ${{ github.workspace }}/lte/gateway/configs:/etc/magma
