@@ -112,7 +112,7 @@ jobs:
         with:
           registry: ghcr.io
           username: lkreutzer
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.TOKEN_MAGMA }}
       - name: Setup Bazel Docker Image
         uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
         with:
@@ -345,7 +345,7 @@ jobs:
         with:
           registry: ghcr.io
           username: lkreutzer
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.TOKEN_MAGMA }}
       - name: Setup Bazel Docker Image
         uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
         with:
@@ -452,7 +452,7 @@ jobs:
         with:
           registry: ghcr.io
           username: lkreutzer
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.TOKEN_MAGMA }}
       - name: Setup Bazel Docker Image
         uses: addnab/docker-run-action@4f65fabd2431ebc8d299f8e5a018d79a769ae185 # pin@v3
         with:
