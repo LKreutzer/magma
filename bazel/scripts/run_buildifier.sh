@@ -54,6 +54,9 @@ else
     echo "Download successful."
 fi
 
+
+# testing
+
 if [[ -z "${MAGMA_ROOT:-}" ]];
 then
   echo "Warning: 'MAGMA_ROOT' is not set, defaulting to current directory."
