@@ -11,7 +11,7 @@
 
 name: PR Check DCO
 on:
-  pull_request_target: null
+  pull_request: null
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
