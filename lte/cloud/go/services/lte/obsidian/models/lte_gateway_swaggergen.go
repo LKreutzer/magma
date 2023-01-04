@@ -16,7 +16,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// LteGateway Full description of an LTE gateway
+// LteGateway Full description of an LTE gateway test change
 //
 // swagger:model lte_gateway
 type LteGateway struct {
