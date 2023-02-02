@@ -53,9 +53,9 @@ jobs:
     needs: path_filter
     # Only run workflow if this is a scheduled run on master branch,
     # or a pull_request that skip-duplicate-action wants to run again.
-    if: |
-      (github.event_name == 'schedule' && github.ref == 'refs/heads/master') ||
-      needs.path_filter.outputs.files_changed == 'true'
+    # if: |
+    #   (github.event_name == 'schedule' && github.ref == 'refs/heads/master') ||
+    #   needs.path_filter.outputs.files_changed == 'true'
     name: Bazel Build & Test Job
     runs-on: ubuntu-20.04
     steps:
@@ -142,9 +142,9 @@ jobs:
     needs: path_filter
     # Only run workflow if this is a scheduled run on master branch,
     # or a pull_request that skip-duplicate-action wants to run again.
-    if: |
-      (github.event_name == 'schedule' && github.ref == 'refs/heads/master') ||
-      needs.path_filter.outputs.files_changed == 'true'
+    # if: |
+    #   (github.event_name == 'schedule' && github.ref == 'refs/heads/master') ||
+    #   needs.path_filter.outputs.files_changed == 'true'
     name: Bazel Package Job
     runs-on: ubuntu-20.04
     steps:
